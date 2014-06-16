@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B0B8BC4194E893200EC79DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC3194E893200EC79DC /* Foundation.framework */; };
+		8B0B8BC6194E893200EC79DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC5194E893200EC79DC /* CoreGraphics.framework */; };
+		8B0B8BC8194E893200EC79DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC7194E893200EC79DC /* UIKit.framework */; };
+		8B0B8BCA194E893200EC79DC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC9194E893200EC79DC /* CoreData.framework */; };
+		8B0B8BD0194E893200EC79DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8BCE194E893200EC79DC /* InfoPlist.strings */; };
+		8B0B8BD2194E893200EC79DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8BD1194E893200EC79DC /* main.m */; };
+		8B0B8BD6194E893200EC79DC /* ZXYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8BD5194E893200EC79DC /* ZXYAppDelegate.m */; };
+		8B0B8BD9194E893200EC79DC /* DLTourOfJapan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8BD7194E893200EC79DC /* DLTourOfJapan.xcdatamodeld */; };
+		8B0B8BDB194E893200EC79DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8BDA194E893200EC79DC /* Images.xcassets */; };
+		8B0B8BE2194E893200EC79DC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BE1194E893200EC79DC /* XCTest.framework */; };
+		8B0B8BE3194E893200EC79DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC3194E893200EC79DC /* Foundation.framework */; };
+		8B0B8BE4194E893200EC79DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC7194E893200EC79DC /* UIKit.framework */; };
+		8B0B8BE5194E893200EC79DC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC9194E893200EC79DC /* CoreData.framework */; };
+		8B0B8BED194E893200EC79DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8BEB194E893200EC79DC /* InfoPlist.strings */; };
+		8B0B8BEF194E893200EC79DC /* DLTourOfJapanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8BEE194E893200EC79DC /* DLTourOfJapanTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8B0B8BE6194E893200EC79DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B0B8BB8194E893200EC79DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B0B8BBF194E893200EC79DC;
+			remoteInfo = DLTourOfJapan;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8B0B8BC0194E893200EC79DC /* DLTourOfJapan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLTourOfJapan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B0B8BC3194E893200EC79DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8B0B8BC5194E893200EC79DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8B0B8BC7194E893200EC79DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8B0B8BC9194E893200EC79DC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8B0B8BCD194E893200EC79DC /* DLTourOfJapan-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DLTourOfJapan-Info.plist"; sourceTree = "<group>"; };
+		8B0B8BCF194E893200EC79DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8B0B8BD1194E893200EC79DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8B0B8BD3194E893200EC79DC /* DLTourOfJapan-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLTourOfJapan-Prefix.pch"; sourceTree = "<group>"; };
+		8B0B8BD4194E893200EC79DC /* ZXYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXYAppDelegate.h; sourceTree = "<group>"; };
+		8B0B8BD5194E893200EC79DC /* ZXYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXYAppDelegate.m; sourceTree = "<group>"; };
+		8B0B8BD8194E893200EC79DC /* DLTourOfJapan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DLTourOfJapan.xcdatamodel; sourceTree = "<group>"; };
+		8B0B8BDA194E893200EC79DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8B0B8BE0194E893200EC79DC /* DLTourOfJapanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLTourOfJapanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B0B8BE1194E893200EC79DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		8B0B8BEA194E893200EC79DC /* DLTourOfJapanTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DLTourOfJapanTests-Info.plist"; sourceTree = "<group>"; };
+		8B0B8BEC194E893200EC79DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8B0B8BEE194E893200EC79DC /* DLTourOfJapanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLTourOfJapanTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B0B8BBD194E893200EC79DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B0B8BC6194E893200EC79DC /* CoreGraphics.framework in Frameworks */,
+				8B0B8BCA194E893200EC79DC /* CoreData.framework in Frameworks */,
+				8B0B8BC8194E893200EC79DC /* UIKit.framework in Frameworks */,
+				8B0B8BC4194E893200EC79DC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B0B8BDD194E893200EC79DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B0B8BE2194E893200EC79DC /* XCTest.framework in Frameworks */,
+				8B0B8BE5194E893200EC79DC /* CoreData.framework in Frameworks */,
+				8B0B8BE4194E893200EC79DC /* UIKit.framework in Frameworks */,
+				8B0B8BE3194E893200EC79DC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B0B8BB7194E893200EC79DC = {
+			isa = PBXGroup;
+			children = (
+				8B0B8BCB194E893200EC79DC /* DLTourOfJapan */,
+				8B0B8BE8194E893200EC79DC /* DLTourOfJapanTests */,
+				8B0B8BC2194E893200EC79DC /* Frameworks */,
+				8B0B8BC1194E893200EC79DC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8B0B8BC1194E893200EC79DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B8BC0194E893200EC79DC /* DLTourOfJapan.app */,
+				8B0B8BE0194E893200EC79DC /* DLTourOfJapanTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B0B8BC2194E893200EC79DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B8BC3194E893200EC79DC /* Foundation.framework */,
+				8B0B8BC5194E893200EC79DC /* CoreGraphics.framework */,
+				8B0B8BC7194E893200EC79DC /* UIKit.framework */,
+				8B0B8BC9194E893200EC79DC /* CoreData.framework */,
+				8B0B8BE1194E893200EC79DC /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B0B8BCB194E893200EC79DC /* DLTourOfJapan */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B8BD4194E893200EC79DC /* ZXYAppDelegate.h */,
+				8B0B8BD5194E893200EC79DC /* ZXYAppDelegate.m */,
+				8B0B8BDA194E893200EC79DC /* Images.xcassets */,
+				8B0B8BD7194E893200EC79DC /* DLTourOfJapan.xcdatamodeld */,
+				8B0B8BCC194E893200EC79DC /* Supporting Files */,
+			);
+			path = DLTourOfJapan;
+			sourceTree = "<group>";
+		};
+		8B0B8BCC194E893200EC79DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B8BCD194E893200EC79DC /* DLTourOfJapan-Info.plist */,
+				8B0B8BCE194E893200EC79DC /* InfoPlist.strings */,
+				8B0B8BD1194E893200EC79DC /* main.m */,
+				8B0B8BD3194E893200EC79DC /* DLTourOfJapan-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B0B8BE8194E893200EC79DC /* DLTourOfJapanTests */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B8BEE194E893200EC79DC /* DLTourOfJapanTests.m */,
+				8B0B8BE9194E893200EC79DC /* Supporting Files */,
+			);
+			path = DLTourOfJapanTests;
+			sourceTree = "<group>";
+		};
+		8B0B8BE9194E893200EC79DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B8BEA194E893200EC79DC /* DLTourOfJapanTests-Info.plist */,
+				8B0B8BEB194E893200EC79DC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8B0B8BBF194E893200EC79DC /* DLTourOfJapan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B0B8BF2194E893200EC79DC /* Build configuration list for PBXNativeTarget "DLTourOfJapan" */;
+			buildPhases = (
+				8B0B8BBC194E893200EC79DC /* Sources */,
+				8B0B8BBD194E893200EC79DC /* Frameworks */,
+				8B0B8BBE194E893200EC79DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DLTourOfJapan;
+			productName = DLTourOfJapan;
+			productReference = 8B0B8BC0194E893200EC79DC /* DLTourOfJapan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8B0B8BDF194E893200EC79DC /* DLTourOfJapanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B0B8BF5194E893200EC79DC /* Build configuration list for PBXNativeTarget "DLTourOfJapanTests" */;
+			buildPhases = (
+				8B0B8BDC194E893200EC79DC /* Sources */,
+				8B0B8BDD194E893200EC79DC /* Frameworks */,
+				8B0B8BDE194E893200EC79DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B0B8BE7194E893200EC79DC /* PBXTargetDependency */,
+			);
+			name = DLTourOfJapanTests;
+			productName = DLTourOfJapanTests;
+			productReference = 8B0B8BE0194E893200EC79DC /* DLTourOfJapanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B0B8BB8194E893200EC79DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ZXY;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = duostec;
+				TargetAttributes = {
+					8B0B8BDF194E893200EC79DC = {
+						TestTargetID = 8B0B8BBF194E893200EC79DC;
+					};
+				};
+			};
+			buildConfigurationList = 8B0B8BBB194E893200EC79DC /* Build configuration list for PBXProject "DLTourOfJapan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8B0B8BB7194E893200EC79DC;
+			productRefGroup = 8B0B8BC1194E893200EC79DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8B0B8BBF194E893200EC79DC /* DLTourOfJapan */,
+				8B0B8BDF194E893200EC79DC /* DLTourOfJapanTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B0B8BBE194E893200EC79DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B0B8BD0194E893200EC79DC /* InfoPlist.strings in Resources */,
+				8B0B8BDB194E893200EC79DC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B0B8BDE194E893200EC79DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B0B8BED194E893200EC79DC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B0B8BBC194E893200EC79DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B0B8BD6194E893200EC79DC /* ZXYAppDelegate.m in Sources */,
+				8B0B8BD2194E893200EC79DC /* main.m in Sources */,
+				8B0B8BD9194E893200EC79DC /* DLTourOfJapan.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B0B8BDC194E893200EC79DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B0B8BEF194E893200EC79DC /* DLTourOfJapanTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8B0B8BE7194E893200EC79DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B0B8BBF194E893200EC79DC /* DLTourOfJapan */;
+			targetProxy = 8B0B8BE6194E893200EC79DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8B0B8BCE194E893200EC79DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B0B8BCF194E893200EC79DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8B0B8BEB194E893200EC79DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B0B8BEC194E893200EC79DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8B0B8BF0194E893200EC79DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8B0B8BF1194E893200EC79DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8B0B8BF3194E893200EC79DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DLTourOfJapan/DLTourOfJapan-Prefix.pch";
+				INFOPLIST_FILE = "DLTourOfJapan/DLTourOfJapan-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8B0B8BF4194E893200EC79DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DLTourOfJapan/DLTourOfJapan-Prefix.pch";
+				INFOPLIST_FILE = "DLTourOfJapan/DLTourOfJapan-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8B0B8BF6194E893200EC79DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DLTourOfJapan.app/DLTourOfJapan";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DLTourOfJapan/DLTourOfJapan-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DLTourOfJapanTests/DLTourOfJapanTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		8B0B8BF7194E893200EC79DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DLTourOfJapan.app/DLTourOfJapan";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DLTourOfJapan/DLTourOfJapan-Prefix.pch";
+				INFOPLIST_FILE = "DLTourOfJapanTests/DLTourOfJapanTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8B0B8BBB194E893200EC79DC /* Build configuration list for PBXProject "DLTourOfJapan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B0B8BF0194E893200EC79DC /* Debug */,
+				8B0B8BF1194E893200EC79DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B0B8BF2194E893200EC79DC /* Build configuration list for PBXNativeTarget "DLTourOfJapan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B0B8BF3194E893200EC79DC /* Debug */,
+				8B0B8BF4194E893200EC79DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8B0B8BF5194E893200EC79DC /* Build configuration list for PBXNativeTarget "DLTourOfJapanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B0B8BF6194E893200EC79DC /* Debug */,
+				8B0B8BF7194E893200EC79DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8B0B8BD7194E893200EC79DC /* DLTourOfJapan.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8B0B8BD8194E893200EC79DC /* DLTourOfJapan.xcdatamodel */,
+			);
+			currentVersion = 8B0B8BD8194E893200EC79DC /* DLTourOfJapan.xcdatamodel */;
+			path = DLTourOfJapan.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8B0B8BB8194E893200EC79DC /* Project object */;
+}
