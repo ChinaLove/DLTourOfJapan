@@ -22,6 +22,7 @@
 		8B0B8BE5194E893200EC79DC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC9194E893200EC79DC /* CoreData.framework */; };
 		8B0B8BED194E893200EC79DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8BEB194E893200EC79DC /* InfoPlist.strings */; };
 		8B0B8BEF194E893200EC79DC /* DLTourOfJapanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8BEE194E893200EC79DC /* DLTourOfJapanTests.m */; };
+		8B0B8BFD194E8E4900EC79DC /* AllPreDefine.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8BFC194E8E4900EC79DC /* AllPreDefine.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,11 @@
 		8B0B8BEA194E893200EC79DC /* DLTourOfJapanTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DLTourOfJapanTests-Info.plist"; sourceTree = "<group>"; };
 		8B0B8BEC194E893200EC79DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B0B8BEE194E893200EC79DC /* DLTourOfJapanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLTourOfJapanTests.m; sourceTree = "<group>"; };
+		8B0B8BF8194E8C8A00EC79DC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8B0B8BF9194E8C8A00EC79DC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8B0B8BFA194E8C9200EC79DC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		8B0B8BFB194E8C9200EC79DC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		8B0B8BFC194E8E4900EC79DC /* AllPreDefine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AllPreDefine.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 		8B0B8BCB194E893200EC79DC /* DLTourOfJapan */ = {
 			isa = PBXGroup;
 			children = (
+				8B0B8BFE194E929C00EC79DC /* 预定义 */,
 				8B0B8BD4194E893200EC79DC /* ZXYAppDelegate.h */,
 				8B0B8BD5194E893200EC79DC /* ZXYAppDelegate.m */,
 				8B0B8BDA194E893200EC79DC /* Images.xcassets */,
@@ -151,6 +158,14 @@
 				8B0B8BEB194E893200EC79DC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B0B8BFE194E929C00EC79DC /* 预定义 */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B8BFC194E8E4900EC79DC /* AllPreDefine.c */,
+			);
+			name = "预定义";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +227,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ja,
+				"zh-Hans",
 			);
 			mainGroup = 8B0B8BB7194E893200EC79DC;
 			productRefGroup = 8B0B8BC1194E893200EC79DC /* Products */;
@@ -251,6 +268,7 @@
 			files = (
 				8B0B8BD6194E893200EC79DC /* ZXYAppDelegate.m in Sources */,
 				8B0B8BD2194E893200EC79DC /* main.m in Sources */,
+				8B0B8BFD194E8E4900EC79DC /* AllPreDefine.c in Sources */,
 				8B0B8BD9194E893200EC79DC /* DLTourOfJapan.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +296,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B0B8BCF194E893200EC79DC /* en */,
+				8B0B8BF8194E8C8A00EC79DC /* ja */,
+				8B0B8BFA194E8C9200EC79DC /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -286,6 +306,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B0B8BEC194E893200EC79DC /* en */,
+				8B0B8BF9194E8C8A00EC79DC /* ja */,
+				8B0B8BFB194E8C9200EC79DC /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -448,6 +470,7 @@
 				8B0B8BF4194E893200EC79DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B0B8BF5194E893200EC79DC /* Build configuration list for PBXNativeTarget "DLTourOfJapanTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +479,7 @@
 				8B0B8BF7194E893200EC79DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

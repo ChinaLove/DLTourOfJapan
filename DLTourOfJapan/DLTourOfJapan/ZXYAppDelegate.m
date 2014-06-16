@@ -7,7 +7,7 @@
 //
 
 #import "ZXYAppDelegate.h"
-
+#import "AllPreDefine.c"
 @implementation ZXYAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -19,6 +19,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    NSLog(@"%f",CURRENTVERSION);
     [self.window makeKeyAndVisible];
     return YES;
 }
