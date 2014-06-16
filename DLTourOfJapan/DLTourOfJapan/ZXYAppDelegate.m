@@ -7,7 +7,7 @@
 //
 
 #import "ZXYAppDelegate.h"
-#import "AllPreDefine.c"
+
 @implementation ZXYAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -18,8 +18,10 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    ZXYMainViewController *mainView = [[ZXYMainViewController alloc] initWithNibName:@"ZXYMainViewController" bundle:nil];
+    self.window.rootViewController = mainView;
     self.window.backgroundColor = [UIColor whiteColor];
-    NSLog(@"%f",CURRENTVERSION);
+    NSLog(@"%f",Screen_height);
     [self.window makeKeyAndVisible];
     return YES;
 }

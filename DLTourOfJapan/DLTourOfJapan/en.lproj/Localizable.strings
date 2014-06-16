@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  DLTourOfJapan
+
+  Created by developer on 14-6-16.
+  Copyright (c) 2014年 duostec. All rights reserved.
+*/
+"MainView_Home"  = "主页";
+"MainView_Place" = "场所";
+"MainView_Favor" = "优惠";
