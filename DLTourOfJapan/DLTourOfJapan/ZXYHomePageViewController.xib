@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXYHomePageViewController">
             <connections>
+                <outlet property="pictureCollection" destination="DkU-Q0-fYx" id="5NZ-5x-cmd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,11 +19,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewLayout key="collectionViewLayout" id="a9D-Wy-YEq" customClass="WaterFLayout"/>
+                    <collectionViewLayout key="collectionViewLayout" id="a9D-Wy-YEq" customClass="WaterfallLayout"/>
                     <cells/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="U60-3M-Idv"/>
+                        <outlet property="delegate" destination="-1" id="HLV-jr-tCI"/>
+                    </connections>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.62039825100000001" green="0.94333944520000002" blue="0.53247878019999995" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

@@ -33,7 +33,7 @@
 // !!!:以下是关于用户的全局常量allPreDefine
 #define USERUPDATETIME @"allPreDefine_stringForUserUpdateTime"//key-->update
 #define USERDEFAULTTIME @"19700101"                     //defaultTime
-
+#define AdvertiseNotification @"advertiseImage"         //广告图片下载完成的通知
 /**
  * 以下是服务器接口
  *
@@ -42,3 +42,5 @@
 #define URL_getAdvertise @"http://115.29.46.22:81/dalian100/index.php/InterFace/get_ad_info" /**< 取得所有广告的信息 */
 
 #define URL_getLastVersion @"http://115.29.46.22:81/dalian100/index.php/InterFace/get_latest_version" /** < 取得最新版本跟新数据 */
+
+#define URL_Host @"http://115.29.46.22:81/dalian100/"/** < host */

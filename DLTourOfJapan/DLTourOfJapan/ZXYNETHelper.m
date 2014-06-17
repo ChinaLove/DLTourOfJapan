@@ -8,9 +8,15 @@
 
 #import "ZXYNETHelper.h"
 #import "Reachability.h"
+@interface ZXYNETHelper()
+{
+    NSMutableArray *allURL;
+    ZXYDownAddOperation *advertiseOperation;
+}
+@end
 @implementation ZXYNETHelper
 static ZXYNETHelper *instance;
-
+static NSOperationQueue *queue;
 + (ZXYNETHelper *)sharedSelf
 {
     @synchronized(self)
@@ -21,6 +27,15 @@ static ZXYNETHelper *instance;
         }
     }
     return instance;
+}
+
++ (NSOperationQueue *)getQueue
+{
+    if(queue == nil)
+    {
+        queue = [[NSOperationQueue alloc] init];
+    }
+    return queue;
 }
 
 + (id)alloc
@@ -92,4 +107,27 @@ static ZXYNETHelper *instance;
     }
 }
 
+- (void)advertiseURLADD:(NSURL *)url
+{
+    if(allURL.count == 0)
+    {
+        allURL = [[NSMutableArray alloc] init];
+    }
+    [allURL addObject:url];
+}
+
+- (void)startDownAdvertiseImage
+{
+    if(allURL.count == 0)
+    {
+        return;
+    }
+    if(advertiseOperation == nil)
+    {
+        advertiseOperation = [[ZXYDownAddOperation alloc] initWithPicURLS:allURL];
+    }
+    [[ZXYNETHelper getQueue] addOperation:advertiseOperation];
+    [allURL removeAllObjects];
+    
+}
 @end

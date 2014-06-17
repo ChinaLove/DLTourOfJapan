@@ -16,4 +16,7 @@
     #import <CoreData/CoreData.h>
     #import "AllPreDefine.c"
     #import "AFNetworking.h"
+    #import "ZXYProvider.h"
+    #import "ZXYNETHelper.h"
+    #import "ZXYFileOperation.h"
 #endif

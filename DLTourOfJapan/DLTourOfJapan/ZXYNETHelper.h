@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "NetHelperDelegate.h"
+#import "ZXYDownAddOperation.h"
 @interface ZXYNETHelper : NSObject
 @property (nonatomic,strong)id<NetHelperDelegate>netHelperDelegate;
 /**
@@ -32,4 +33,13 @@
  */
 - (void)requestStart:(NSString *)urlString withParams:(NSDictionary *)params bySerialize:(AFHTTPResponseSerializer *)serializer;
 
+
+/**
+ *下载广告图片啊
+ *
+ *
+ */
+- (void)advertiseURLADD:(NSURL *)url;
+
+- (void)startDownAdvertiseImage;
 @end

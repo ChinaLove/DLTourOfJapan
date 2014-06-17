@@ -36,10 +36,10 @@
 /**
  *  增加一条数据，要保持字段与数据库一致
  */
--(BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName;
+-(BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName isDelete:(BOOL)isDelete;
 
 /**
  *  增加一组数据，要保持字段与数据库一致
  */
-- (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName;
+- (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName isDelete:(BOOL)isDelete;
 @end

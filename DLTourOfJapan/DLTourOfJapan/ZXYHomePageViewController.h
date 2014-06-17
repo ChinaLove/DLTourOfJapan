@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZXYHomePageViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UICollectionView *pictureCollection;
 
 @end

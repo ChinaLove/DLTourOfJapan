@@ -63,6 +63,7 @@ typedef enum
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.homeLbl.text = NSLocalizedString(@"MainView_Home",nil);
     self.placeLbl.text = NSLocalizedString(@"MainView_Place", nil);
     self.favorLbl.text = NSLocalizedString(@"MainView_Favor", nil);
@@ -72,9 +73,6 @@ typedef enum
     self.homeBtn.selected = YES;
     self.homeBtn.userInteractionEnabled = NO;
     self.footImageView.image = [UIImage imageNamed:@"mainView_foot_up"];
-    self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
-    [contentView addSubview:self.homePage.view];
-    // Do any additional setup after loading the view from its nib.
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [HUD setLabelText:NSLocalizedString(@"HUD_CheckUpdate", nil)];
     [self.view addSubview:HUD];
@@ -101,9 +99,16 @@ typedef enum
             NSLog(@"取数据了啊");
             [netHelp requestStart:URL_getAdvertise withParams:nil bySerialize:[AFXMLParserResponseSerializer serializer]];
         }
+        else
+        {
+            self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
+            [contentView addSubview:self.homePage.view];
+            self.homePage.view.frame = CGRectMake(0, 0, 320, 460);
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error is %@",error);
         [HUD hide:YES];
+        
     }];
     
 }
@@ -111,9 +116,14 @@ typedef enum
 - (void)requestCompleteDelegateWithFlag:(requestCompleteFlag)flag withOperation:(AFHTTPRequestOperation *)opertation withObject:(id)object
 {
     [HUD hide:YES];
+   
     NSData *responseData = [opertation responseData];
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-    [dataProvider saveDataToCoreDataArr:responseArray withDBNam:@"Advertise"];
+    [dataProvider saveDataToCoreDataArr:responseArray withDBNam:@"Advertise" isDelete:YES];
+    
+    self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
+    [contentView addSubview:self.homePage.view];
+    self.homePage.view.frame = CGRectMake(0, 0, 320, 460);
     NSLog(@"%@",opertation.responseString);
 }
 

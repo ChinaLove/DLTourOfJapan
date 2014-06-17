@@ -311,8 +311,12 @@ static ZXYProvider *instance = nil;
 
 }
 #pragma mark - save
-- (BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName
+- (BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName isDelete:(BOOL)isDelete
 {
+    if(isDelete)
+    {
+        [self deleteCoreDataFromDB:dbName];
+    }
     ZXYAppDelegate *app = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *manageContext = [app managedObjectContext];
     NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:dbName inManagedObjectContext:manageContext];
@@ -335,11 +339,15 @@ static ZXYProvider *instance = nil;
     }
 }
 
-- (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName
+- (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName isDelete:(BOOL)isDelete
 {
+    if(isDelete)
+    {
+        [self deleteCoreDataFromDB:dbName];
+    }
     for(NSDictionary *dic in arr)
     {
-        [self saveDataToCoreData:dic withDBName:dbName];
+        [self saveDataToCoreData:dic withDBName:dbName isDelete:NO];
     }
     return YES;
 }

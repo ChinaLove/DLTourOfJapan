@@ -74,6 +74,8 @@
 		8BB7959E19501F390023986A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB7959D19501F390023986A /* MBProgressHUD.m */; };
 		8BB795A1195028DC0023986A /* Advertise.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795A0195028DC0023986A /* Advertise.m */; };
 		8BB795A5195029120023986A /* ZXYProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795A4195029120023986A /* ZXYProvider.m */; };
+		8BB795AE195038280023986A /* ZXYFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795AD195038280023986A /* ZXYFileOperation.m */; };
+		8BB795B1195044960023986A /* ZXYDownAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795B0195044960023986A /* ZXYDownAddOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +197,10 @@
 		8BB795A0195028DC0023986A /* Advertise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Advertise.m; sourceTree = "<group>"; };
 		8BB795A3195029120023986A /* ZXYProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYProvider.h; sourceTree = "<group>"; };
 		8BB795A4195029120023986A /* ZXYProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYProvider.m; sourceTree = "<group>"; };
+		8BB795AC195038280023986A /* ZXYFileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYFileOperation.h; sourceTree = "<group>"; };
+		8BB795AD195038280023986A /* ZXYFileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYFileOperation.m; sourceTree = "<group>"; };
+		8BB795AF195044960023986A /* ZXYDownAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYDownAddOperation.h; sourceTree = "<group>"; };
+		8BB795B0195044960023986A /* ZXYDownAddOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYDownAddOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +271,7 @@
 		8B0B8BCB194E893200EC79DC /* DLTourOfJapan */ = {
 			isa = PBXGroup;
 			children = (
+				8BB795A81950380C0023986A /* fileOperation */,
 				8BB795A2195028EB0023986A /* model */,
 				8BB7959B19501F2A0023986A /* MBProgressHUD */,
 				8BB79585195009340023986A /* UserDefault */,
@@ -447,6 +454,8 @@
 				8BB7959A19501D390023986A /* NetHelperDelegate.h */,
 				8BB79597195013330023986A /* ZXYNETHelper.h */,
 				8BB79598195013330023986A /* ZXYNETHelper.m */,
+				8BB795AF195044960023986A /* ZXYDownAddOperation.h */,
+				8BB795B0195044960023986A /* ZXYDownAddOperation.m */,
 			);
 			name = netHelper;
 			sourceTree = "<group>";
@@ -469,6 +478,15 @@
 				8BB795A0195028DC0023986A /* Advertise.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		8BB795A81950380C0023986A /* fileOperation */ = {
+			isa = PBXGroup;
+			children = (
+				8BB795AC195038280023986A /* ZXYFileOperation.h */,
+				8BB795AD195038280023986A /* ZXYFileOperation.m */,
+			);
+			name = fileOperation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,6 +624,7 @@
 				8B0B8C3E194EA0CA00EC79DC /* AFNetworkReachabilityManager.m in Sources */,
 				8B0B8C24194EA0C500EC79DC /* UIProgressView+AFNetworking.m in Sources */,
 				8B0B8BFD194E8E4900EC79DC /* AllPreDefine.c in Sources */,
+				8BB795AE195038280023986A /* ZXYFileOperation.m in Sources */,
 				8B0B8C5F194EB35900EC79DC /* ZXYMainViewController.m in Sources */,
 				8B0B8C3F194EA0CA00EC79DC /* AFSecurityPolicy.m in Sources */,
 				8B0B8BD9194E893200EC79DC /* DLTourOfJapan.xcdatamodeld in Sources */,
@@ -619,6 +638,7 @@
 				8B0B8C3D194EA0CA00EC79DC /* AFHTTPSessionManager.m in Sources */,
 				8B0B8C23194EA0C500EC79DC /* UIImageView+AFNetworking.m in Sources */,
 				8B0B8C96194EDA7700EC79DC /* ZXYMainCollectionCell.m in Sources */,
+				8BB795B1195044960023986A /* ZXYDownAddOperation.m in Sources */,
 				8B0B8C1F194EA0C500EC79DC /* AFNetworkActivityIndicatorManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
