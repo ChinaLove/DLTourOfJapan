@@ -14,13 +14,23 @@ typedef enum
 }mainView_TypeOfViewController;
 
 #import "ZXYMainViewController.h"
-#import "ZXYMainCollectionCell.h"
-@interface ZXYMainViewController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate>
+#import "ZXYHomePageViewController.h"
+#import "MBProgressHUD.h"
+#import "NetHelperDelegate.h"
+#import "ZXYNETHelper.h"
+#import "ZXYUserDefault.h"
+#import "ZXYProvider.h"
+@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate>
 {
     NSArray *allBtnS;
     NSArray *allLabelS;
-    BOOL isNibRegistered;
+    __weak IBOutlet UIView *contentView;
+    MBProgressHUD *HUD;
+    ZXYNETHelper *netHelp;
+    ZXYUserDefault *userDefault;
+    ZXYProvider *dataProvider;
 }
+@property (strong, nonatomic) ZXYHomePageViewController *homePage;
 @property (weak, nonatomic) IBOutlet UILabel *homeLbl;  /**< 首页标签 */
 @property (weak, nonatomic) IBOutlet UILabel *placeLbl; /**< 地点标签 */
 @property (weak, nonatomic) IBOutlet UILabel *favorLbl; /**< 优惠标签 */
@@ -42,7 +52,10 @@ typedef enum
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+        netHelp = [ZXYNETHelper sharedSelf];
+        netHelp.netHelperDelegate = self;
+        userDefault = [ZXYUserDefault sharedSelf];
+        dataProvider = [ZXYProvider sharedInstance];
     }
     return self;
 }
@@ -59,8 +72,49 @@ typedef enum
     self.homeBtn.selected = YES;
     self.homeBtn.userInteractionEnabled = NO;
     self.footImageView.image = [UIImage imageNamed:@"mainView_foot_up"];
-    
+    self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
+    [contentView addSubview:self.homePage.view];
     // Do any additional setup after loading the view from its nib.
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [HUD setLabelText:NSLocalizedString(@"HUD_CheckUpdate", nil)];
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    // !!!:在此处取广告数据，首先判断是否需要更新，再取数据
+    if([ZXYNETHelper isNETConnect])
+    {
+        [HUD show:YES];
+        [self startRequest];
+    }
+}
+
+- (void)startRequest
+{
+    NSDictionary *prama = [NSDictionary dictionaryWithObjectsAndKeys:@"ad",@"type", nil];
+    AFHTTPRequestOperationManager *operation = [AFHTTPRequestOperationManager manager];
+    operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [operation POST:URL_getLastVersion parameters:prama success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSString *dateStringService = [operation responseString];
+        NSString *dateStringUser    = [userDefault getUserDefaultUpdateTimeString];
+        if(dateStringService.integerValue>dateStringUser.integerValue)
+        {
+            NSLog(@"取数据了啊");
+            [netHelp requestStart:URL_getAdvertise withParams:nil bySerialize:[AFXMLParserResponseSerializer serializer]];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error is %@",error);
+        [HUD hide:YES];
+    }];
+    
+}
+
+- (void)requestCompleteDelegateWithFlag:(requestCompleteFlag)flag withOperation:(AFHTTPRequestOperation *)opertation withObject:(id)object
+{
+    [HUD hide:YES];
+    NSData *responseData = [opertation responseData];
+    NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+    [dataProvider saveDataToCoreDataArr:responseArray withDBNam:@"Advertise"];
+    NSLog(@"%@",opertation.responseString);
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,41 +198,4 @@ typedef enum
     }
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"collectionIdentifier";
-    if (!isNibRegistered) {
-        UINib *nib = [UINib nibWithNibName:@"ZXYMainCollectionCell" bundle:nil];
-        [collectionView registerNib:nib forCellWithReuseIdentifier:cellIdentifier];
-        isNibRegistered = YES;
-    }
-    ZXYMainCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.imageViews.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",indexPath.row]];
-    
-    return cell;
-    
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 6;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UIImage *imageF = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",indexPath.row]];
-    float width = 140;
-    float height = (imageF.size.height/imageF.size.width)*140;
-    return  CGSizeMake(width, height);
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(10, 10, 10, 10);
-}
 @end

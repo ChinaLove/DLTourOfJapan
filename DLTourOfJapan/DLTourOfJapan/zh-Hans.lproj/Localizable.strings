@@ -8,3 +8,13 @@
 "MainView_Home"  = "主页";
 "MainView_Place" = "场所";
 "MainView_Favor" = "优惠";
+
+// !!!:AlertView 的提示信息
+"Certain" = "确定";
+"Cancel"  = "取消";
+"TitleOne"= "提示";
+
+"AppDelegate_NetConnect" = "网络没有连接,请链接网络！";
+
+// !!!:HUD progress
+"HUD_CheckUpdate" = "正在检查更新，请稍后...";

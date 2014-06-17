@@ -59,14 +59,21 @@
 		8B0B8C80194EBB3000EC79DC /* mainView_favou_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C76194EBB3000EC79DC /* mainView_favou_down@2x.png */; };
 		8B0B8C82194EBB3000EC79DC /* mainView_favou_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C78194EBB3000EC79DC /* mainView_favou_up@2x.png */; };
 		8B0B8C85194EC78800EC79DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C87194EC78800EC79DC /* Localizable.strings */; };
-		8B0B8C8C194ED9FA00EC79DC /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C8A194ED9FA00EC79DC /* 0.jpg */; };
-		8B0B8C8D194ED9FA00EC79DC /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C8B194ED9FA00EC79DC /* 1.jpg */; };
-		8B0B8C8F194EDA1600EC79DC /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C8E194EDA1600EC79DC /* 2.jpg */; };
-		8B0B8C92194EDA3A00EC79DC /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C90194EDA3A00EC79DC /* 3.jpg */; };
-		8B0B8C93194EDA3A00EC79DC /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C91194EDA3A00EC79DC /* 4.jpg */; };
 		8B0B8C96194EDA7700EC79DC /* ZXYMainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8C95194EDA7700EC79DC /* ZXYMainCollectionCell.m */; };
 		8B0B8C98194EDA9000EC79DC /* ZXYMainCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C97194EDA9000EC79DC /* ZXYMainCollectionCell.xib */; };
-		8B0B8C9A194EE0DA00EC79DC /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B8C99194EE0DA00EC79DC /* 5.jpg */; };
+		8BB7957B194FE8500023986A /* WaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB7957A194FE8500023986A /* WaterfallLayout.m */; };
+		8BB79583194FEB950023986A /* ZXYHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB79581194FEB950023986A /* ZXYHomePageViewController.m */; };
+		8BB79584194FEB950023986A /* ZXYHomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB79582194FEB950023986A /* ZXYHomePageViewController.xib */; };
+		8BB795881950094C0023986A /* ZXYUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795871950094C0023986A /* ZXYUserDefault.m */; };
+		8BB7958C195012700023986A /* ZXYPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB7958A195012700023986A /* ZXYPlaceViewController.m */; };
+		8BB7958D195012700023986A /* ZXYPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB7958B195012700023986A /* ZXYPlaceViewController.xib */; };
+		8BB795911950129E0023986A /* ZXYFavorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB7958F1950129E0023986A /* ZXYFavorViewController.m */; };
+		8BB795921950129E0023986A /* ZXYFavorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB795901950129E0023986A /* ZXYFavorViewController.xib */; };
+		8BB79595195012FA0023986A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB79594195012FA0023986A /* Reachability.m */; };
+		8BB79599195013330023986A /* ZXYNETHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB79598195013330023986A /* ZXYNETHelper.m */; };
+		8BB7959E19501F390023986A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB7959D19501F390023986A /* MBProgressHUD.m */; };
+		8BB795A1195028DC0023986A /* Advertise.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795A0195028DC0023986A /* Advertise.m */; };
+		8BB795A5195029120023986A /* ZXYProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795A4195029120023986A /* ZXYProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,15 +168,33 @@
 		8B0B8C86194EC78800EC79DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8B0B8C88194EC78D00EC79DC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8B0B8C89194EC78E00EC79DC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		8B0B8C8A194ED9FA00EC79DC /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
-		8B0B8C8B194ED9FA00EC79DC /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		8B0B8C8E194EDA1600EC79DC /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		8B0B8C90194EDA3A00EC79DC /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
-		8B0B8C91194EDA3A00EC79DC /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		8B0B8C94194EDA7700EC79DC /* ZXYMainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYMainCollectionCell.h; sourceTree = "<group>"; };
 		8B0B8C95194EDA7700EC79DC /* ZXYMainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYMainCollectionCell.m; sourceTree = "<group>"; };
 		8B0B8C97194EDA9000EC79DC /* ZXYMainCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYMainCollectionCell.xib; sourceTree = "<group>"; };
-		8B0B8C99194EE0DA00EC79DC /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
+		8BB79579194FE8500023986A /* WaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterfallLayout.h; sourceTree = "<group>"; };
+		8BB7957A194FE8500023986A /* WaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterfallLayout.m; sourceTree = "<group>"; };
+		8BB79580194FEB950023986A /* ZXYHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYHomePageViewController.h; sourceTree = "<group>"; };
+		8BB79581194FEB950023986A /* ZXYHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYHomePageViewController.m; sourceTree = "<group>"; };
+		8BB79582194FEB950023986A /* ZXYHomePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYHomePageViewController.xib; sourceTree = "<group>"; };
+		8BB795861950094C0023986A /* ZXYUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYUserDefault.h; sourceTree = "<group>"; };
+		8BB795871950094C0023986A /* ZXYUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYUserDefault.m; sourceTree = "<group>"; };
+		8BB79589195012700023986A /* ZXYPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYPlaceViewController.h; sourceTree = "<group>"; };
+		8BB7958A195012700023986A /* ZXYPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYPlaceViewController.m; sourceTree = "<group>"; };
+		8BB7958B195012700023986A /* ZXYPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYPlaceViewController.xib; sourceTree = "<group>"; };
+		8BB7958E1950129E0023986A /* ZXYFavorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYFavorViewController.h; sourceTree = "<group>"; };
+		8BB7958F1950129E0023986A /* ZXYFavorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYFavorViewController.m; sourceTree = "<group>"; };
+		8BB795901950129E0023986A /* ZXYFavorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYFavorViewController.xib; sourceTree = "<group>"; };
+		8BB79593195012FA0023986A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		8BB79594195012FA0023986A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8BB79597195013330023986A /* ZXYNETHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYNETHelper.h; sourceTree = "<group>"; };
+		8BB79598195013330023986A /* ZXYNETHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYNETHelper.m; sourceTree = "<group>"; };
+		8BB7959A19501D390023986A /* NetHelperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetHelperDelegate.h; sourceTree = "<group>"; };
+		8BB7959C19501F390023986A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8BB7959D19501F390023986A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		8BB7959F195028DC0023986A /* Advertise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Advertise.h; sourceTree = "<group>"; };
+		8BB795A0195028DC0023986A /* Advertise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Advertise.m; sourceTree = "<group>"; };
+		8BB795A3195029120023986A /* ZXYProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYProvider.h; sourceTree = "<group>"; };
+		8BB795A4195029120023986A /* ZXYProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +265,10 @@
 		8B0B8BCB194E893200EC79DC /* DLTourOfJapan */ = {
 			isa = PBXGroup;
 			children = (
+				8BB795A2195028EB0023986A /* model */,
+				8BB7959B19501F2A0023986A /* MBProgressHUD */,
+				8BB79585195009340023986A /* UserDefault */,
+				8BB7956B194FDC3E0023986A /* WaterFlow */,
 				8B0B8C65194EB78B00EC79DC /* AllUI */,
 				8B0B8C0C194EA0B200EC79DC /* AFNet */,
 				8B0B8BFE194E929C00EC79DC /* 预定义 */,
@@ -251,12 +280,15 @@
 				8B0B8C94194EDA7700EC79DC /* ZXYMainCollectionCell.h */,
 				8B0B8C95194EDA7700EC79DC /* ZXYMainCollectionCell.m */,
 				8B0B8C97194EDA9000EC79DC /* ZXYMainCollectionCell.xib */,
-				8B0B8C8A194ED9FA00EC79DC /* 0.jpg */,
-				8B0B8C8B194ED9FA00EC79DC /* 1.jpg */,
-				8B0B8C8E194EDA1600EC79DC /* 2.jpg */,
-				8B0B8C90194EDA3A00EC79DC /* 3.jpg */,
-				8B0B8C91194EDA3A00EC79DC /* 4.jpg */,
-				8B0B8C99194EE0DA00EC79DC /* 5.jpg */,
+				8BB79580194FEB950023986A /* ZXYHomePageViewController.h */,
+				8BB79581194FEB950023986A /* ZXYHomePageViewController.m */,
+				8BB79582194FEB950023986A /* ZXYHomePageViewController.xib */,
+				8BB79589195012700023986A /* ZXYPlaceViewController.h */,
+				8BB7958A195012700023986A /* ZXYPlaceViewController.m */,
+				8BB7958B195012700023986A /* ZXYPlaceViewController.xib */,
+				8BB7958E1950129E0023986A /* ZXYFavorViewController.h */,
+				8BB7958F1950129E0023986A /* ZXYFavorViewController.m */,
+				8BB795901950129E0023986A /* ZXYFavorViewController.xib */,
 				8B0B8BDA194E893200EC79DC /* Images.xcassets */,
 				8B0B8BD7194E893200EC79DC /* DLTourOfJapan.xcdatamodeld */,
 				8B0B8BCC194E893200EC79DC /* Supporting Files */,
@@ -305,6 +337,9 @@
 		8B0B8C0C194EA0B200EC79DC /* AFNet */ = {
 			isa = PBXGroup;
 			children = (
+				8BB795961950131E0023986A /* netHelper */,
+				8BB79593195012FA0023986A /* Reachability.h */,
+				8BB79594195012FA0023986A /* Reachability.m */,
 				8B0B8C27194EA0CA00EC79DC /* AFNetworking */,
 				8B0B8C0D194EA0C500EC79DC /* UIKit+AFNetworking */,
 			);
@@ -388,6 +423,54 @@
 			name = MainView;
 			sourceTree = "<group>";
 		};
+		8BB7956B194FDC3E0023986A /* WaterFlow */ = {
+			isa = PBXGroup;
+			children = (
+				8BB79579194FE8500023986A /* WaterfallLayout.h */,
+				8BB7957A194FE8500023986A /* WaterfallLayout.m */,
+			);
+			name = WaterFlow;
+			sourceTree = "<group>";
+		};
+		8BB79585195009340023986A /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				8BB795861950094C0023986A /* ZXYUserDefault.h */,
+				8BB795871950094C0023986A /* ZXYUserDefault.m */,
+			);
+			name = UserDefault;
+			sourceTree = "<group>";
+		};
+		8BB795961950131E0023986A /* netHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8BB7959A19501D390023986A /* NetHelperDelegate.h */,
+				8BB79597195013330023986A /* ZXYNETHelper.h */,
+				8BB79598195013330023986A /* ZXYNETHelper.m */,
+			);
+			name = netHelper;
+			sourceTree = "<group>";
+		};
+		8BB7959B19501F2A0023986A /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8BB7959C19501F390023986A /* MBProgressHUD.h */,
+				8BB7959D19501F390023986A /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		8BB795A2195028EB0023986A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8BB795A3195029120023986A /* ZXYProvider.h */,
+				8BB795A4195029120023986A /* ZXYProvider.m */,
+				8BB7959F195028DC0023986A /* Advertise.h */,
+				8BB795A0195028DC0023986A /* Advertise.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -469,13 +552,11 @@
 				8B0B8C6A194EB9FD00EC79DC /* mainView_search@2x.png in Resources */,
 				8B0B8C7F194EBB3000EC79DC /* mainView_place_up@2x.png in Resources */,
 				8B0B8C80194EBB3000EC79DC /* mainView_favou_down@2x.png in Resources */,
-				8B0B8C92194EDA3A00EC79DC /* 3.jpg in Resources */,
 				8B0B8C98194EDA9000EC79DC /* ZXYMainCollectionCell.xib in Resources */,
-				8B0B8C8F194EDA1600EC79DC /* 2.jpg in Resources */,
+				8BB7958D195012700023986A /* ZXYPlaceViewController.xib in Resources */,
 				8B0B8C7E194EBB3000EC79DC /* mainView_foot_down@2x.png in Resources */,
 				8B0B8C6C194EBA2900EC79DC /* mainView_PerInfo@2x.png in Resources */,
 				8B0B8BD0194E893200EC79DC /* InfoPlist.strings in Resources */,
-				8B0B8C93194EDA3A00EC79DC /* 4.jpg in Resources */,
 				8B0B8C82194EBB3000EC79DC /* mainView_favou_up@2x.png in Resources */,
 				8B0B8C79194EBB3000EC79DC /* mainView_home_down@2x.png in Resources */,
 				8B0B8C7C194EBB3000EC79DC /* mainView_userSetting@2x.png in Resources */,
@@ -483,12 +564,11 @@
 				8B0B8C60194EB35900EC79DC /* ZXYMainViewController.xib in Resources */,
 				8B0B8C7B194EBB3000EC79DC /* mainView_home_up@2x.png in Resources */,
 				8B0B8C68194EB8E400EC79DC /* mainView_blue@2x.png in Resources */,
+				8BB79584194FEB950023986A /* ZXYHomePageViewController.xib in Resources */,
 				8B0B8C85194EC78800EC79DC /* Localizable.strings in Resources */,
-				8B0B8C9A194EE0DA00EC79DC /* 5.jpg in Resources */,
 				8B0B8BDB194E893200EC79DC /* Images.xcassets in Resources */,
-				8B0B8C8C194ED9FA00EC79DC /* 0.jpg in Resources */,
 				8B0B8C7D194EBB3000EC79DC /* mainView_place_down@2x.png in Resources */,
-				8B0B8C8D194ED9FA00EC79DC /* 1.jpg in Resources */,
+				8BB795921950129E0023986A /* ZXYFavorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,13 +588,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B0B8C3B194EA0CA00EC79DC /* AFHTTPRequestOperation.m in Sources */,
+				8BB79583194FEB950023986A /* ZXYHomePageViewController.m in Sources */,
+				8BB795A5195029120023986A /* ZXYProvider.m in Sources */,
 				8B0B8C20194EA0C500EC79DC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				8BB79599195013330023986A /* ZXYNETHelper.m in Sources */,
 				8B0B8BD6194E893200EC79DC /* ZXYAppDelegate.m in Sources */,
+				8BB7958C195012700023986A /* ZXYPlaceViewController.m in Sources */,
 				8B0B8C43194EA0CA00EC79DC /* AFURLSessionManager.m in Sources */,
 				8B0B8C21194EA0C500EC79DC /* UIAlertView+AFNetworking.m in Sources */,
+				8BB795911950129E0023986A /* ZXYFavorViewController.m in Sources */,
 				8B0B8C40194EA0CA00EC79DC /* AFURLConnectionOperation.m in Sources */,
 				8B0B8C3C194EA0CA00EC79DC /* AFHTTPRequestOperationManager.m in Sources */,
+				8BB795881950094C0023986A /* ZXYUserDefault.m in Sources */,
 				8B0B8BD2194E893200EC79DC /* main.m in Sources */,
+				8BB795A1195028DC0023986A /* Advertise.m in Sources */,
+				8BB7957B194FE8500023986A /* WaterfallLayout.m in Sources */,
 				8B0B8C3E194EA0CA00EC79DC /* AFNetworkReachabilityManager.m in Sources */,
 				8B0B8C24194EA0C500EC79DC /* UIProgressView+AFNetworking.m in Sources */,
 				8B0B8BFD194E8E4900EC79DC /* AllPreDefine.c in Sources */,
@@ -523,9 +611,11 @@
 				8B0B8BD9194E893200EC79DC /* DLTourOfJapan.xcdatamodeld in Sources */,
 				8B0B8C41194EA0CA00EC79DC /* AFURLRequestSerialization.m in Sources */,
 				8B0B8C25194EA0C500EC79DC /* UIRefreshControl+AFNetworking.m in Sources */,
+				8BB7959E19501F390023986A /* MBProgressHUD.m in Sources */,
 				8B0B8C42194EA0CA00EC79DC /* AFURLResponseSerialization.m in Sources */,
 				8B0B8C26194EA0C500EC79DC /* UIWebView+AFNetworking.m in Sources */,
 				8B0B8C22194EA0C500EC79DC /* UIButton+AFNetworking.m in Sources */,
+				8BB79595195012FA0023986A /* Reachability.m in Sources */,
 				8B0B8C3D194EA0CA00EC79DC /* AFHTTPSessionManager.m in Sources */,
 				8B0B8C23194EA0C500EC79DC /* UIImageView+AFNetworking.m in Sources */,
 				8B0B8C96194EDA7700EC79DC /* ZXYMainCollectionCell.m in Sources */,

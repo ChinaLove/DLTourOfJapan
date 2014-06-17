@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXYMainViewController">
             <connections>
+                <outlet property="contentView" destination="cd0-ca-UqJ" id="HZV-yf-62M"/>
                 <outlet property="favorBtn" destination="1UT-Qf-mSr" id="QsP-TP-mWZ"/>
                 <outlet property="favorLbl" destination="T1O-KT-E8Q" id="Z0I-Uj-C2R"/>
                 <outlet property="footImageView" destination="cH8-dI-75F" id="WA8-4T-y1u"/>
@@ -103,21 +104,11 @@
                     <rect key="frame" x="0.0" y="68" width="105" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="c71-OY-54p">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cd0-ca-UqJ">
                     <rect key="frame" x="0.0" y="103" width="320" height="465"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GC3-Ut-IWg">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <cells/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="fY0-Mf-JIm"/>
-                        <outlet property="delegate" destination="-1" id="RYd-nm-Dag"/>
-                    </connections>
-                </collectionView>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

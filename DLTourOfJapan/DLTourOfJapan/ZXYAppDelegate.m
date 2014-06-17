@@ -7,7 +7,7 @@
 //
 
 #import "ZXYAppDelegate.h"
-
+#import "ZXYNETHelper.h"
 @implementation ZXYAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -16,6 +16,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if(![ZXYNETHelper isNETConnect])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TitleOne", nil) message:NSLocalizedString(@"AppDelegate_NetConnect", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Certain", nil), nil];
+        [alert show];
+    }
+    else
+    {
+        
+    }
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     ZXYMainViewController *mainView = [[ZXYMainViewController alloc] initWithNibName:@"ZXYMainViewController" bundle:nil];
