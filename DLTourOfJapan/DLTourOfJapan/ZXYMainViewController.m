@@ -15,6 +15,8 @@ typedef enum
 
 #import "ZXYMainViewController.h"
 #import "ZXYHomePageViewController.h"
+#import "ZXYPlaceViewController.h"
+#import "ZXYFavorViewController.h"
 #import "MBProgressHUD.h"
 #import "NetHelperDelegate.h"
 #import "ZXYNETHelper.h"
@@ -22,15 +24,17 @@ typedef enum
 #import "ZXYProvider.h"
 @interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate>
 {
-    NSArray *allBtnS;
-    NSArray *allLabelS;
-    __weak IBOutlet UIView *contentView;
-    MBProgressHUD *HUD;
-    ZXYNETHelper *netHelp;
-    ZXYUserDefault *userDefault;
-    ZXYProvider *dataProvider;
+    NSArray *allBtnS;   /** < 用来保存三个标签按钮 */
+    NSArray *allLabelS; /** < 用来保存三个标签 */
+    __weak IBOutlet UIView *contentView; /** < 用来保存三个主页面 */
+    MBProgressHUD *HUD; /** < loading */
+    ZXYNETHelper *netHelp; //网络帮助文件
+    ZXYUserDefault *userDefault; //用户设置文件
+    ZXYProvider *dataProvider;   //数据库操作文件
 }
-@property (strong, nonatomic) ZXYHomePageViewController *homePage;
+@property (strong, nonatomic) ZXYHomePageViewController *homePage; //第一个页面
+@property (strong, nonatomic) ZXYPlaceViewController    *placePage;//第二个页面
+@property (strong, nonatomic) ZXYFavorViewController    *favorPage;//第三个页面
 @property (weak, nonatomic) IBOutlet UILabel *homeLbl;  /**< 首页标签 */
 @property (weak, nonatomic) IBOutlet UILabel *placeLbl; /**< 地点标签 */
 @property (weak, nonatomic) IBOutlet UILabel *favorLbl; /**< 优惠标签 */
@@ -77,6 +81,10 @@ typedef enum
     [HUD setLabelText:NSLocalizedString(@"HUD_CheckUpdate", nil)];
     [self.view addSubview:HUD];
     HUD.delegate = self;
+    //设置大小
+    contentView.frame = CGRectMake(0, contentView.frame.origin.y, Screen_width*3, Screen_height-contentView.frame.origin.y);
+    NSLog(@"contentView width is %f",contentView.frame.size.width);
+    [self initPlaceFavPage];
     // !!!:在此处取广告数据，首先判断是否需要更新，再取数据
     if([ZXYNETHelper isNETConnect])
     {
@@ -85,6 +93,27 @@ typedef enum
     }
 }
 
+/**
+ * 初始化页面
+ *
+ */
+- (void)initPlaceFavPage
+{
+    self.placePage = [[ZXYPlaceViewController alloc] initWithNibName:@"ZXYPlaceViewController" bundle:nil];
+    self.placePage.view.frame = CGRectMake(Screen_width, 0, self.placePage.view.frame.size.width, contentView.frame.size.height);
+    if(!iPhone5)
+    {
+        self.placePage.scrollViewOfBtn.contentSize = CGSizeMake(320, 465);
+    }
+    [contentView addSubview:self.placePage.view];
+    self.favorPage = [[ZXYFavorViewController alloc] init];
+    self.favorPage.view.frame = CGRectMake(Screen_width*2, 0, self.favorPage.view.frame.size.width, contentView.frame.size.height);
+    [contentView addSubview:self.favorPage.view];
+}
+
+/**
+ *  请求开始
+ */
 - (void)startRequest
 {
     NSDictionary *prama = [NSDictionary dictionaryWithObjectsAndKeys:@"ad",@"type", nil];
@@ -97,13 +126,14 @@ typedef enum
         if(dateStringService.integerValue>dateStringUser.integerValue)
         {
             NSLog(@"取数据了啊");
+            // !!!:现在开始获取广告数据
             [netHelp requestStart:URL_getAdvertise withParams:nil bySerialize:[AFXMLParserResponseSerializer serializer]];
         }
         else
         {
             self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
             [contentView addSubview:self.homePage.view];
-            self.homePage.view.frame = CGRectMake(0, 0, 320, 460);
+            self.homePage.view.frame = CGRectMake(0, 0, Screen_width, contentView.frame.size.height);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error is %@",error);
@@ -113,6 +143,7 @@ typedef enum
     
 }
 
+// !!!:数据获取成功
 - (void)requestCompleteDelegateWithFlag:(requestCompleteFlag)flag withOperation:(AFHTTPRequestOperation *)opertation withObject:(id)object
 {
     [HUD hide:YES];
@@ -123,7 +154,7 @@ typedef enum
     
     self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
     [contentView addSubview:self.homePage.view];
-    self.homePage.view.frame = CGRectMake(0, 0, 320, 460);
+    self.homePage.view.frame = CGRectMake(0, 0, Screen_width, contentView.frame.size.height);
     NSLog(@"%@",opertation.responseString);
 }
 
@@ -167,16 +198,31 @@ typedef enum
     selectLbl.textColor = [UIColor whiteColor];
 }
 
+// !!!:切换三个主页面的方法
 - (void)choosePageByPageIndex:(mainView_TypeOfViewController)type withBtn:(UIButton *)btn
 {
+    //页面切换、改变图片
     if(type == ZXYPlacePage)
     {
         self.footImageView.image = [UIImage imageNamed:@"mainView_foot_down"];
+        contentView.frame = CGRectMake(-Screen_width, contentView.frame.origin.y, Screen_width*3, contentView.frame.size.height);
     }
     else
     {
         self.footImageView.image = [UIImage imageNamed:@"mainView_foot_up"];
+        if(type == ZXYFavorPage)
+        {
+
+            contentView.frame = CGRectMake(-Screen_width*2, contentView.frame.origin.y, Screen_width*3, contentView.frame.size.height);
+        }
+        else
+        {
+
+            contentView.frame = CGRectMake(0, contentView.frame.origin.y, Screen_width*3, contentView.frame.size.height);
+        }
+        
     }
+    //改变按钮的选中状态与图标的动画移动
     for(UIButton *currentBtn in allBtnS)
     {
         if(currentBtn == btn)
@@ -193,7 +239,7 @@ typedef enum
             currentBtn.userInteractionEnabled = YES;
         }
     }
-    
+    //改变标签的颜色
     for(int i = 0;i<allLabelS.count;i++)
     {
         UILabel *currentLbl = [allLabelS objectAtIndex:i];

@@ -125,8 +125,8 @@ static NSOperationQueue *queue;
     if(advertiseOperation == nil)
     {
         advertiseOperation = [[ZXYDownAddOperation alloc] initWithPicURLS:allURL];
+        [[ZXYNETHelper getQueue] addOperation:advertiseOperation];
     }
-    [[ZXYNETHelper getQueue] addOperation:advertiseOperation];
     [allURL removeAllObjects];
     
 }

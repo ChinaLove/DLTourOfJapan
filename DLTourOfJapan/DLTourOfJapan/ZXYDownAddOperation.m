@@ -57,6 +57,8 @@
                 [currentURLS addObjectsFromArray:needToAddURLS];
                 
                 isThreadFree = YES;
+                NSNotification *addNoti = [[NSNotification alloc] initWithName:AdvertiseNotification object:self userInfo:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:addNoti];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error)
             {
                 [currentURLS removeObject:currentDownURL];
@@ -67,8 +69,7 @@
             }];
             operation.responseSerializer = [AFImageResponseSerializer serializer];
             [operation start];
-            NSNotification *addNoti = [[NSNotification alloc] initWithName:AdvertiseNotification object:self userInfo:nil];
-            [[NSNotificationCenter defaultCenter] postNotification:addNoti];
+           
         }
     }
    

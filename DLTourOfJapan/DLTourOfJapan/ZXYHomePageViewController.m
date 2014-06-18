@@ -15,6 +15,7 @@
     NSMutableArray *allAdvertise;
     ZXYProvider *provider;
     BOOL isCellRegist;
+    BOOL isFirstLoad;
     ZXYFileOperation *fileOperation;
     ZXYNETHelper *netHelper;
 }
@@ -34,6 +35,7 @@
         netHelper = [ZXYNETHelper sharedSelf];
         NSNotificationCenter *datatnc = [NSNotificationCenter defaultCenter];
         [datatnc addObserver:self selector:@selector(reloadDataMethod) name:AdvertiseNotification object:nil];
+        isFirstLoad = YES;
     }
     return self;
 }
@@ -92,9 +94,12 @@
     if([[ZXYFileOperation defaultManager] fileExistsAtPath:filePath])
     {
         cell.imageViews.image = [UIImage imageWithContentsOfFile:filePath];
+        cell.imageViews.backgroundColor = [UIColor clearColor];
     }
     else
     {
+        cell.imageViews.backgroundColor = [UIColor grayColor];
+        cell.imageViews.image = nil;
         NSString *urlString = [NSString stringWithFormat:@"%@%@",URL_Host,advertise.pic_url];
         NSURL *url = [NSURL URLWithString:urlString];
         [netHelper advertiseURLADD:url];
@@ -105,7 +110,20 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  CGSizeMake(150, 150);
+    Advertise *ad = [allAdvertise objectAtIndex:indexPath.row];
+    NSString *pathImage = [fileOperation advertiseImagePath:ad.pic_url];
+    if([[ZXYFileOperation defaultManager] fileExistsAtPath:pathImage])
+    {
+        UIImage *currentImage = [UIImage imageWithContentsOfFile:pathImage];
+        float width = 150   ;
+        float height = (currentImage.size.height/currentImage.size.width)*150;
+        return  CGSizeMake(width, height);
+    }
+    else
+    {
+        return CGSizeMake(150, 150);
+    }
+    
 }
 
 - (UIEdgeInsets) collectionView:(UICollectionView *) collectionView layout:(UICollectionViewLayout *) collectionViewLayout insetForSectionAtIndex:(NSInteger)section

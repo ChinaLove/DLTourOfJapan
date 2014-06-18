@@ -1,11 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Ad_Info" representedClassName="Ad_Info" syncable="YES">
+        <attribute name="adimgname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Advertise" representedClassName="Advertise" syncable="YES">
         <attribute name="cid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pic_url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Comment" syncable="YES">
+        <attribute name="cid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="star" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Favorable" representedClassName="Favorable" syncable="YES">
+        <attribute name="idobjtype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagepath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locpy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locyh" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strestnametaxi" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sttelephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Locdetail" representedClassName="Locdetail" syncable="YES">
+        <attribute name="isfavored" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="locaddr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locaddrCN" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locadinfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="loclat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="loclon" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locphoneno1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locphoneno2" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="LocDetailInfo" representedClassName="LocDetailInfo" syncable="YES">
+        <attribute name="awaken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="budget" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cexchange" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cnshuttle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cntime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cparking" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creceive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="csnum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="info_ad" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="info_normal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isfavored" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="japasupport" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jcb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="locaddr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locaddr_cn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locpy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="loctype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="mail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="master" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="meeting" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="money" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paied" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pic_num" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="serve" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shuttel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="smoke" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visa" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="web" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wifi" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Locinfo" representedClassName="Locinfo" syncable="YES">
+        <attribute name="desabbr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="loctype" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="recno" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Loctype" representedClassName="Loctype" syncable="YES">
+        <attribute name="typeinfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typename" attributeType="String" syncable="YES"/>
+        <attribute name="typeno" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Navi_ver_info" representedClassName="Navi_ver_info" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ver_date" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Advertise" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Loctype" positionX="-63" positionY="9" width="128" height="90"/>
+        <element name="Comment" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="Favorable" positionX="-36" positionY="27" width="128" height="165"/>
+        <element name="Locdetail" positionX="-18" positionY="36" width="128" height="180"/>
+        <element name="Ad_Info" positionX="0" positionY="45" width="128" height="90"/>
+        <element name="LocDetailInfo" positionX="18" positionY="63" width="128" height="615"/>
+        <element name="Navi_ver_info" positionX="36" positionY="81" width="128" height="90"/>
+        <element name="Locinfo" positionX="-9" positionY="36" width="128" height="105"/>
     </elements>
 </model>

@@ -7,8 +7,10 @@
 //
 
 #import "ZXYPlaceViewController.h"
-
+#import <sqlite3.h>
+#import "fmdb/FMDB.h"
 @interface ZXYPlaceViewController ()
+
 
 @end
 
@@ -26,7 +28,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    FMDatabase *db = [ZXYDBHelper DBOpen];
+    
+    FMResultSet *rs = [db executeQuery:@"select * from ZLOCDETAILINFO"];
+    
+    while ([rs next]){
+        NSLog(@"%@",[rs stringForColumn:@"ZINFO_NORMAL"]);
+    }
+    [rs close];
+    [db close];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+
 }
 
 - (void)didReceiveMemoryWarning

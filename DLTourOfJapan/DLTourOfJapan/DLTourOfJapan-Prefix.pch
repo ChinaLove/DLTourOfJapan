@@ -19,4 +19,6 @@
     #import "ZXYProvider.h"
     #import "ZXYNETHelper.h"
     #import "ZXYFileOperation.h"
+    #import "ZXYDBHelper.h"
+    #import "FMDB.h"
 #endif

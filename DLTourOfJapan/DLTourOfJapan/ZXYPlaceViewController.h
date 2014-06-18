@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZXYPlaceViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewOfBtn;
 @end
