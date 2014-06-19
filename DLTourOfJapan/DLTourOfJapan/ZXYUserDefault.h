@@ -19,23 +19,23 @@
  *  返回本地更新时间
  *  @return 返回本地更新时间(NSDate)
  */
-- (NSDate *)getUserDefaultUpdateTime;
+- (NSDate *)getUserDefaultUpdateTime:(NSString *)type;
 
 /**
  *  返回本地更新时间
  *  @return 返回本地更新时间(NSString)
  */
-- (NSString *)getUserDefaultUpdateTimeString;
+- (NSString *)getUserDefaultUpdateTimeString:(NSString *)type;
 
 /**
  *  保存本地更新时间
  *  @param 保存本地更新时间(NSString)
  */
-- (BOOL)writeUserUpdateTimeString:(NSString *)stringDate;
+- (BOOL)writeUserUpdateTimeString:(NSString *)stringDate andType:(NSString *)type;
 
 /**
  *  保存本地更新时间
  *  @param 保存本地更新时间(NSDate)
  */
-- (BOOL)writeUserUpdateTimeDate:(NSDate *)date;
+- (BOOL)writeUserUpdateTimeDate:(NSDate *)date andType:(NSString *)type;
 @end

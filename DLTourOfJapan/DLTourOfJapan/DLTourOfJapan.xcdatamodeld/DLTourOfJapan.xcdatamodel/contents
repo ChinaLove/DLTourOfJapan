@@ -49,26 +49,26 @@
         <attribute name="csnum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info_ad" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info_normal" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isfavored" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isfavored" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="japasupport" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jcb" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locaddr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locaddr_cn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locpy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="loctype" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lon" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="master" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meeting" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="money" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="paied" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="paied" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pic_num" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="pic_num" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serve" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shuttel" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="smoke" optional="YES" attributeType="String" syncable="YES"/>
@@ -94,14 +94,14 @@
         <attribute name="ver_date" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Ad_Info" positionX="0" positionY="45" width="128" height="90"/>
         <element name="Advertise" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Loctype" positionX="-63" positionY="9" width="128" height="90"/>
         <element name="Comment" positionX="-54" positionY="18" width="128" height="105"/>
         <element name="Favorable" positionX="-36" positionY="27" width="128" height="165"/>
         <element name="Locdetail" positionX="-18" positionY="36" width="128" height="180"/>
-        <element name="Ad_Info" positionX="0" positionY="45" width="128" height="90"/>
         <element name="LocDetailInfo" positionX="18" positionY="63" width="128" height="615"/>
-        <element name="Navi_ver_info" positionX="36" positionY="81" width="128" height="90"/>
         <element name="Locinfo" positionX="-9" positionY="36" width="128" height="105"/>
+        <element name="Loctype" positionX="-63" positionY="9" width="128" height="90"/>
+        <element name="Navi_ver_info" positionX="36" positionY="81" width="128" height="90"/>
     </elements>
 </model>

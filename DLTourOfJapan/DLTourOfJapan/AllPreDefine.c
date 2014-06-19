@@ -31,8 +31,10 @@
  *
  */
 // !!!:以下是关于用户的全局常量allPreDefine
-#define USERUPDATETIME @"allPreDefine_stringForUserUpdateTime"//key-->update
-#define USERDEFAULTTIME @"19700101"                     //defaultTime
+#define USERUPDATETIME_AD @"allPreDefine_stringForUserUpdateTimeAD"//key-->update
+#define USERUPDATETIME_DATA @"allPreDefine_stringForUserUpdateTimeDATA"
+#define USERDEFAULTTIME @"19700101"//defaultTime
+#define USERDEFAULTTIMEDATA @"20130709" //defaultData
 #define AdvertiseNotification @"advertiseImage"         //广告图片下载完成的通知
 /**
  * 以下是服务器接口
@@ -44,3 +46,4 @@
 #define URL_getLastVersion @"http://115.29.46.22:81/dalian100/index.php/InterFace/get_latest_version" /** < 取得最新版本跟新数据 */
 
 #define URL_Host @"http://115.29.46.22:81/dalian100/"/** < host */
+#define URL_GetData @"http://115.29.46.22:81/dalian100/index.php/InterFace/get_datas"/** <取得商家数据 */

@@ -9,7 +9,5 @@
 #import <Foundation/Foundation.h>
 #import "FMDB.h"
 @interface ZXYDBHelper : NSObject
-+(FMDatabase *)DBOpen;
-+(void)closeDB;
 +(void)putDataToCoreData;
 @end

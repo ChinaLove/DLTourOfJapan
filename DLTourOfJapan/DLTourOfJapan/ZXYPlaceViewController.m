@@ -10,7 +10,12 @@
 #import <sqlite3.h>
 #import "fmdb/FMDB.h"
 @interface ZXYPlaceViewController ()
-
+{
+    ZXYUserDefault *userDefault;
+    ZXYProvider    *dataProvider;
+    
+}
+- (IBAction)clickPlacePageBtn:(id)sender;
 
 @end
 
@@ -21,6 +26,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        userDefault = [ZXYUserDefault sharedSelf];
+        dataProvider = [ZXYProvider sharedInstance];
     }
     return self;
 }
@@ -28,15 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    FMDatabase *db = [ZXYDBHelper DBOpen];
-    
-    FMResultSet *rs = [db executeQuery:@"select * from ZLOCDETAILINFO"];
-    
-    while ([rs next]){
-        NSLog(@"%@",[rs stringForColumn:@"ZINFO_NORMAL"]);
-    }
-    [rs close];
-    [db close];
+        
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -52,4 +51,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)clickPlacePageBtn:(id)sender
+{
+    if([self.delegate respondsToSelector:@selector(clickBtnAt:)])
+    {
+        [self.delegate clickBtnAt:sender];
+    }
+}
 @end

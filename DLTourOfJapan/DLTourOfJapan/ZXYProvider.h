@@ -39,7 +39,18 @@
 -(BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName isDelete:(BOOL)isDelete;
 
 /**
+ *  增加一条数据，要保持字段与数据库一致 删除条件
+ */
+-(BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName isDelete:(BOOL)isDelete content:(NSString *)content withKey:(NSString *)key;
+
+/**
  *  增加一组数据，要保持字段与数据库一致
  */
 - (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName isDelete:(BOOL)isDelete;
+
+/**
+ *  增加一组数据，要保持字段与数据库一致 删除条件
+ */
+- (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName isDelete:(BOOL)isDelete groupByKey:(NSString *)key;
+
 @end

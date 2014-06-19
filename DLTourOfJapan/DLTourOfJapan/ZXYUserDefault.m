@@ -32,34 +32,41 @@ static ZXYUserDefault *userDefault;
     return nil;
 }
 
--(BOOL)writeUserUpdateTimeDate:(NSDate *)date
+-(BOOL)writeUserUpdateTimeDate:(NSDate *)date andType:(NSString *)type
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyyMMdd"];
     NSString *dateString = [formatter stringFromDate:date];
-    [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:USERUPDATETIME];
+    [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:type];
     return YES;
 }
 
-- (BOOL)writeUserUpdateTimeString:(NSString *)stringDate
+- (BOOL)writeUserUpdateTimeString:(NSString *)stringDate andType:(NSString *)type
 {
-    [[NSUserDefaults standardUserDefaults] setObject:stringDate forKey:USERUPDATETIME];
+    [[NSUserDefaults standardUserDefaults] setObject:stringDate forKey:type];
     return YES;
 }
 
-- (NSString *)getUserDefaultUpdateTimeString
+- (NSString *)getUserDefaultUpdateTimeString:(NSString *)type
 {
-    NSString *timeString = [[NSUserDefaults standardUserDefaults] valueForKey:USERUPDATETIME];
+    NSString *timeString = [[NSUserDefaults standardUserDefaults] valueForKey:type];
     if(timeString == nil)
     {
-        timeString = @"19700101";
+        if([type isEqualToString:USERUPDATETIME_AD])
+        {
+            timeString = @"19700101";
+        }
+        else
+        {
+            timeString = @"20130709";
+        }
     }
     return timeString;
 }
 
-- (NSDate *)getUserDefaultUpdateTime
+- (NSDate *)getUserDefaultUpdateTime:(NSString *)type
 {
-    NSString *timeString = [self getUserDefaultUpdateTimeString];
+    NSString *timeString = [self getUserDefaultUpdateTimeString:type];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyyMMdd"];
     NSDate *currentDate = [formatter dateFromString:timeString];

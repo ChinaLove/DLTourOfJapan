@@ -22,7 +22,8 @@ typedef enum
 #import "ZXYNETHelper.h"
 #import "ZXYUserDefault.h"
 #import "ZXYProvider.h"
-@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate>
+#import "ZXYPlaceLocalListViewController.h"
+@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate>
 {
     NSArray *allBtnS;   /** < 用来保存三个标签按钮 */
     NSArray *allLabelS; /** < 用来保存三个标签 */
@@ -100,6 +101,7 @@ typedef enum
 - (void)initPlaceFavPage
 {
     self.placePage = [[ZXYPlaceViewController alloc] initWithNibName:@"ZXYPlaceViewController" bundle:nil];
+    self.placePage.delegate = self;
     self.placePage.view.frame = CGRectMake(Screen_width, 0, self.placePage.view.frame.size.width, contentView.frame.size.height);
     if(!iPhone5)
     {
@@ -122,31 +124,33 @@ typedef enum
     [operation POST:URL_getLastVersion parameters:prama success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
         NSString *dateStringService = [operation responseString];
-        NSString *dateStringUser    = [userDefault getUserDefaultUpdateTimeString];
+        NSString *dateStringUser    = [userDefault getUserDefaultUpdateTimeString:USERUPDATETIME_AD];
         if(dateStringService.integerValue>dateStringUser.integerValue)
         {
             NSLog(@"取数据了啊");
             // !!!:现在开始获取广告数据
+            [userDefault writeUserUpdateTimeString:dateStringService andType:USERUPDATETIME_AD];
             [netHelp requestStart:URL_getAdvertise withParams:nil bySerialize:[AFXMLParserResponseSerializer serializer]];
         }
         else
         {
+            [self checkISDataUpdata];
             self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
             [contentView addSubview:self.homePage.view];
             self.homePage.view.frame = CGRectMake(0, 0, Screen_width, contentView.frame.size.height);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error is %@",error);
-        [HUD hide:YES];
+        [HUD setLabelText:@"网络连接错误"];
         
     }];
     
 }
 
-// !!!:数据获取成功
+// !!!:数据获取成功 继续获取data更新
 - (void)requestCompleteDelegateWithFlag:(requestCompleteFlag)flag withOperation:(AFHTTPRequestOperation *)opertation withObject:(id)object
 {
-    [HUD hide:YES];
+    
    
     NSData *responseData = [opertation responseData];
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
@@ -156,6 +160,122 @@ typedef enum
     [contentView addSubview:self.homePage.view];
     self.homePage.view.frame = CGRectMake(0, 0, Screen_width, contentView.frame.size.height);
     NSLog(@"%@",opertation.responseString);
+    [self checkISDataUpdata];
+    
+}
+
+// !!!:获取data更新、数据
+- (void)checkISDataUpdata
+{
+    AFHTTPRequestOperationManager *operation = [AFHTTPRequestOperationManager manager];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"data",@"type", nil];
+    operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [operation POST:URL_getLastVersion parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",[operation responseString]);
+        NSString *serviceDate = [operation responseString];
+        NSString *localDate   = [userDefault getUserDefaultUpdateTimeString:USERUPDATETIME_DATA];
+        if(serviceDate.integerValue>localDate.integerValue)
+        {
+            AFHTTPRequestOperationManager *operation = [AFHTTPRequestOperationManager manager];
+            NSMutableDictionary *mulDic = [[NSMutableDictionary alloc] init];
+            [mulDic setObject:serviceDate forKey:@"enddata"];
+            [mulDic setObject:localDate forKey:@"begaindata"];
+            [mulDic setObject:[NSNumber numberWithInt:1] forKey:@"pageno"];
+            [mulDic setObject:@"data" forKey:@"type"];
+            [operation POST:URL_GetData parameters:mulDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"%@",responseObject);
+                NSArray *responseArr = [NSJSONSerialization JSONObjectWithData:[operation responseData] options:0 error:nil];
+                NSMutableArray *allNewArr = [[NSMutableArray alloc] init];
+                for(int i = 0;i<responseArr.count;i++)
+                {
+                    NSDictionary *currentDic = [responseArr objectAtIndex:i];
+                    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:currentDic];
+                    [dic removeObjectForKey:@"opdate"];
+                    [dic removeObjectForKey:@"optype"];
+                    [dic removeObjectForKey:@"index"];
+                    [allNewArr addObject:dic];
+                }
+                [dataProvider saveDataToCoreDataArr:allNewArr withDBNam:@"LocDetailInfo" isDelete:YES groupByKey:@"cid"];
+                [userDefault writeUserUpdateTimeString:serviceDate andType:USERUPDATETIME_DATA];
+                [HUD hide:YES];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"error is %@",error);
+                [HUD hide:YES];
+            }];
+        }
+        else
+        {
+            [HUD hide:YES];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        [HUD hide:YES];
+    }];
+
+}
+
+// !!!:场所按钮事件的代理 ，修改在这里
+- (void)clickBtnAt:(id)sender
+{
+    UIButton *clickBtn = (UIButton *)sender;
+    NSInteger tagOfBtn = [clickBtn tag];
+    NSInteger locType  = 0;
+    switch (tagOfBtn)
+    {
+        case 101:{
+        
+            locType = 1;
+            //酒店1
+                     break;
+                 }
+        case 102:{
+            locType = 4;
+            
+            //餐厅4
+            break;
+        }
+        case 103:{
+            
+            locType = 2;
+            //酒吧2
+            break;
+        }
+        case 104:{
+            
+            locType = 5;
+            //购物5
+            break;
+        }
+        case 105:{
+            
+            locType = 6;
+            //高尔夫6
+            break;
+        }
+        case 106:{
+            
+            locType = 7;
+            //旅行7
+            break;
+        }
+        case 107:{
+            
+            locType = 3;
+            //洗浴3
+            break;
+        }
+        case 108:{
+            
+            locType = 8;
+            //其他
+            break;
+        }
+            
+        default:
+            break;
+    }
+    ZXYPlaceLocalListViewController *placeList = [[ZXYPlaceLocalListViewController alloc] initWIthLocType:[NSString stringWithFormat:@"%ld",(long)locType]];
+    [self.navigationController pushViewController:placeList animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -164,6 +284,7 @@ typedef enum
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - 三个按钮
 - (IBAction)homeBtnClick:(id)sender
 {
     UIButton *currentBtn = (UIButton *)sender;
@@ -197,7 +318,7 @@ typedef enum
     UILabel *selectLbl = [allLabelS objectAtIndex:index];
     selectLbl.textColor = [UIColor whiteColor];
 }
-
+#pragma mark - 三个按钮结束
 // !!!:切换三个主页面的方法
 - (void)choosePageByPageIndex:(mainView_TypeOfViewController)type withBtn:(UIButton *)btn
 {

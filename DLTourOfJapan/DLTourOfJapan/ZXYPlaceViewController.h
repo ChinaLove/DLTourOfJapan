@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol PlacePageBtnClickDelegate<NSObject>
+- (void)clickBtnAt:(id)sender;
+@end
 @interface ZXYPlaceViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewOfBtn;
+@property (nonatomic,strong)id<PlacePageBtnClickDelegate>delegate;
 @end

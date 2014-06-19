@@ -7,7 +7,7 @@
 //
 
 #import "ZXYDBHelper.h"
-
+#import "ZXYProvider.h"
 @implementation ZXYDBHelper
 static FMDatabase *db;
 +(FMDatabase *)DBOpen
@@ -55,6 +55,31 @@ static FMDatabase *db;
 
 + (void)putDataToCoreData
 {
-    
+    [self putLocDetailInfoToCoreData];
+}
+
++ (void)putLocDetailInfoToCoreData
+{
+    NSString *bundleString = [[NSBundle mainBundle] pathForResource:@"ZLOCDETAILINFO" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:bundleString];
+    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSMutableArray *saveNewArr = [[NSMutableArray alloc] init];
+    // !!!:此处改写json数据的key与数据库中的key一致
+    for(int i = 0;i<jsonArr.count;i++)
+    {
+        NSDictionary *jsonDic = [jsonArr objectAtIndex:i];
+        NSMutableDictionary *saveNewDic = [[NSMutableDictionary alloc] init];
+        for(int j=0;j<jsonDic.allKeys.count;j++)
+        {
+            NSString *keyString = [[jsonDic allKeys] objectAtIndex:j];
+            NSString *valueString = [jsonDic valueForKey:keyString];
+            NSString *saveNewString = [[keyString substringFromIndex:1] lowercaseString];
+            [saveNewDic setObject:valueString forKey:saveNewString];
+        }
+        [saveNewArr addObject:saveNewDic];
+        
+    }
+    ZXYProvider *provider = [ZXYProvider sharedInstance];
+    [provider saveDataToCoreDataArr:saveNewArr withDBNam:@"LocDetailInfo" isDelete:YES groupByKey:@"cid"];
 }
 @end

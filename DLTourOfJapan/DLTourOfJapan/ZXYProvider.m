@@ -322,8 +322,9 @@ static ZXYProvider *instance = nil;
     NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:dbName inManagedObjectContext:manageContext];
     for(int i = 0;i<dic.allKeys.count;i++)
     {
+        
         NSString *onekey = [dic.allKeys objectAtIndex:i];
-        NSString *value  = [dic valueForKey:onekey];
+        NSString *value  = [NSString stringWithFormat:@"%@",[dic valueForKey:onekey] ];
         [object setValue:value forKey:onekey];
     }
     NSError *error = nil;
@@ -339,6 +340,36 @@ static ZXYProvider *instance = nil;
     }
 }
 
+-(BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName isDelete:(BOOL)isDelete content:(NSString *)content withKey:(NSString *)key
+{
+    if(isDelete)
+    {
+        [self deleteCoreDataFromDB:dbName withContent:content byKey:key];
+    }
+    ZXYAppDelegate *app = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *manageContext = [app managedObjectContext];
+    NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:dbName inManagedObjectContext:manageContext];
+    for(int i = 0;i<dic.allKeys.count;i++)
+    {
+        
+        NSString *onekey = [dic.allKeys objectAtIndex:i];
+        NSString *value  = [NSString stringWithFormat:@"%@",[dic valueForKey:onekey] ];
+        [object setValue:value forKey:onekey];
+    }
+    NSError *error = nil;
+    [manageContext save:&error];
+    if(error == nil)
+    {
+        return  YES;
+    }
+    else
+    {
+        NSLog(@"saveDataToCoreData errpr");
+        return  NO;
+    }
+
+}
+
 - (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName isDelete:(BOOL)isDelete
 {
     if(isDelete)
@@ -348,6 +379,19 @@ static ZXYProvider *instance = nil;
     for(NSDictionary *dic in arr)
     {
         [self saveDataToCoreData:dic withDBName:dbName isDelete:NO];
+    }
+    return YES;
+}
+
+- (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName isDelete:(BOOL)isDelete groupByKey:(NSString *)key
+{
+    if(isDelete)
+    {
+        [self deleteCoreDataFromDB:dbName];
+    }
+    for(NSDictionary *dic in arr)
+    {
+        [self saveDataToCoreData:dic withDBName:dbName isDelete:isDelete content:[dic objectForKey:key] withKey:key];
     }
     return YES;
 }

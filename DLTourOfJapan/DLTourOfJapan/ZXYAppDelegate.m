@@ -8,6 +8,7 @@
 
 #import "ZXYAppDelegate.h"
 #import "ZXYNETHelper.h"
+#import "ZXYDBHelper.h"
 @implementation ZXYAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -25,10 +26,13 @@
     {
         
     }
+    [ZXYDBHelper putDataToCoreData];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     ZXYMainViewController *mainView = [[ZXYMainViewController alloc] initWithNibName:@"ZXYMainViewController" bundle:nil];
-    self.window.rootViewController = mainView;
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:mainView];
+    mainView.navigationController.navigationBarHidden = YES;
+    self.window.rootViewController = navi;
     self.window.backgroundColor = [UIColor whiteColor];
     NSLog(@"%f",Screen_height);
     [self.window makeKeyAndVisible];
