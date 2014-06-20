@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZXYPlaceLocalListViewController : UIViewController
+@interface ZXYPlaceLocalListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 - (id)initWIthLocType:(NSString *)locType;
+@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
 @end

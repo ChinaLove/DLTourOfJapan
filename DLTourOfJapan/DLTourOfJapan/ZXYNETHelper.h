@@ -42,4 +42,13 @@
 - (void)advertiseURLADD:(NSURL *)url;
 
 - (void)startDownAdvertiseImage;
+
+/**
+ *下载场所图片啊
+ *
+ *
+ */
+- (void)placeURLADD:(NSURL *)url;
+
+- (void)startDownPlaceImage;
 @end

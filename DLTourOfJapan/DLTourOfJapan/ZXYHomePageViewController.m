@@ -130,4 +130,9 @@
 {
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AdvertiseNotification object:nil];
+}
 @end

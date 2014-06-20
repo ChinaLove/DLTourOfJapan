@@ -103,4 +103,16 @@ static ZXYFileOperation *fileOperation;
     NSString *returnString = [file stringByAppendingPathComponent:fileName];
     return returnString;
 }
+
+- (NSString *)cidImagePath:(NSString *)urlString
+{
+    NSString *tempPath = [self tempPath];
+    NSString *cidImageDir = @"cidImageDirPlace";
+    NSString *file = [tempPath stringByAppendingPathComponent:cidImageDir];
+    [self createDirectoryAtPath:file withBool:YES];
+    NSString *fileName = [[urlString componentsSeparatedByString:@"/"] lastObject];
+    NSString *returnString = [file stringByAppendingPathComponent:fileName];
+    return returnString;
+
+}
 @end

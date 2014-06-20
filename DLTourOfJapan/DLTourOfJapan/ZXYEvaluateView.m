@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -28,6 +29,7 @@
     [super drawRect:rect];
     self.backgroundColor = [UIColor clearColor];
 }
+
 
 - (void)setEVDatasource:(id<ZXYEvaluateDatasource>)eVDatasource
 {
@@ -44,6 +46,7 @@
     upperView = [self addBackView:imageFName andNum:self.numImg];
     [self addSubview:lowwerView];
     upperView.frame = [self subFrameOfViewWith:maxValue andMinS:minValue byCurrS:currentValue withRadio:upperView.frame];
+    NSLog(@"upper view width is %f",upperView.frame.size.width);
     [upperView setClipsToBounds:YES];
     NSLog(@"upperView y is %f self view is %f" ,upperView.frame.origin.y,self.frame.origin.y);
     [self addSubview:upperView];
@@ -88,18 +91,19 @@
 - (UIView *)addBackView:(NSString *)strName andNum:(NSInteger)num
 {
     UIImage *image = [UIImage imageNamed:strName];
-    UIView  *returnView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, self.frame.size.width-10, self.frame.size.height)];
+    UIView  *returnView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, (image.size.width+1)*maxValue, self.frame.size.height)];
     returnView.backgroundColor = [UIColor clearColor];
-    float sizeBlock = (returnView.frame.size.width)/num;
+    float sizeBlock = image.size.width;
     for(int i = 0;i<num;i++)
     {
         UIImageView *imgView = [[UIImageView alloc] initWithImage:image];
         imgView.backgroundColor = [UIColor clearColor];
         imgView.contentMode = UIViewContentModeScaleAspectFit;
-        imgView.frame = CGRectMake(i*(sizeBlock+1), 0, sizeBlock, sizeBlock);
+        imgView.frame = CGRectMake(i*(sizeBlock+1), 0, sizeBlock, image.size.height);
         [returnView addSubview:imgView];
     }
     returnView.autoresizingMask = UIViewAutoresizingNone;
+    returnView.center = CGPointMake(returnView.center.x, self.center.y);
     return returnView;
 }
 

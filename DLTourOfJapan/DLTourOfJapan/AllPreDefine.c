@@ -36,6 +36,8 @@
 #define USERDEFAULTTIME @"19700101"//defaultTime
 #define USERDEFAULTTIMEDATA @"20130709" //defaultData
 #define AdvertiseNotification @"advertiseImage"         //广告图片下载完成的通知
+#define PlaceNotification  @"placeImage"  // 地点数据下载图片完成的通知
+
 /**
  * 以下是服务器接口
  *

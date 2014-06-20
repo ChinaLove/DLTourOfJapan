@@ -8,10 +8,14 @@
 
 #import "ZXYNETHelper.h"
 #import "Reachability.h"
+#import "ZXYDownCIDOperation.h"
 @interface ZXYNETHelper()
 {
     NSMutableArray *allURL;
+    NSMutableArray *placeURLARR;
+    BOOL isPlaceImageDown;
     ZXYDownAddOperation *advertiseOperation;
+    ZXYDownCIDOperation *cidOperation;
 }
 @end
 @implementation ZXYNETHelper
@@ -128,6 +132,45 @@ static NSOperationQueue *queue;
         [[ZXYNETHelper getQueue] addOperation:advertiseOperation];
     }
     [allURL removeAllObjects];
+    
+}
+
+- (void)placeURLADD:(NSURL *)url
+{
+    if(!isPlaceImageDown)
+    {
+        if(placeURLARR.count == 0)
+        {
+            placeURLARR = [[NSMutableArray alloc] init];
+        }
+        [placeURLARR addObject:url];
+    }
+    else
+    {
+        if(cidOperation)
+        {
+            [cidOperation addURLTONeedToDown:url];
+        }
+    }
+}
+
+- (void)startDownPlaceImage
+{
+    if(cidOperation)
+    {
+        [queue cancelAllOperations];
+        cidOperation = nil;
+    }
+    isPlaceImageDown = YES;
+    if(cidOperation == nil)
+    {
+        cidOperation = [[ZXYDownCIDOperation alloc] initWithFirstArr:placeURLARR];
+        [cidOperation setCompletionBlock:^{
+            isPlaceImageDown = NO;
+            
+        }];
+    }
+    [[ZXYNETHelper getQueue] addOperation:cidOperation];
     
 }
 @end

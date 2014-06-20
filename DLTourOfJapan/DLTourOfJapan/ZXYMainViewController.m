@@ -94,6 +94,11 @@ typedef enum
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 /**
  * 初始化页面
  *
@@ -183,7 +188,6 @@ typedef enum
             [mulDic setObject:[NSNumber numberWithInt:1] forKey:@"pageno"];
             [mulDic setObject:@"data" forKey:@"type"];
             [operation POST:URL_GetData parameters:mulDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSLog(@"%@",responseObject);
                 NSArray *responseArr = [NSJSONSerialization JSONObjectWithData:[operation responseData] options:0 error:nil];
                 NSMutableArray *allNewArr = [[NSMutableArray alloc] init];
                 for(int i = 0;i<responseArr.count;i++)
@@ -220,53 +224,61 @@ typedef enum
     UIButton *clickBtn = (UIButton *)sender;
     NSInteger tagOfBtn = [clickBtn tag];
     NSInteger locType  = 0;
+    NSString *title;
     switch (tagOfBtn)
     {
         case 101:{
         
             locType = 1;
+            title = @"酒店";
             //酒店1
                      break;
                  }
         case 102:{
             locType = 4;
-            
+            title = @"餐厅";
             //餐厅4
             break;
         }
         case 103:{
             
             locType = 2;
+            title = @"酒吧";
             //酒吧2
             break;
         }
         case 104:{
             
             locType = 5;
+            title = @"购物";
             //购物5
             break;
         }
         case 105:{
             
             locType = 6;
+            title = @"高尔夫";
             //高尔夫6
             break;
         }
         case 106:{
             
             locType = 7;
+            title = @"旅行";
             //旅行7
             break;
         }
         case 107:{
             
             locType = 3;
+            title = @"洗浴";
             //洗浴3
             break;
         }
         case 108:{
             
             locType = 8;
+            title = @"其他";
             //其他
             break;
         }
@@ -275,6 +287,7 @@ typedef enum
             break;
     }
     ZXYPlaceLocalListViewController *placeList = [[ZXYPlaceLocalListViewController alloc] initWIthLocType:[NSString stringWithFormat:@"%ld",(long)locType]];
+    placeList.title = title;
     [self.navigationController pushViewController:placeList animated:YES];
 }
 
@@ -325,6 +338,14 @@ typedef enum
     //页面切换、改变图片
     if(type == ZXYPlacePage)
     {
+        self.placePage = [[ZXYPlaceViewController alloc] initWithNibName:@"ZXYPlaceViewController" bundle:nil];
+        self.placePage.delegate = self;
+        self.placePage.view.frame = CGRectMake(Screen_width, 0, self.placePage.view.frame.size.width, contentView.frame.size.height);
+        if(!iPhone5)
+        {
+            self.placePage.scrollViewOfBtn.contentSize = CGSizeMake(320, 465);
+        }
+        [contentView addSubview:self.placePage.view];
         self.footImageView.image = [UIImage imageNamed:@"mainView_foot_down"];
         contentView.frame = CGRectMake(-Screen_width, contentView.frame.origin.y, Screen_width*3, contentView.frame.size.height);
     }
@@ -334,11 +355,16 @@ typedef enum
         if(type == ZXYFavorPage)
         {
 
+            self.favorPage = [[ZXYFavorViewController alloc] init];
+            self.favorPage.view.frame = CGRectMake(Screen_width*2, 0, self.favorPage.view.frame.size.width, contentView.frame.size.height);
+            [contentView addSubview:self.favorPage.view];
             contentView.frame = CGRectMake(-Screen_width*2, contentView.frame.origin.y, Screen_width*3, contentView.frame.size.height);
         }
         else
         {
-
+            self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
+            [contentView addSubview:self.homePage.view];
+            self.homePage.view.frame = CGRectMake(0, 0, Screen_width, contentView.frame.size.height);
             contentView.frame = CGRectMake(0, contentView.frame.origin.y, Screen_width*3, contentView.frame.size.height);
         }
         

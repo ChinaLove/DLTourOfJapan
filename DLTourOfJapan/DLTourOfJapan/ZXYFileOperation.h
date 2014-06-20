@@ -27,4 +27,5 @@
 -(BOOL)createDirectoryAtPath:(NSString *)direcPath withBool:(BOOL)withB;
 
 - (NSString *)advertiseImagePath:(NSString *)urlString;
+- (NSString *)cidImagePath:(NSString *)urlString;
 @end

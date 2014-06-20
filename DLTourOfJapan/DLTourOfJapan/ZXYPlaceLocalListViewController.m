@@ -9,12 +9,21 @@
 #import "ZXYPlaceLocalListViewController.h"
 #import "ZXYPlaceListCell.h"
 #import "LocDetailInfo.h"
-@interface ZXYPlaceLocalListViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface ZXYPlaceLocalListViewController ()
 {
     NSString *currentLocType;
     NSMutableArray *arrForShow;
     ZXYProvider *dataProvider;
+    __weak IBOutlet UITableView *listTable;
+    __weak IBOutlet UIView *searchView;
+    UINavigationController *navi;
+    ZXYFileOperation *fileOperation;
+    ZXYNETHelper     *netHelper;
 }
+- (IBAction)backView:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *searchOpenTime;
+- (IBAction)searchDistance:(id)sender;
+- (IBAction)searchList:(id)sender;
 @end
 
 @implementation ZXYPlaceLocalListViewController
@@ -26,6 +35,10 @@
         currentLocType = locType;
         dataProvider = [ZXYProvider sharedInstance];
         arrForShow     = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:currentLocType andKey:@"loctype"] ];
+        fileOperation = [ZXYFileOperation sharedSelf];
+        netHelper = [ZXYNETHelper sharedSelf];
+        NSNotificationCenter *datatnc = [NSNotificationCenter defaultCenter];
+        [datatnc addObserver:self selector:@selector(reloadDataMethod) name:PlaceNotification object:nil];
     }
     return self;
 }
@@ -34,8 +47,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = NO;
-    // Do any additional setup after loading the view from its nib.
+    [listTable setTableHeaderView:searchView];
+    self.titleLbl.text = self.title;
+    listTable.scrollsToTop = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [netHelper startDownPlaceImage];
+}
+
+- (void)reloadDataMethod
+{
+    [self performSelectorOnMainThread:@selector(reloadList) withObject:nil waitUntilDone:YES];
+}
+
+- (void)reloadList
+{
+    [listTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,8 +92,80 @@
         }
     }
     LocDetailInfo *locDetail = [arrForShow objectAtIndex:indexPath.row];
+    
+    // !!!:头像
+    NSString *cid = locDetail.cid;
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:cid ofType:@"jpg"];
+    NSString *headImagePath = [fileOperation cidImagePath:locDetail.locpy];
+    if([[NSFileManager defaultManager] fileExistsAtPath:headImagePath])
+    {
+        cell.headImage.image = [UIImage imageWithContentsOfFile:headImagePath];
+    }
+    else
+    {
+        NSString *urlString = [NSString stringWithFormat:@"%@%@",URL_Host,locDetail.locpy];
+        [netHelper placeURLADD:[NSURL URLWithString:urlString]];
+        if([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
+        {
+            cell.headImage.image = [UIImage imageWithContentsOfFile:imagePath];
+        }
+    }
     cell.titleLbl.text = locDetail.locname;
-    cell.avgPrice.text = locDetail.price;
+    if(!locDetail.price.intValue == 0)
+    {
+        cell.avgPrice.text = [NSString stringWithFormat:@"%d",locDetail.price.intValue ];
+    }
+    else
+    {
+        cell.avgPrice.text = @"无";
+    }
+    
+    cell.locDetail = locDetail;
+    // !!!:判断wifi
+    if([locDetail.wifi isEqualToString:@"1"])
+    {
+        cell.isWifi.image = [UIImage imageNamed:@"placePage_wifi"];
+    }
+    else
+    {
+        cell.isWifi.image = [UIImage imageNamed:@"placePage_wifiN"];
+    }
+    // !!!:判断停车
+    if([locDetail.cparking isEqualToString:@"1"])
+    {
+        cell.isParking.image = [UIImage imageNamed:@"placePage_parking"];
+    }
+    else
+    {
+        cell.isParking.image = [UIImage imageNamed:@"placePage_parkingN"];
+    }
+    // !!!:判断吸烟
+    if([locDetail.smoke isEqualToString:@"1"])
+    {
+        cell.isSmoking.image = [UIImage imageNamed: @"placePage_smoking"];
+    }
+    else
+    {
+        cell.isSmoking.image = [UIImage imageNamed:@"placePage_smokingN"];
+    }
+    // !!!:判断visa
+    if([locDetail.visa isEqualToString:@"1"])
+    {
+        cell.isVisa.image = [UIImage imageNamed:@"placePage_visa"];
+    }
+    else
+    {
+        cell.isVisa.image = [UIImage imageNamed:@"placePage_visaN"];
+    }
+    // !!!:判断master
+    if([locDetail.master isEqualToString:@"1"])
+    {
+        cell.isMaster.image = [UIImage imageNamed:@"placePage_master"];
+    }
+    else
+    {
+        cell.isMaster.image = [UIImage imageNamed:@"placePage_masterN"];
+    }
     return cell;
 }
 
@@ -82,4 +184,28 @@
     return 72;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"indexPath is %d",indexPath.row);
+}
+
+- (IBAction)searchDistance:(id)sender {
+}
+
+- (IBAction)searchList:(id)sender {
+}
+- (IBAction)backView:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PlaceNotification object:nil];
+}
 @end
