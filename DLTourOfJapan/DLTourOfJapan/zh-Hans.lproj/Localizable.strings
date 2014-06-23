@@ -18,3 +18,14 @@
 
 // !!!:HUD progress
 "HUD_CheckUpdate" = "正在检查更新，请稍后...";
+// !!!:PlaceDetailViewController
+"PlaceD_ConnectPhone" = "联系电话：";
+"PlaceD_AvgPredict"   = "平均运算：";
+"PlaceD_BusinessHour" = "营业时间：";
+"PlaceD_Address"      = "地     址：";
+"PlaceD_Comment"      = "会员评论：";
+"PlaceD_DiscountInfo" = "折扣信息：";
+"PlaceD_DiscountValue"= "        ";
+// !!!:PlacePage
+"PlacePage_Distance"  = "距离"     ;
+"PlacePage_OpeningHour" = "营业时间";

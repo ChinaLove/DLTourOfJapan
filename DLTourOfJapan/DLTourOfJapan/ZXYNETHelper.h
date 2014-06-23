@@ -40,7 +40,6 @@
  *
  */
 - (void)advertiseURLADD:(NSURL *)url;
-
 - (void)startDownAdvertiseImage;
 
 /**
@@ -48,7 +47,9 @@
  *
  *
  */
-- (void)placeURLADD:(NSURL *)url;
+- (void)placeURLADD:(NSString *)url;
 
 - (void)startDownPlaceImage;
+
+- (void)cancelPlaceImageDown;
 @end

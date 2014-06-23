@@ -23,7 +23,11 @@ typedef enum
 #import "ZXYUserDefault.h"
 #import "ZXYProvider.h"
 #import "ZXYPlaceLocalListViewController.h"
-@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate>
+#import "ZXYAppDelegate.h"
+#import "LocDetailInfo.h"
+#import "Advertise.h"
+#import "ZXYPlaceDetailViewController.h"
+@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate>
 {
     NSArray *allBtnS;   /** < 用来保存三个标签按钮 */
     NSArray *allLabelS; /** < 用来保存三个标签 */
@@ -48,6 +52,8 @@ typedef enum
 - (IBAction)changeLblColor:(id)sender; /**< 按钮刚按下 */
 - (IBAction)cancelLblColor:(id)sender; /**< 按钮取消事件 */
 @property (weak, nonatomic) IBOutlet UIImageView *footImageView;
+- (IBAction)userInfo:(id)sender;
+
 @end
 
 @implementation ZXYMainViewController
@@ -141,6 +147,7 @@ typedef enum
         {
             [self checkISDataUpdata];
             self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
+            self.homePage.delegate = self;
             [contentView addSubview:self.homePage.view];
             self.homePage.view.frame = CGRectMake(0, 0, Screen_width, contentView.frame.size.height);
         }
@@ -162,6 +169,7 @@ typedef enum
     [dataProvider saveDataToCoreDataArr:responseArray withDBNam:@"Advertise" isDelete:YES];
     
     self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
+    self.homePage.delegate = self;
     [contentView addSubview:self.homePage.view];
     self.homePage.view.frame = CGRectMake(0, 0, Screen_width, contentView.frame.size.height);
     NSLog(@"%@",opertation.responseString);
@@ -363,6 +371,7 @@ typedef enum
         else
         {
             self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
+            self.homePage.delegate = self;
             [contentView addSubview:self.homePage.view];
             self.homePage.view.frame = CGRectMake(0, 0, Screen_width, contentView.frame.size.height);
             contentView.frame = CGRectMake(0, contentView.frame.origin.y, Screen_width*3, contentView.frame.size.height);
@@ -401,4 +410,22 @@ typedef enum
     }
 }
 
+- (void)selectHomePageItem:(Advertise *)ad
+{
+    NSArray *allLocs = [dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:ad.cid andKey:@"cid"] ;
+    if(allLocs.count > 0)
+    {
+        LocDetailInfo *locDetail = [allLocs objectAtIndex:0];
+        ZXYPlaceDetailViewController *detailView = [[ZXYPlaceDetailViewController alloc] initWithLocDetail:locDetail];
+        detailView.isAdvertise = YES;
+        [self.navigationController pushViewController:detailView animated:YES];
+    }
+   
+    
+}
+
+- (IBAction)userInfo:(id)sender
+{
+    
+}
 @end

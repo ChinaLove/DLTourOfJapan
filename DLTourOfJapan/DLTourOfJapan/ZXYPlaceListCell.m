@@ -28,6 +28,52 @@
     
 }
 
+//- (void)layoutSubviews
+//
+//{
+//    
+//    [super layoutSubviews];
+//    
+//    self.backgroundColor = [UIColor clearColor];
+//    
+//    for (UIView *subview in self.subviews) {
+//        
+//        self.backgroundView.frame = CGRectMake(0, 0, self.backgroundView.frame.size.width, self.backgroundView.frame.size.height);
+//        
+//        for (UIView *subview2 in subview.subviews) {
+//            
+//            if ([NSStringFromClass([subview2 class]) isEqualToString:@"UITableViewCellDeleteConfirmationView"]) { // move delete confirmation view
+//                
+//                [subview bringSubviewToFront:subview2];
+//                subview2.backgroundColor = [UIColor grayColor];
+//                
+//            }
+//            
+//        }
+//        
+//    }
+//    
+//}
+
+- (void)willTransitionToState:(UITableViewCellStateMask)state
+{
+    NSLog(@"table view cell willTransitionToState ");
+    [super willTransitionToState:state];
+    if ((state & UITableViewCellStateShowingDeleteConfirmationMask) == UITableViewCellStateShowingDeleteConfirmationMask) {
+        for (UIView *subview in self.subviews) {
+            NSLog(@"按钮的子视图的类名:%@", NSStringFromClass([subview class]));
+            if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellDeleteConfirmationControl"]) {
+                        subview.superview.backgroundColor = self.contentView.backgroundColor ;
+            }
+            if ([NSStringFromClass([subview class]) isEqualToString:@"UIView"]) {
+                
+            }else{
+                
+            }
+        }
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ZXYMainViewController.h"
+#import "ZXYNETHelper.h"
 @interface ZXYAppDelegate : UIResponder <UIApplicationDelegate>
-
+@property (nonatomic,strong)ZXYNETHelper *netHelper;
 @property (strong, nonatomic) UIWindow *window;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

@@ -9,6 +9,8 @@
 #import "ZXYPlaceLocalListViewController.h"
 #import "ZXYPlaceListCell.h"
 #import "LocDetailInfo.h"
+#import "ZXYPlaceDetailViewController.h"
+#import "ZXYAppDelegate.h"
 @interface ZXYPlaceLocalListViewController ()
 {
     NSString *currentLocType;
@@ -19,6 +21,10 @@
     UINavigationController *navi;
     ZXYFileOperation *fileOperation;
     ZXYNETHelper     *netHelper;
+    __weak IBOutlet UILabel *distanceLbl;
+    
+    __weak IBOutlet UILabel *businessLbl;
+    
 }
 - (IBAction)backView:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *searchOpenTime;
@@ -36,7 +42,8 @@
         dataProvider = [ZXYProvider sharedInstance];
         arrForShow     = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:currentLocType andKey:@"loctype"] ];
         fileOperation = [ZXYFileOperation sharedSelf];
-        netHelper = [ZXYNETHelper sharedSelf];
+        //ZXYAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        netHelper = [[ZXYNETHelper alloc] init];
         NSNotificationCenter *datatnc = [NSNotificationCenter defaultCenter];
         [datatnc addObserver:self selector:@selector(reloadDataMethod) name:PlaceNotification object:nil];
     }
@@ -47,6 +54,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    distanceLbl.text = NSLocalizedString(@"PlacePage_Distance", nil);
+    businessLbl.text = NSLocalizedString(@"PlacePage_OpeningHour", nil);
     [listTable setTableHeaderView:searchView];
     self.titleLbl.text = self.title;
     listTable.scrollsToTop = NO;
@@ -96,19 +105,16 @@
     // !!!:头像
     NSString *cid = locDetail.cid;
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:cid ofType:@"jpg"];
-    NSString *headImagePath = [fileOperation cidImagePath:locDetail.locpy];
+    NSString *headImagePath = [fileOperation cidImagePath:locDetail.cid];
     if([[NSFileManager defaultManager] fileExistsAtPath:headImagePath])
     {
         cell.headImage.image = [UIImage imageWithContentsOfFile:headImagePath];
     }
     else
     {
-        NSString *urlString = [NSString stringWithFormat:@"%@%@",URL_Host,locDetail.locpy];
-        [netHelper placeURLADD:[NSURL URLWithString:urlString]];
-        if([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
-        {
-            cell.headImage.image = [UIImage imageWithContentsOfFile:imagePath];
-        }
+        
+        [netHelper placeURLADD:cid];
+        cell.headImage.image = [UIImage imageNamed:@"placePage_placeHod"];
     }
     cell.titleLbl.text = locDetail.locname;
     if(!locDetail.price.intValue == 0)
@@ -186,26 +192,38 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"indexPath is %d",indexPath.row);
+    LocDetailInfo *locDetail = [arrForShow objectAtIndex:indexPath.row];
+    ZXYPlaceDetailViewController *detailVC = [[ZXYPlaceDetailViewController alloc] initWithLocDetail:locDetail];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (IBAction)searchDistance:(id)sender {
 }
 
-- (IBAction)searchList:(id)sender {
+- (IBAction)searchList:(id)sender
+{
+    
 }
+
 - (IBAction)backView:(id)sender
 {
+    [netHelper cancelPlaceImageDown];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:PlaceNotification object:nil];
+    
 }
 @end

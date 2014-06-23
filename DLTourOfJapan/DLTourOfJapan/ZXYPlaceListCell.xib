@@ -80,6 +80,7 @@
             <connections>
                 <outlet property="avgPrice" destination="8If-AA-XV3" id="nKy-YF-ltH"/>
                 <outlet property="headImage" destination="NJf-Nq-GQB" id="Zve-SQ-ypE"/>
+                <outlet property="indicatorImage" destination="fHr-ub-Dzz" id="KQq-En-eQP"/>
                 <outlet property="isMaster" destination="b2n-ck-fff" id="yAu-1D-p0A"/>
                 <outlet property="isParking" destination="OSp-7Z-Ygc" id="KGv-hv-s8b"/>
                 <outlet property="isSmoking" destination="B8J-ad-NZO" id="dIO-Vr-XT4"/>

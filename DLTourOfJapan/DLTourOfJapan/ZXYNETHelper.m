@@ -16,11 +16,21 @@
     BOOL isPlaceImageDown;
     ZXYDownAddOperation *advertiseOperation;
     ZXYDownCIDOperation *cidOperation;
+    NSOperationQueue *tempQueue;
 }
 @end
 @implementation ZXYNETHelper
 static ZXYNETHelper *instance;
 static NSOperationQueue *queue;
+- (id)init
+{
+    if(self=[super init])
+    {
+        tempQueue = [[NSOperationQueue alloc] init];
+    }
+    return self;
+}
+
 + (ZXYNETHelper *)sharedSelf
 {
     @synchronized(self)
@@ -111,7 +121,7 @@ static NSOperationQueue *queue;
     }
 }
 
-- (void)advertiseURLADD:(NSURL *)url
+- (void)advertiseURLADD:(NSURL *)url 
 {
     if(allURL.count == 0)
     {
@@ -135,42 +145,53 @@ static NSOperationQueue *queue;
     
 }
 
-- (void)placeURLADD:(NSURL *)url
+- (void)placeURLADD:(NSString *)url
 {
-    if(!isPlaceImageDown)
+    if(placeURLARR==nil)
     {
-        if(placeURLARR.count == 0)
-        {
-            placeURLARR = [[NSMutableArray alloc] init];
-        }
-        [placeURLARR addObject:url];
+        placeURLARR = [[NSMutableArray alloc] init];
     }
-    else
+
+    if(cidOperation == nil)
     {
-        if(cidOperation)
+        [placeURLARR insertObject:url atIndex:0];
+    }
+    else {
+        if(!cidOperation.isExecuting)
         {
-            [cidOperation addURLTONeedToDown:url];
+            [placeURLARR insertObject:url atIndex:0];
+            [self startDownPlaceImage];
+        }
+        else
+        {
+            if(cidOperation)
+            {
+                [cidOperation addURLTONeedToDown:url];
+            }
+            else
+            {
+                NSLog(@"cid operation is dead");
+            }
         }
     }
 }
 
 - (void)startDownPlaceImage
 {
-    if(cidOperation)
+    if([cidOperation isFinished])
     {
-        [queue cancelAllOperations];
         cidOperation = nil;
     }
-    isPlaceImageDown = YES;
+
     if(cidOperation == nil)
     {
         cidOperation = [[ZXYDownCIDOperation alloc] initWithFirstArr:placeURLARR];
-        [cidOperation setCompletionBlock:^{
-            isPlaceImageDown = NO;
-            
-        }];
+        [tempQueue addOperation:cidOperation];
     }
-    [[ZXYNETHelper getQueue] addOperation:cidOperation];
-    
+}
+
+- (void)cancelPlaceImageDown
+{
+    isPlaceImageDown = NO;
 }
 @end

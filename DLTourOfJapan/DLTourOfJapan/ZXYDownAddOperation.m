@@ -7,7 +7,8 @@
 //
 
 #import "ZXYDownAddOperation.h"
-
+#import "Advertise.h"
+#import "ZXYProvider.h"
 @interface ZXYDownAddOperation()
 {
     NSMutableArray *currentURLS;
@@ -15,6 +16,7 @@
     NSURL *currentDownURL;
     BOOL isThreadFree;
     ZXYFileOperation *fileOperation;
+    ZXYProvider  *proVider;
 }
 
 
@@ -28,6 +30,7 @@
         needToAddURLS = [[NSMutableArray alloc] init];
         isThreadFree = YES;
         fileOperation = [ZXYFileOperation sharedSelf];
+        proVider = [[ZXYProvider alloc] init];
     }
     return self;
 }

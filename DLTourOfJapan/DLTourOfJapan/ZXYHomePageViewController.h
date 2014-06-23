@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Advertise;
+@protocol SelectHomePageItemDelegate <NSObject>
+- (void)selectHomePageItem:(Advertise *)ad;
+@end
 @interface ZXYHomePageViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UICollectionView *pictureCollection;
-
+@property (nonatomic,strong) id<SelectHomePageItemDelegate>delegate;
 @end

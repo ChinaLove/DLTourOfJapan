@@ -7,13 +7,15 @@
 //
 
 #import "ZXYDownCIDOperation.h"
+#import "LocDetailInfo.h"
 @interface ZXYDownCIDOperation()
 {
     NSMutableArray *firstArrToDown;
     NSMutableArray *needToDown;
-    NSURL *currentURL;
+    NSString *currentURL;
     BOOL isDownLoad;
     ZXYFileOperation *fileOperate;
+    ZXYProvider *provider;
 }
 @end
 
@@ -26,13 +28,14 @@
         needToDown     = [[NSMutableArray alloc] init];
         isDownLoad = NO;
         fileOperate = [ZXYFileOperation sharedSelf];
+        provider = [ZXYProvider sharedInstance];
     }
     return self;
 }
 
-- (void)addURLTONeedToDown:(NSURL *)needToDownURL
+- (void)addURLTONeedToDown:(NSString *)needToDownURL
 {
-    [needToDown addObject:needToDownURL];
+    [needToDown insertObject:needToDownURL atIndex:0];
 }
 
 - (void)main
@@ -50,33 +53,39 @@
             if(firstArrToDown.count >0)
             {
                 currentURL = [firstArrToDown objectAtIndex:0];
-                NSString *filePath = [fileOperate cidImagePath:[currentURL absoluteString]];
+                NSString *filePath = [fileOperate cidImagePath:currentURL];
                 if([[NSFileManager defaultManager] fileExistsAtPath:filePath])
                 {
-                    isDownLoad = NO;
+                    
                     [firstArrToDown removeObject:currentURL];
                     currentURL = nil;
+                    isDownLoad = NO;
                     continue;
                 }
                 else
                 {
-                    NSURLRequest *request = [NSURLRequest requestWithURL:currentURL];
+                    LocDetailInfo *loc = [[provider readCoreDataFromDB:@"LocDetailInfo" withContent:currentURL andKey:@"cid"] objectAtIndex:0];
+                    NSURL *urlS = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_Host,loc.locpy]];
+                    NSURLRequest *request = [NSURLRequest requestWithURL:urlS];
                     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
                     operation.responseSerializer = [AFImageResponseSerializer serializer];
                     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
                     {
                         NSData *imageData = [operation responseData];
                         [imageData writeToFile:filePath atomically:YES];
-                        isDownLoad = NO;
+                        
                         [firstArrToDown removeObject:currentURL];
                         currentURL = nil;
+                        
                         NSNotification *addNoti = [[NSNotification alloc] initWithName:PlaceNotification object:self userInfo:nil];
                         [[NSNotificationCenter defaultCenter] postNotification:addNoti];
+                        isDownLoad = NO;
                         
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
                     {
-                        isDownLoad = NO;
+                        
                         [firstArrToDown removeObject:currentURL];
+                        isDownLoad = NO;
                         currentURL = nil;
 
                         NSLog(@"ZXYDownCIDOperation error is %@",error);

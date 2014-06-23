@@ -6,9 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXYPlaceLocalListViewController">
             <connections>
+                <outlet property="businessLbl" destination="sN5-C9-aaO" id="cuI-30-B2K"/>
+                <outlet property="distanceLbl" destination="kFd-u2-6bn" id="tdZ-wA-bkE"/>
                 <outlet property="listTable" destination="HCr-P5-eUt" id="Y5x-Lb-dYY"/>
-                <outlet property="searchOpenTime" destination="s5u-Bz-kAb" id="fT4-er-Kdv"/>
-                <outlet property="searchView" destination="GaH-VV-tZD" id="cBT-8a-VKz"/>
+                <outlet property="searchView" destination="GaH-VV-tZD" id="w1d-Fw-qOq"/>
                 <outlet property="titleLbl" destination="ja6-7y-URC" id="SNg-0v-HUv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -100,6 +101,9 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted" image="placePage_arrowDown.png"/>
+                    <connections>
+                        <action selector="searchList:" destination="-1" eventType="touchUpInside" id="gwz-X2-ppk"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

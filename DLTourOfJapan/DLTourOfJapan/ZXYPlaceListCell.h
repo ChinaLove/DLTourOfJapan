@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *isSmoking;
 @property (weak, nonatomic) IBOutlet UIImageView *isVisa;
 @property (weak, nonatomic) IBOutlet UIImageView *isMaster;
+@property (weak, nonatomic) IBOutlet UIImageView *indicatorImage;
 
 @end

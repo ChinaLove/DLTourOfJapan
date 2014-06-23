@@ -10,5 +10,5 @@
 
 @interface ZXYDownCIDOperation : NSOperation
 - (id)initWithFirstArr:(NSMutableArray *)firstArr;
-- (void)addURLTONeedToDown:(NSURL *)needToDownURL;
+- (void)addURLTONeedToDown:(NSString *)needToDownURL;
 @end

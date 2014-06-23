@@ -131,6 +131,15 @@
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Advertise *adV = [allAdvertise objectAtIndex:indexPath.row];
+    if([self.delegate respondsToSelector:@selector(selectHomePageItem:)])
+    {
+        [self.delegate selectHomePageItem:adV];
+    }
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AdvertiseNotification object:nil];
