@@ -14,6 +14,8 @@
                 <outlet property="homeLbl" destination="ioo-0W-P4Y" id="07z-FZ-ayL"/>
                 <outlet property="placeBtn" destination="jGL-kQ-qDi" id="Jry-oc-3BJ"/>
                 <outlet property="placeLbl" destination="vRu-cP-oYg" id="wLy-VP-HUp"/>
+                <outlet property="settingBtn" destination="VRu-jH-hP1" id="ClG-YG-Vc5"/>
+                <outlet property="userInfoTable" destination="oXu-qv-n33" id="sH1-Rl-Udf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -118,9 +120,21 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <view contentMode="scaleToFill" id="oXu-qv-n33">
-            <rect key="frame" x="0.0" y="0.0" width="157" height="193"/>
+            <rect key="frame" x="0.0" y="0.0" width="157" height="201"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="g8Q-TE-wM8">
+                    <rect key="frame" x="0.0" y="0.0" width="157" height="201"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="pqX-pq-pci"/>
+                        <outlet property="delegate" destination="-1" id="jn0-r3-Ln9"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

@@ -83,6 +83,16 @@
 		8B4C822519581B460032363A /* placePage_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4C822419581B460032363A /* placePage_down@2x.png */; };
 		8B4C8228195825E20032363A /* placePage_arrowD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4C8226195825E20032363A /* placePage_arrowD@2x.png */; };
 		8B4C8229195825E20032363A /* placePage_arrowU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4C8227195825E20032363A /* placePage_arrowU@2x.png */; };
+		8B4DB9DB195A4C2200B077DD /* revise_down_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9D9195A4C2200B077DD /* revise_down_03.png */; };
+		8B4DB9DC195A4C2200B077DD /* revise.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9DA195A4C2200B077DD /* revise.png */; };
+		8B4DB9E3195A4CA600B077DD /* vip_collectD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9DD195A4CA600B077DD /* vip_collectD@2x.png */; };
+		8B4DB9E4195A4CA600B077DD /* vip_collectU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9DE195A4CA600B077DD /* vip_collectU@2x.png */; };
+		8B4DB9E5195A4CA600B077DD /* vip_setD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9DF195A4CA600B077DD /* vip_setD@2x.png */; };
+		8B4DB9E6195A4CA600B077DD /* vip_setU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9E0195A4CA600B077DD /* vip_setU@2x.png */; };
+		8B4DB9E7195A4CA600B077DD /* vip_manD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9E1195A4CA600B077DD /* vip_manD@2x.png */; };
+		8B4DB9E8195A4CA600B077DD /* vip_manU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9E2195A4CA600B077DD /* vip_manU@2x.png */; };
+		8B4DB9EC195A4D5700B077DD /* ZXYUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB9EA195A4D5700B077DD /* ZXYUserInfoTableViewCell.m */; };
+		8B4DB9ED195A4D5700B077DD /* ZXYUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB9EB195A4D5700B077DD /* ZXYUserInfoTableViewCell.xib */; };
 		8B51D94E1955231A00F7CD1C /* ZXYPlaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B51D94C1955231A00F7CD1C /* ZXYPlaceDetailViewController.m */; };
 		8B51D94F1955231A00F7CD1C /* ZXYPlaceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B51D94D1955231A00F7CD1C /* ZXYPlaceDetailViewController.xib */; };
 		8B51D9531955315100F7CD1C /* ZXYPageDetailCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B51D9511955315100F7CD1C /* ZXYPageDetailCellTableViewCell.m */; };
@@ -469,6 +479,17 @@
 		8B4C822419581B460032363A /* placePage_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_down@2x.png"; sourceTree = "<group>"; };
 		8B4C8226195825E20032363A /* placePage_arrowD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_arrowD@2x.png"; sourceTree = "<group>"; };
 		8B4C8227195825E20032363A /* placePage_arrowU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_arrowU@2x.png"; sourceTree = "<group>"; };
+		8B4DB9D9195A4C2200B077DD /* revise_down_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revise_down_03.png; sourceTree = "<group>"; };
+		8B4DB9DA195A4C2200B077DD /* revise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revise.png; sourceTree = "<group>"; };
+		8B4DB9DD195A4CA600B077DD /* vip_collectD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vip_collectD@2x.png"; sourceTree = "<group>"; };
+		8B4DB9DE195A4CA600B077DD /* vip_collectU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vip_collectU@2x.png"; sourceTree = "<group>"; };
+		8B4DB9DF195A4CA600B077DD /* vip_setD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vip_setD@2x.png"; sourceTree = "<group>"; };
+		8B4DB9E0195A4CA600B077DD /* vip_setU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vip_setU@2x.png"; sourceTree = "<group>"; };
+		8B4DB9E1195A4CA600B077DD /* vip_manD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vip_manD@2x.png"; sourceTree = "<group>"; };
+		8B4DB9E2195A4CA600B077DD /* vip_manU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vip_manU@2x.png"; sourceTree = "<group>"; };
+		8B4DB9E9195A4D5700B077DD /* ZXYUserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYUserInfoTableViewCell.h; sourceTree = "<group>"; };
+		8B4DB9EA195A4D5700B077DD /* ZXYUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYUserInfoTableViewCell.m; sourceTree = "<group>"; };
+		8B4DB9EB195A4D5700B077DD /* ZXYUserInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYUserInfoTableViewCell.xib; sourceTree = "<group>"; };
 		8B51D94B1955231A00F7CD1C /* ZXYPlaceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYPlaceDetailViewController.h; sourceTree = "<group>"; };
 		8B51D94C1955231A00F7CD1C /* ZXYPlaceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYPlaceDetailViewController.m; sourceTree = "<group>"; };
 		8B51D94D1955231A00F7CD1C /* ZXYPlaceDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYPlaceDetailViewController.xib; sourceTree = "<group>"; };
@@ -834,6 +855,9 @@
 				8B0B8C5C194EB35900EC79DC /* ZXYMainViewController.h */,
 				8B0B8C5D194EB35900EC79DC /* ZXYMainViewController.m */,
 				8B0B8C5E194EB35900EC79DC /* ZXYMainViewController.xib */,
+				8B4DB9E9195A4D5700B077DD /* ZXYUserInfoTableViewCell.h */,
+				8B4DB9EA195A4D5700B077DD /* ZXYUserInfoTableViewCell.m */,
+				8B4DB9EB195A4D5700B077DD /* ZXYUserInfoTableViewCell.xib */,
 				8B0B8C94194EDA7700EC79DC /* ZXYMainCollectionCell.h */,
 				8B0B8C95194EDA7700EC79DC /* ZXYMainCollectionCell.m */,
 				8B0B8C97194EDA9000EC79DC /* ZXYMainCollectionCell.xib */,
@@ -843,6 +867,7 @@
 				8BB79589195012700023986A /* ZXYPlaceViewController.h */,
 				8BB7958A195012700023986A /* ZXYPlaceViewController.m */,
 				8BB7958B195012700023986A /* ZXYPlaceViewController.xib */,
+				8B4DB9EE195A5F8900B077DD /* UserInfo */,
 				8B1C6C231952CB1B00871C6A /* PlacePage */,
 				8BB7958E1950129E0023986A /* ZXYFavorViewController.h */,
 				8BB7958F1950129E0023986A /* ZXYFavorViewController.m */,
@@ -967,6 +992,7 @@
 		8B0B8C66194EB79D00EC79DC /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				8B4DB9D8195A4C0B00B077DD /* MemeberShip */,
 				8B0B8C67194EB8E400EC79DC /* mainView_blue@2x.png */,
 				8B0B8C69194EB9FD00EC79DC /* mainView_search@2x.png */,
 				8B0B8C6B194EBA2900EC79DC /* mainView_PerInfo@2x.png */,
@@ -995,6 +1021,28 @@
 				8B51D94A195522E000F7CD1C /* placePageDetail */,
 			);
 			name = PlacePage;
+			sourceTree = "<group>";
+		};
+		8B4DB9D8195A4C0B00B077DD /* MemeberShip */ = {
+			isa = PBXGroup;
+			children = (
+				8B4DB9DD195A4CA600B077DD /* vip_collectD@2x.png */,
+				8B4DB9DE195A4CA600B077DD /* vip_collectU@2x.png */,
+				8B4DB9DF195A4CA600B077DD /* vip_setD@2x.png */,
+				8B4DB9E0195A4CA600B077DD /* vip_setU@2x.png */,
+				8B4DB9E1195A4CA600B077DD /* vip_manD@2x.png */,
+				8B4DB9E2195A4CA600B077DD /* vip_manU@2x.png */,
+				8B4DB9D9195A4C2200B077DD /* revise_down_03.png */,
+				8B4DB9DA195A4C2200B077DD /* revise.png */,
+			);
+			name = MemeberShip;
+			sourceTree = "<group>";
+		};
+		8B4DB9EE195A5F8900B077DD /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UserInfo;
 			sourceTree = "<group>";
 		};
 		8B51D94A195522E000F7CD1C /* placePageDetail */ = {
@@ -1502,6 +1550,7 @@
 				8B1C6C1C1952A2FA00871C6A /* ZLOCDETAILINFO.json in Resources */,
 				8B8C8C3219518C3C0066EAAB /* dl04000013.jpg in Resources */,
 				8B8C8BDF19518C3C0066EAAB /* dl02000067.jpg in Resources */,
+				8B4DB9E6195A4CA600B077DD /* vip_setU@2x.png in Resources */,
 				8B8C8BE419518C3C0066EAAB /* dl01000003.jpg in Resources */,
 				8B1FFB261953FE30009ACD3A /* placePage_parkingN@2x.png in Resources */,
 				8B8C8C5319518C3C0066EAAB /* dl05000000.jpg in Resources */,
@@ -1517,6 +1566,7 @@
 				8B8C8BCC19518C3C0066EAAB /* dl02000048.jpg in Resources */,
 				8B8C8C0C19518C3C0066EAAB /* dl02000015.jpg in Resources */,
 				8B8C8BE119518C3C0066EAAB /* dl02000069.jpg in Resources */,
+				8B4DB9E5195A4CA600B077DD /* vip_setD@2x.png in Resources */,
 				8B8C8BB919518C3C0066EAAB /* dl02000029.jpg in Resources */,
 				8B51D9541955315100F7CD1C /* ZXYPageDetailCellTableViewCell.xib in Resources */,
 				8B8C8C5F19518C3C0066EAAB /* dl05000012.jpg in Resources */,
@@ -1529,6 +1579,7 @@
 				8B8C8C1119518C3C0066EAAB /* dl02000020.jpg in Resources */,
 				8B8C8C1D19518C3C0066EAAB /* dl03000009.jpg in Resources */,
 				8B8C8BFD19518C3C0066EAAB /* dl02000000.jpg in Resources */,
+				8B4DB9E8195A4CA600B077DD /* vip_manU@2x.png in Resources */,
 				8B8C8C5819518C3C0066EAAB /* dl05000005.jpg in Resources */,
 				8B51D966195545EC00F7CD1C /* placePage_coment@2x.png in Resources */,
 				8B0B8C98194EDA9000EC79DC /* ZXYMainCollectionCell.xib in Resources */,
@@ -1580,6 +1631,7 @@
 				8B8C8C2219518C3C0066EAAB /* dl03000014.jpg in Resources */,
 				8B8C8C1619518C3C0066EAAB /* dl03000002.jpg in Resources */,
 				8B8C8BB719518C3C0066EAAB /* dl02000027.jpg in Resources */,
+				8B4DB9ED195A4D5700B077DD /* ZXYUserInfoTableViewCell.xib in Resources */,
 				8B8C8BBE19518C3C0066EAAB /* dl02000034.jpg in Resources */,
 				8B8C8BFC19518C3C0066EAAB /* dl01000027.jpg in Resources */,
 				8B8C8ABE19512D650066EAAB /* placePage_golf@2x.png in Resources */,
@@ -1587,9 +1639,11 @@
 				8B8C8C2119518C3C0066EAAB /* dl03000013.jpg in Resources */,
 				8B8C8C3E19518C3C0066EAAB /* dl04000025.jpg in Resources */,
 				8B8C8C2919518C3C0066EAAB /* dl04000004.jpg in Resources */,
+				8B4DB9E3195A4CA600B077DD /* vip_collectD@2x.png in Resources */,
 				8B8C8BD319518C3C0066EAAB /* dl02000055.jpg in Resources */,
 				8B8C8C3519518C3C0066EAAB /* dl04000016.jpg in Resources */,
 				8B8C8BEC19518C3C0066EAAB /* dl01000011.jpg in Resources */,
+				8B4DB9DC195A4C2200B077DD /* revise.png in Resources */,
 				8B1FFB271953FE30009ACD3A /* placePage_visaN@2x.png in Resources */,
 				8B8C8BC519518C3C0066EAAB /* dl02000041.jpg in Resources */,
 				8B8C8BC219518C3C0066EAAB /* dl02000038.jpg in Resources */,
@@ -1615,6 +1669,7 @@
 				8B8C8C4B19518C3C0066EAAB /* dl04000038.jpg in Resources */,
 				8B8C8C4C19518C3C0066EAAB /* dl04000039.jpg in Resources */,
 				8B8C8C3119518C3C0066EAAB /* dl04000012.jpg in Resources */,
+				8B4DB9DB195A4C2200B077DD /* revise_down_03.png in Resources */,
 				8B8C8BE819518C3C0066EAAB /* dl01000007.jpg in Resources */,
 				8B8C8BD719518C3C0066EAAB /* dl02000059.jpg in Resources */,
 				8B8C8C0419518C3C0066EAAB /* dl02000007.jpg in Resources */,
@@ -1679,6 +1734,7 @@
 				8B0B8C7B194EBB3000EC79DC /* mainView_home_up@2x.png in Resources */,
 				8B8C8C0D19518C3C0066EAAB /* dl02000016.jpg in Resources */,
 				8B8C8BE919518C3C0066EAAB /* dl01000008.jpg in Resources */,
+				8B4DB9E4195A4CA600B077DD /* vip_collectU@2x.png in Resources */,
 				8B8C8BCF19518C3C0066EAAB /* dl02000051.jpg in Resources */,
 				8B51D968195545EC00F7CD1C /* placePage_phone@2x.png in Resources */,
 				8B8C8C2719518C3C0066EAAB /* dl04000002.jpg in Resources */,
@@ -1721,6 +1777,7 @@
 				8B8C8C1519518C3C0066EAAB /* dl03000001.jpg in Resources */,
 				8B8C8C1919518C3C0066EAAB /* dl03000005.jpg in Resources */,
 				8B8C8BBC19518C3C0066EAAB /* dl02000032.jpg in Resources */,
+				8B4DB9E7195A4CA600B077DD /* vip_manD@2x.png in Resources */,
 				8B8C8C0A19518C3C0066EAAB /* dl02000013.jpg in Resources */,
 				8B8C8BF019518C3C0066EAAB /* dl01000015.jpg in Resources */,
 				8B8C8C2B19518C3C0066EAAB /* dl04000006.jpg in Resources */,
@@ -1791,6 +1848,7 @@
 				8B1C6C221952A6CD00871C6A /* LocDetailInfo.m in Sources */,
 				8B0B8C25194EA0C500EC79DC /* UIRefreshControl+AFNetworking.m in Sources */,
 				8BB7959E19501F390023986A /* MBProgressHUD.m in Sources */,
+				8B4DB9EC195A4D5700B077DD /* ZXYUserInfoTableViewCell.m in Sources */,
 				8B51D9581955379500F7CD1C /* ZXYPageDetailInfoCell.m in Sources */,
 				8B0B8C42194EA0CA00EC79DC /* AFURLResponseSerialization.m in Sources */,
 				8B8C8AE1195176520066EAAB /* FMResultSet.m in Sources */,

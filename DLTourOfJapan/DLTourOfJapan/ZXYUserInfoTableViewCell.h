@@ -10,4 +10,6 @@
 
 @interface ZXYUserInfoTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *titleImage;
+@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
 @end

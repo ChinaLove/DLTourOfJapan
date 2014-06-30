@@ -27,7 +27,8 @@ typedef enum
 #import "LocDetailInfo.h"
 #import "Advertise.h"
 #import "ZXYPlaceDetailViewController.h"
-@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate>
+#import "ZXYUserInfoTableViewCell.h"
+@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *allBtnS;   /** < 用来保存三个标签按钮 */
     NSArray *allLabelS; /** < 用来保存三个标签 */
@@ -36,7 +37,11 @@ typedef enum
     ZXYNETHelper *netHelp; //网络帮助文件
     ZXYUserDefault *userDefault; //用户设置文件
     ZXYProvider *dataProvider;   //数据库操作文件
+    __weak IBOutlet UIButton *settingBtn;
+    BOOL isUserTableShow;
+    UIView *backView;
 }
+@property (strong, nonatomic) IBOutlet UIView *userInfoTable;
 @property (strong, nonatomic) ZXYHomePageViewController *homePage; //第一个页面
 @property (strong, nonatomic) ZXYPlaceViewController    *placePage;//第二个页面
 @property (strong, nonatomic) ZXYFavorViewController    *favorPage;//第三个页面
@@ -304,6 +309,59 @@ typedef enum
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - 会员信息页面
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *userCellIdentifier = @"userCellIdentifier";
+    ZXYUserInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:userCellIdentifier];
+    if(cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ZXYUserInfoTableViewCell" owner:self options:nil];
+        for(id oneObject in nib)
+        {
+            if([oneObject isKindOfClass:[ZXYUserInfoTableViewCell class]])
+            {
+                cell = (ZXYUserInfoTableViewCell *)oneObject;
+            }
+        }
+    }
+    if(indexPath.row == 0)
+    {
+        cell.titleImage.image = [UIImage imageNamed:@"vip_collectU"];
+        cell.titleLbl.text    = NSLocalizedString(@"vip_collect", nil);
+    }
+    else if(indexPath.row == 1)
+    {
+        cell.titleImage.image = [UIImage imageNamed:@"vip_manU"];
+        cell.titleLbl.text    = NSLocalizedString(@"vip_login", nil);
+    }
+    else
+    {
+        cell.titleImage.image = [UIImage imageNamed:@"vip_setU"];
+        cell.titleLbl.text    = NSLocalizedString(@"vip_setting", nil);
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
+}
 
 #pragma mark - 三个按钮
 - (IBAction)homeBtnClick:(id)sender
@@ -426,6 +484,45 @@ typedef enum
 
 - (IBAction)userInfo:(id)sender
 {
-    
+    if(isUserTableShow)
+    {
+        isUserTableShow = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.userInfoTable.frame = CGRectMake(settingBtn.frame.origin.x, settingBtn.frame.origin.y+settingBtn.frame.size.height, 0, 0);
+        } completion:^(BOOL finished) {
+            [self.userInfoTable removeFromSuperview];
+            [backView removeFromSuperview];
+        }];
+    }
+    else
+    {
+        backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.bounds.size.height)];
+        backView.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:backView];
+        isUserTableShow = YES;
+        self.userInfoTable.frame = CGRectMake(settingBtn.frame.origin.x, settingBtn.frame.origin.y+settingBtn.frame.size.height, 0, 0);
+        [self.view addSubview:self.userInfoTable];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.userInfoTable.frame = CGRectMake(settingBtn.frame.origin.x, settingBtn.frame.origin.y+settingBtn.frame.size.height, 157, 3*44);
+            
+        }];
+    }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if(isUserTableShow)
+    {
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self.view];
+        if(CGRectContainsPoint(backView.frame, point))
+        {
+            [self userInfo:nil];
+        }
+    }
+    else
+    {
+        return;
+    }
 }
 @end

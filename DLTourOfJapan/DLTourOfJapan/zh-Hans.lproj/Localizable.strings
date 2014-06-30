@@ -29,3 +29,7 @@
 // !!!:PlacePage
 "PlacePage_Distance"  = "距离"     ;
 "PlacePage_OpeningHour" = "营业时间";
+// !!!:会员
+"vip_collect"         = "我的收藏";
+"vip_login"           = "会员登录";
+"vip_setting"         = "设置";
