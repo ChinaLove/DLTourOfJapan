@@ -28,6 +28,7 @@ typedef enum
 #import "Advertise.h"
 #import "ZXYPlaceDetailViewController.h"
 #import "ZXYUserInfoTableViewCell.h"
+#import "ZXYUserLoginViewController.h"
 @interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *allBtnS;   /** < 用来保存三个标签按钮 */
@@ -360,7 +361,20 @@ typedef enum
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+   if(indexPath.row == 1)
+   {
+       NSString *nibName ;
+       if(iPhone5)
+       {
+           nibName = @"ZXYUserLoginViewController_Iphone5";
+       }
+       else
+       {
+           nibName = @"ZXYUserLoginViewController";
+       }
+       ZXYUserLoginViewController *loginVC = [[ZXYUserLoginViewController alloc] initWithNibName:nibName bundle:nil];
+       [self.navigationController pushViewController:loginVC animated:YES];
+   }
 }
 
 #pragma mark - 三个按钮
@@ -524,5 +538,10 @@ typedef enum
     {
         return;
     }
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 @end

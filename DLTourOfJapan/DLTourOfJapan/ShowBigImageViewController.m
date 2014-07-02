@@ -210,6 +210,9 @@
     [self performSelectorOnMainThread:@selector(saveFinish) withObject:nil waitUntilDone:YES];
 }
 
-
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 @end

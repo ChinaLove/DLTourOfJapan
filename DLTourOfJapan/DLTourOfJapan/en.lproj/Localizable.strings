@@ -14,11 +14,17 @@
 "Certain" = "确定";
 "Cancel"  = "取消";
 "TitleOne"= "提示";
-
 "AppDelegate_NetConnect" = "网络没有连接,请链接网络！";
-
+"NONEmail" = "请填写邮箱";
+"NONPassword" = "请填写密码";
+"NONSameOfTwoPass" = "两次输入的密码不一致";
+"NONEmailFormat"   = "请输入正确的邮箱地址";
+"RepeatEmail"      = "注册失败，该邮箱已经被注册过";
 // !!!:HUD progress
 "HUD_CheckUpdate" = "正在检查更新，请稍后...";
+"HUD_Regist"      = "正在提交请等待...";
+"HUD_RegistSuccess" = "注册成功...";
+
 
 // !!!:PlaceDetailViewController
 "PlaceD_ConnectPhone" = "联系电话：";
@@ -35,4 +41,12 @@
 // !!!:会员
 "vip_collect"         = "我的收藏";
 "vip_login"           = "会员登录";
+"vip_regist"           = "会员注册";
 "vip_setting"         = "设置";
+"vip_loginBtn"        = "登  录";
+"vip_registerBtn"        = "注  册";
+"vip_password"        = "密   码";
+"vip_email"           = "邮   箱";
+"vip_passConfirm"     = "确认密码";
+// !!!:公共
+"public_finish"       = "完成";

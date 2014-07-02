@@ -18,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.netHelper = [ZXYNETHelper sharedSelf];
+    
     if(![ZXYNETHelper isNETConnect])
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TitleOne", nil) message:NSLocalizedString(@"AppDelegate_NetConnect", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Certain", nil), nil];
@@ -32,6 +33,7 @@
     // Override point for customization after application launch.
     ZXYMainViewController *mainView = [[ZXYMainViewController alloc] initWithNibName:@"ZXYMainViewController" bundle:nil];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:mainView];
+    
     mainView.navigationController.navigationBarHidden = YES;
     self.window.rootViewController = navi;
     self.window.backgroundColor = [UIColor whiteColor];
@@ -39,6 +41,8 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

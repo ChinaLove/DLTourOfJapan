@@ -226,4 +226,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:PlaceNotification object:nil];
     
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 @end

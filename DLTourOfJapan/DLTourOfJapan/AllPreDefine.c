@@ -24,7 +24,8 @@
  */
 // !!!:以下是一些配置颜色
 #define MainViewLblColor [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1]/**< 首页、地点、优惠标签按下的颜色 */
-
+#define vip_loginBtnColor [UIColor colorWithRed:57/255.0 green:102/255.0 blue:174/255.0 alpha:1]/**< 会员登录按钮的颜色*/
+#define vip_loginBtnColorD [UIColor colorWithRed:0/255.0 green:76/255.0 blue:174/255.0 alpha:1]/**< 会员登录按钮的颜色
 
 /**
  * 以下是关于用户的全局常量
@@ -49,3 +50,4 @@
 
 #define URL_Host @"http://115.29.46.22:81/dalian100/"/** < host */
 #define URL_GetData @"http://115.29.46.22:81/dalian100/index.php/InterFace/get_datas"/** <取得商家数据 */
+#define URL_Inner  @"http://115.29.46.22:81/dalian100/index.php/InterFace/dealWithEvent?"/** <注册使用 */
