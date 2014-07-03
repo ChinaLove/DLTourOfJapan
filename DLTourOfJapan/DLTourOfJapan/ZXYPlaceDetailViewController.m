@@ -450,6 +450,10 @@
     detailTextView.font = [UIFont systemFontOfSize:14];
     detailTextView.text = string;
     CGSize deSize = [detailTextView sizeThatFits:CGSizeMake(306,CGFLOAT_MAX)];
+    if(deSize.height<78)
+    {
+        return 78;
+    }
     return deSize.height;
 }
 

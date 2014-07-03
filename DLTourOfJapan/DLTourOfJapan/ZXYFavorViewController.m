@@ -33,7 +33,7 @@
     [self startLoadData];
     freshView = [[SRRefreshView alloc] init];
     freshView.delegate = self;
-    //freshView.upInset = 44;
+    freshView.upInset = 0;
     freshView.slimeMissWhenGoingBack = YES;
     freshView.slime.bodyColor = [UIColor blackColor];
     freshView.slime.skinColor = [UIColor whiteColor];
@@ -100,9 +100,10 @@
 
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
-    [freshView performSelector:@selector(endRefresh)
-                     withObject:nil afterDelay:3
-                        inModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
+//    [freshView performSelector:@selector(startLoadData)
+//                     withObject:nil afterDelay:3
+//                        inModes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+    [self startLoadData];
 }
 
 - (void)startLoadData
@@ -113,6 +114,7 @@
     operation.responseSerializer = [AFHTTPResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",operation.responseString);
+        [freshView endRefresh];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error is %@",error);
     }];
