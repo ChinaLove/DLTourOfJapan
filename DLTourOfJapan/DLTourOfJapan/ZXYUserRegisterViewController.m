@@ -261,6 +261,13 @@
         return NO;
     }
     
+    if(self.passwordText.text.length < 6 || self.confirmPassText.text.length < 6)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:NSLocalizedString(@"LessThanSix", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Certain", nil) otherButtonTitles:nil, nil];
+        [alert show];
+        return NO;
+    }
+    
     if(![self.passwordText.text isEqualToString:self.confirmPassText.text])
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:NSLocalizedString(@"NONSameOfTwoPass", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Certain", nil) otherButtonTitles:nil, nil];

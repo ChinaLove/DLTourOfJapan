@@ -15,4 +15,26 @@
     NSString *xmlString = [fromString substringWithRange:range];
     return xmlString;
 }
+
++ (BOOL)isUserLogin
+{
+    ZXYProvider *provider = [[ZXYProvider alloc] init];
+    NSArray *userArr = [provider readCoreDataFromDB:@"UserInfo"];
+    if(userArr.count > 0)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
++ (void)loginOut
+{
+    ZXYProvider *provider = [[ZXYProvider alloc] init];
+    [provider deleteCoreDataFromDB:@"UserInfo"];
+    [provider deleteCoreDataFromDB:@"Favorite"];
+    [provider updateDataFormCoreData:@"LocDetailInfo" withContent:@"0" andKey:@"isfavored"];
+}
 @end

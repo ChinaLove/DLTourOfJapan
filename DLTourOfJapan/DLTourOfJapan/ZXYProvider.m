@@ -310,6 +310,57 @@ static ZXYProvider *instance = nil;
     }
 
 }
+
+-(NSArray *)readCoreDataFromDB:(NSString *)dbName formatString:(NSString *)format isDes:(BOOL)isDes orderByKey:(id) stringKey,...
+{
+    NSMutableArray *paramsArr = [[NSMutableArray alloc] init];
+    va_list params;
+    va_start(params, stringKey);
+    id arg ;
+    if(stringKey)
+    {
+        id startString = stringKey;
+        [paramsArr addObject:startString];
+        while ((arg = va_arg(params, id))) {
+            if(arg)
+            {
+                [paramsArr addObject:arg];
+            }
+        }
+        va_end(params);
+    }
+    ZXYAppDelegate *app = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *manageContext = [app managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:dbName inManagedObjectContext:manageContext ];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSMutableArray *sortArr = [[NSMutableArray alloc] init];
+    if(format.length > 0)
+    {
+        NSString *stringFormatter = [NSString stringWithFormat:@"%@",format];
+        NSPredicate *predict = [NSPredicate predicateWithFormat:stringFormatter];
+        [request setPredicate:predict];
+    }
+    for(int i = 0;i<paramsArr.count;i++)
+    {
+        NSSortDescriptor *des = [NSSortDescriptor sortDescriptorWithKey:[paramsArr objectAtIndex:i] ascending:isDes];
+        [sortArr addObject:des];
+    }
+    [request setSortDescriptors:sortArr];
+    [request setEntity:entity];
+    NSError *error;
+    NSArray *resultArr = [manageContext executeFetchRequest:request error:&error];
+    if(error)
+    {
+        NSAssert(error, @"readCoreDataFromDB: error");
+        return nil;
+    }
+    else
+    {
+        return resultArr;
+    }
+
+}
+
 #pragma mark - save
 - (BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName isDelete:(BOOL)isDelete
 {
@@ -394,5 +445,63 @@ static ZXYProvider *instance = nil;
         [self saveDataToCoreData:dic withDBName:dbName isDelete:isDelete content:[dic objectForKey:key] withKey:key];
     }
     return YES;
+}
+
+#pragma mark - update
+-(BOOL)updateDataFormCoreData:(NSString *)dbName withContent:(id)content andKey:(NSString *)key
+{
+    NSArray *resultList = [self readCoreDataFromDB:dbName];
+    ZXYAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *manageContext = [delegate managedObjectContext];
+    if(resultList.count == 0)
+    {
+        NSLog(@"数据库根本就不存在这条数据");
+        return NO;
+    }
+    else
+    {
+        for(NSManagedObject *object in resultList)
+        {
+            [object setValue:content forKey:key];
+        }
+        if([manageContext save:nil])
+        {
+            return YES;
+        }
+        else
+        {
+            NSLog(@"修改数据失败 mark - update");
+            return  NO;
+        }
+    }
+}
+
+- (BOOL)updateDataFromCoreData:(NSString *)dbName withContent:(id)content andKey:(NSString *)key whereIS:(NSString *)predictString
+{
+    NSArray *resultList = [self readCoreDataFromDB:dbName formatString:predictString isDes:YES orderByKey:nil];
+    ZXYAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *manageContext = [delegate managedObjectContext];
+    if(resultList.count == 0)
+    {
+        NSLog(@"数据库根本就不存在这条数据");
+        return NO;
+    }
+    else
+    {
+        for(int i = 0;i<resultList.count;i++)
+        {
+            NSManagedObject *object = [resultList objectAtIndex:i];
+            [object setValue:content forKey:key];
+        }
+        if([manageContext save:nil])
+        {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+
 }
 @end

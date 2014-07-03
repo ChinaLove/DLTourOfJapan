@@ -31,7 +31,7 @@
 -(NSArray *)readCoreDataFromDB:(NSString *)stringName withContent:(NSString *)content andKey:(NSString *)key orderBy:(NSString *)keyOrder isDes:(BOOL)isDes;
 -(NSArray *)readCoreDataFromDB:(NSString *)stringName orderByKey:(NSString *)stringKey isDes:(BOOL)isDes;
 -(NSArray *)readCoreDataFromDB:(NSString *)stringName isDes:(BOOL)isDes orderByKey:(id) stringKey,... ;
-
+-(NSArray *)readCoreDataFromDB:(NSString *)dbName formatString:(NSString *)format isDes:(BOOL)isDes orderByKey:(id) stringKey,...;
 // !!!:增加数据
 /**
  *  增加一条数据，要保持字段与数据库一致
@@ -53,4 +53,13 @@
  */
 - (BOOL)saveDataToCoreDataArr:(NSArray *)arr withDBNam:(NSString *)dbName isDelete:(BOOL)isDelete groupByKey:(NSString *)key;
 
+// !!!:修改数据
+/**
+ *  修改一组数据
+ */
+- (BOOL)updateDataFormCoreData:(NSString *)dbName withContent:(id)content andKey:(NSString *)key;
+/**
+ *  根据条件修改一条数据
+ */
+- (BOOL)updateDataFromCoreData:(NSString *)dbName withContent:(id)content andKey:(NSString *)key whereIS:(NSString *)predictString;
 @end

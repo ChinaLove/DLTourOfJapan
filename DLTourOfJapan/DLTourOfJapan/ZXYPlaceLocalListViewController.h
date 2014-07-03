@@ -11,5 +11,6 @@
 @interface ZXYPlaceLocalListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 - (id)initWIthLocType:(NSString *)locType;
+- (id)initWithFav;
 @property (weak, nonatomic) IBOutlet UILabel *titleLbl;
 @end

@@ -55,6 +55,11 @@ static FMDatabase *db;
 
 + (void)putDataToCoreData
 {
+    ZXYProvider *provider = [[ZXYProvider alloc] init];
+    if([provider readCoreDataFromDB:@"LocDetailInfo"].count >0)
+    {
+        return;
+    }
     [self putLocDetailInfoToCoreData];
 }
 

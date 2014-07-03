@@ -134,6 +134,14 @@
 		8B6FA8EC1963FB7500E6723E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6FA8EB1963FB7500E6723E /* libxml2.dylib */; };
 		8B6FA8EE1963FB8200E6723E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6FA8ED1963FB8200E6723E /* libxml2.2.dylib */; };
 		8B6FA8F1196400C700E6723E /* ZXYTourOfJapanHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FA8F0196400C700E6723E /* ZXYTourOfJapanHelper.m */; };
+		8B81B5101965283400C8C588 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B50F1965283400C8C588 /* UserInfo.m */; };
+		8B81B5161965320300C8C588 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B5151965320300C8C588 /* Favorite.m */; };
+		8B81B51A1965400100C8C588 /* ZXYUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B5181965400100C8C588 /* ZXYUserInfoViewController.m */; };
+		8B81B51B1965400100C8C588 /* ZXYUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B81B5191965400100C8C588 /* ZXYUserInfoViewController.xib */; };
+		8B81B51D1965403D00C8C588 /* ZXYUserInfoViewController_iphone4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B81B51C1965403D00C8C588 /* ZXYUserInfoViewController_iphone4.xib */; };
+		8B81B521196546AE00C8C588 /* ZXYUserChangePass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B51F196546AE00C8C588 /* ZXYUserChangePass.m */; };
+		8B81B522196546AE00C8C588 /* ZXYUserChangePass.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B81B520196546AE00C8C588 /* ZXYUserChangePass.xib */; };
+		8B81B524196546C600C8C588 /* ZXYUserChangePass_iphone4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B81B523196546C600C8C588 /* ZXYUserChangePass_iphone4.xib */; };
 		8B8C8AAB19512D310066EAAB /* UIImage+LCYResize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8C8AAA19512D310066EAAB /* UIImage+LCYResize.m */; };
 		8B8C8ABA19512D650066EAAB /* placePage_hotel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B8C8AAC19512D650066EAAB /* placePage_hotel@2x.png */; };
 		8B8C8ABB19512D650066EAAB /* placePage_ refectory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B8C8AAD19512D650066EAAB /* placePage_ refectory@2x.png */; };
@@ -580,6 +588,18 @@
 		8B6FA8ED1963FB8200E6723E /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		8B6FA8EF196400C700E6723E /* ZXYTourOfJapanHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYTourOfJapanHelper.h; sourceTree = "<group>"; };
 		8B6FA8F0196400C700E6723E /* ZXYTourOfJapanHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYTourOfJapanHelper.m; sourceTree = "<group>"; };
+		8B81B50E1965283400C8C588 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		8B81B50F1965283400C8C588 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		8B81B5141965320300C8C588 /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Favorite.h; path = ../Favorite.h; sourceTree = "<group>"; };
+		8B81B5151965320300C8C588 /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Favorite.m; path = ../Favorite.m; sourceTree = "<group>"; };
+		8B81B5171965400100C8C588 /* ZXYUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYUserInfoViewController.h; sourceTree = "<group>"; };
+		8B81B5181965400100C8C588 /* ZXYUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYUserInfoViewController.m; sourceTree = "<group>"; };
+		8B81B5191965400100C8C588 /* ZXYUserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYUserInfoViewController.xib; sourceTree = "<group>"; };
+		8B81B51C1965403D00C8C588 /* ZXYUserInfoViewController_iphone4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYUserInfoViewController_iphone4.xib; sourceTree = "<group>"; };
+		8B81B51E196546AE00C8C588 /* ZXYUserChangePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYUserChangePass.h; sourceTree = "<group>"; };
+		8B81B51F196546AE00C8C588 /* ZXYUserChangePass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYUserChangePass.m; sourceTree = "<group>"; };
+		8B81B520196546AE00C8C588 /* ZXYUserChangePass.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYUserChangePass.xib; sourceTree = "<group>"; };
+		8B81B523196546C600C8C588 /* ZXYUserChangePass_iphone4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYUserChangePass_iphone4.xib; sourceTree = "<group>"; };
 		8B8C8AA919512D310066EAAB /* UIImage+LCYResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LCYResize.h"; sourceTree = "<group>"; };
 		8B8C8AAA19512D310066EAAB /* UIImage+LCYResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LCYResize.m"; sourceTree = "<group>"; };
 		8B8C8AAC19512D650066EAAB /* placePage_hotel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_hotel@2x.png"; sourceTree = "<group>"; };
@@ -1130,6 +1150,14 @@
 				8B6FA8B81963C63600E6723E /* ZXYUserRegisterViewController.m */,
 				8B6FA8B91963C63600E6723E /* ZXYUserRegisterViewController.xib */,
 				8B6FA8BE1963D8E300E6723E /* ZXYUserRegisterViewController_iPhone4.xib */,
+				8B81B5171965400100C8C588 /* ZXYUserInfoViewController.h */,
+				8B81B5181965400100C8C588 /* ZXYUserInfoViewController.m */,
+				8B81B5191965400100C8C588 /* ZXYUserInfoViewController.xib */,
+				8B81B51C1965403D00C8C588 /* ZXYUserInfoViewController_iphone4.xib */,
+				8B81B51E196546AE00C8C588 /* ZXYUserChangePass.h */,
+				8B81B51F196546AE00C8C588 /* ZXYUserChangePass.m */,
+				8B81B520196546AE00C8C588 /* ZXYUserChangePass.xib */,
+				8B81B523196546C600C8C588 /* ZXYUserChangePass_iphone4.xib */,
 			);
 			name = UserInfo;
 			sourceTree = "<group>";
@@ -1584,10 +1612,14 @@
 				8B8C8AC9195161480066EAAB /* DataBase */,
 				8BB795A3195029120023986A /* ZXYProvider.h */,
 				8BB795A4195029120023986A /* ZXYProvider.m */,
+				8B81B50E1965283400C8C588 /* UserInfo.h */,
+				8B81B50F1965283400C8C588 /* UserInfo.m */,
 				8BB7959F195028DC0023986A /* Advertise.h */,
 				8BB795A0195028DC0023986A /* Advertise.m */,
 				8B1C6C201952A6CD00871C6A /* LocDetailInfo.h */,
 				8B1C6C211952A6CD00871C6A /* LocDetailInfo.m */,
+				8B81B5141965320300C8C588 /* Favorite.h */,
+				8B81B5151965320300C8C588 /* Favorite.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1680,6 +1712,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B81B524196546C600C8C588 /* ZXYUserChangePass_iphone4.xib in Resources */,
 				8B8C8C5C19518C3C0066EAAB /* dl05000009.jpg in Resources */,
 				8B8C8BE719518C3C0066EAAB /* dl01000006.jpg in Resources */,
 				8B8C8C6F19518C3C0066EAAB /* dl07000006.jpg in Resources */,
@@ -1795,6 +1828,7 @@
 				8B8C8C3E19518C3C0066EAAB /* dl04000025.jpg in Resources */,
 				8B8C8C2919518C3C0066EAAB /* dl04000004.jpg in Resources */,
 				8B4DB9E3195A4CA600B077DD /* vip_collectD@2x.png in Resources */,
+				8B81B51B1965400100C8C588 /* ZXYUserInfoViewController.xib in Resources */,
 				8B8C8BD319518C3C0066EAAB /* dl02000055.jpg in Resources */,
 				8B8C8C3519518C3C0066EAAB /* dl04000016.jpg in Resources */,
 				8B8C8BEC19518C3C0066EAAB /* dl01000011.jpg in Resources */,
@@ -1846,6 +1880,7 @@
 				8B8C8C3719518C3C0066EAAB /* dl04000018.jpg in Resources */,
 				8B8C8ABF19512D650066EAAB /* placePage_tour@2x.png in Resources */,
 				8B8C8C2819518C3C0066EAAB /* dl04000003.jpg in Resources */,
+				8B81B51D1965403D00C8C588 /* ZXYUserInfoViewController_iphone4.xib in Resources */,
 				8B8C8C2019518C3C0066EAAB /* dl03000012.jpg in Resources */,
 				8B8C8C2319518C3C0066EAAB /* dl03000015.jpg in Resources */,
 				8B8C8C5D19518C3C0066EAAB /* dl05000010.jpg in Resources */,
@@ -1927,6 +1962,7 @@
 				8B6FA8BB1963C63600E6723E /* ZXYUserRegisterViewController.xib in Resources */,
 				8B8C8C5B19518C3C0066EAAB /* dl05000008.jpg in Resources */,
 				8B8C8BBB19518C3C0066EAAB /* dl02000031.jpg in Resources */,
+				8B81B522196546AE00C8C588 /* ZXYUserChangePass.xib in Resources */,
 				8B8C8AC019512D650066EAAB /* placePage_bath@2x.png in Resources */,
 				8B6FA8BF1963D8E300E6723E /* ZXYUserRegisterViewController_iPhone4.xib in Resources */,
 				8B8C8BE219518C3C0066EAAB /* dl01000001.jpg in Resources */,
@@ -1988,6 +2024,7 @@
 				8BB79599195013330023986A /* ZXYNETHelper.m in Sources */,
 				8B0B8BD6194E893200EC79DC /* ZXYAppDelegate.m in Sources */,
 				8BB7958C195012700023986A /* ZXYPlaceViewController.m in Sources */,
+				8B81B51A1965400100C8C588 /* ZXYUserInfoViewController.m in Sources */,
 				8B8C8ADE195176520066EAAB /* FMDatabaseAdditions.m in Sources */,
 				8B0B8C43194EA0CA00EC79DC /* AFURLSessionManager.m in Sources */,
 				8B0B8C21194EA0C500EC79DC /* UIAlertView+AFNetworking.m in Sources */,
@@ -2005,7 +2042,9 @@
 				8B0B8C3E194EA0CA00EC79DC /* AFNetworkReachabilityManager.m in Sources */,
 				8B0B8C24194EA0C500EC79DC /* UIProgressView+AFNetworking.m in Sources */,
 				8B0B8BFD194E8E4900EC79DC /* AllPreDefine.c in Sources */,
+				8B81B521196546AE00C8C588 /* ZXYUserChangePass.m in Sources */,
 				8B1C6C271952CB7700871C6A /* ZXYPlaceLocalListViewController.m in Sources */,
+				8B81B5161965320300C8C588 /* Favorite.m in Sources */,
 				8BB795AE195038280023986A /* ZXYFileOperation.m in Sources */,
 				8B0B8C5F194EB35900EC79DC /* ZXYMainViewController.m in Sources */,
 				8B0B8C3F194EA0CA00EC79DC /* AFSecurityPolicy.m in Sources */,
@@ -2025,6 +2064,7 @@
 				8B8C8AE1195176520066EAAB /* FMResultSet.m in Sources */,
 				8B0B8C26194EA0C500EC79DC /* UIWebView+AFNetworking.m in Sources */,
 				8B8C8AAB19512D310066EAAB /* UIImage+LCYResize.m in Sources */,
+				8B81B5101965283400C8C588 /* UserInfo.m in Sources */,
 				8B6FA8E81963FB4E00E6723E /* CXMLNode_PrivateExtensions.m in Sources */,
 				8B0B8C22194EA0C500EC79DC /* UIButton+AFNetworking.m in Sources */,
 				8B6FA8E71963FB4E00E6723E /* CXMLNode.m in Sources */,

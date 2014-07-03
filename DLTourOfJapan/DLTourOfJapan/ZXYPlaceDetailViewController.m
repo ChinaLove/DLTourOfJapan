@@ -12,6 +12,9 @@
 #import "ZXYPageDetailInfoCell.h"
 #import "ZXYPageDetailInfoBtnCell.h"
 #import "ShowBigImageViewController.h"
+#import "UserInfo.h"
+#import "MBProgressHUD.h"
+#import "ZXYUserLoginViewController.h"
 
 @interface ZXYPlaceDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -22,6 +25,7 @@
     __weak IBOutlet UIImageView *collectImage;
     UIImageView *headOfThis;
     BOOL isLongText;
+    MBProgressHUD *progress;
 }
 @property (strong, nonatomic) IBOutlet UIView *showImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *showImageScroll;
@@ -53,6 +57,92 @@
     self.showImageView.frame = CGRectMake(0, 0, 0, 0);
     [self.view addSubview:self.showImageView];
     self.showImageScroll.zoomScale = 2;
+    UITapGestureRecognizer *tapGe = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userSelectOrNot)];
+    [collectImage addGestureRecognizer:tapGe];
+    [collectImage setUserInteractionEnabled:YES];
+    progress = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:progress];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if([currentLocDetail.isfavored isEqualToString:@"1"])
+    {
+        collectImage.image = [UIImage imageNamed:@"placePage_collectionNo"];
+    }
+    else
+    {
+        collectImage.image = [UIImage imageNamed:@"placePage_collectionYes"];
+    }
+
+}
+
+- (void)userSelectOrNot
+{
+    if(![ZXYNETHelper isNETConnect])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:NSLocalizedString(@"AppDelegate_NetConnect", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Certain", nil) otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    NSString *nibName ;
+    NSString *loginNibName;
+    if(iPhone5)
+    {
+        nibName = @"ZXYUserLoginViewController_Iphone5";
+        loginNibName = @"ZXYUserInfoViewController";
+    }
+    else
+    {
+        nibName = @"ZXYUserLoginViewController";
+        loginNibName = @"ZXYUserInfoViewController_iphone4";
+    }
+    if(![ZXYTourOfJapanHelper isUserLogin])
+    {
+        ZXYUserLoginViewController *loginVC = [[ZXYUserLoginViewController alloc] initWithNibName:nibName bundle:nil];
+        [self.navigationController pushViewController:loginVC animated:YES];
+        return;
+    }
+
+    
+    NSString *urlString;
+    [progress show:YES];
+    ZXYProvider *dataProvider = [[ZXYProvider alloc] init];
+    UserInfo *userInfo = [[dataProvider readCoreDataFromDB:@"UserInfo"] objectAtIndex:0];
+    if([currentLocDetail.isfavored isEqualToString:@"1"])
+    {
+        urlString = [NSString stringWithFormat:@"%@service=Favourites&method=dropFavourites&iduser=%d&idobject=%@",URL_Inner,[userInfo.userID intValue],currentLocDetail.cid];
+        collectImage.image = [UIImage imageNamed:@"placePage_collectionYes"];
+        NSString *formatterString = [NSString stringWithFormat:@"cid=='%@'",currentLocDetail.cid];
+        [dataProvider updateDataFromCoreData:@"LocDetailInfo" withContent:@"0" andKey:@"isfavored" whereIS:formatterString];
+        [dataProvider deleteCoreDataFromDB:@"Favorite" withContent:currentLocDetail.cid byKey:@"favoriteID"];
+    }
+    else
+    {
+        urlString = [NSString stringWithFormat:@"%@service=Favourites&method=addFavourites&iduser=%d&idobject=%@",URL_Inner,[userInfo.userID intValue],currentLocDetail.cid];
+        NSString *formatterString = [NSString stringWithFormat:@"cid=='%@'",currentLocDetail.cid];
+        collectImage.image = [UIImage imageNamed:@"placePage_collectionNo"];
+        [dataProvider updateDataFromCoreData:@"LocDetailInfo" withContent:@"1" andKey:@"isfavored" whereIS:formatterString];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:currentLocDetail.cid forKey:@"favoriteID"];
+        [dic setObject:currentLocDetail.loctype forKey:@"favoriteType"];
+        [dic setObject:currentLocDetail.locname forKey:@"favoriteName"];
+        [dataProvider saveDataToCoreData:dic withDBName:@"Favorite" isDelete:NO];
+    }
+    NSURLRequest *reuqest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    AFHTTPRequestOperation *ope = [[AFHTTPRequestOperation alloc] initWithRequest:reuqest];
+    ope.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [ope setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"## %@",[operation responseString]);
+        [progress hide:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error is %@",error);
+        [progress hide:YES];
+    }];
+    [ope start];
+
 }
 
 - (void)didReceiveMemoryWarning

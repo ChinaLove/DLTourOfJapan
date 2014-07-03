@@ -9,6 +9,7 @@
                 <outlet property="businessLbl" destination="sN5-C9-aaO" id="cuI-30-B2K"/>
                 <outlet property="distanceLbl" destination="kFd-u2-6bn" id="tdZ-wA-bkE"/>
                 <outlet property="listTable" destination="HCr-P5-eUt" id="Y5x-Lb-dYY"/>
+                <outlet property="searchButton" destination="Uwr-eg-KNT" id="AEX-Z4-07H"/>
                 <outlet property="searchView" destination="GaH-VV-tZD" id="w1d-Fw-qOq"/>
                 <outlet property="titleLbl" destination="ja6-7y-URC" id="SNg-0v-HUv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

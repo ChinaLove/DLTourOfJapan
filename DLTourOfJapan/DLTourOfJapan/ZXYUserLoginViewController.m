@@ -8,11 +8,15 @@
 
 #import "ZXYUserLoginViewController.h"
 #import "ZXYUserRegisterViewController.h"
+#import "UserInfo.h"
+#import "MBProgressHUD.h"
 
 @interface ZXYUserLoginViewController ()<UITextFieldDelegate>
 {
     UIToolbar *topBar;
     __weak IBOutlet UIImageView *backImage;
+    ZXYProvider *dataProvider;
+    MBProgressHUD *progress;
 }
 
 - (IBAction)backView:(id)sender;
@@ -36,6 +40,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        dataProvider = [ZXYProvider sharedInstance];
     }
     return self;
 }
@@ -46,6 +51,8 @@
     self.titleLabel.text = NSLocalizedString(@"vip_login", nil);
     [self initColor];
     [self initTopBar];
+    progress = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:progress];
 }
 
 - (void)initTopBar
@@ -112,6 +119,7 @@
     if([self validateText])
     {
         NSLog(@"ok!");
+        [progress show:YES];
         NSString *urlAsString = [NSString stringWithFormat:@"%@service=UserManager&method=storeAndviewUser&useremail=%@&userpass=%@"
                                  ,URL_Inner,self.emailText.text,self.secureText.text];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlAsString]];
@@ -119,7 +127,19 @@
         opertation.responseSerializer = [AFHTTPResponseSerializer serializer];
         [opertation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
         {
-            NSLog(@"%@",[operation responseString]);
+            if([operation responseString].length == 0)
+            {   [progress hide:YES];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:NSLocalizedString(@"WrongPassword", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Certain", nil) otherButtonTitles:nil, nil];
+                [alert show];
+                return ;
+            }
+            else
+            {
+                NSLog(@"%@",[operation responseString]);
+                NSString *xmlString = [ZXYTourOfJapanHelper toMyXML:[operation responseString]];
+                [self xmlFromString:xmlString];
+                [self downFavoriteList];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error is %@",error);
         }];
@@ -129,6 +149,99 @@
     {
         return;
     }
+}
+
+- (void)downFavoriteList
+{
+    NSArray *allUsers = [dataProvider readCoreDataFromDB:@"UserInfo"];
+    if(allUsers.count)
+    {
+        UserInfo *userInfo = [allUsers objectAtIndex:0];
+        NSString *stringURL = [NSString stringWithFormat:@"%@service=FavouritesList&method=viewFavourites&iduser=%d",URL_Inner,userInfo.userID.intValue];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:stringURL]];
+        AFHTTPRequestOperation *ope = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        ope.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [ope setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",operation.responseString);
+            if(operation.responseString.length == 0)
+            {
+                [progress hide:YES];
+                return ;
+            }
+            else
+            {
+                NSString *xmlString = [ZXYTourOfJapanHelper toMyXML:operation.responseString];
+                [self xmlForFav:xmlString];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+            [progress hide:YES];
+        }];
+        [ope start];
+    }
+}
+
+- (void)xmlForFav:(NSString *)xmlString
+{
+    NSMutableArray *allFavoList = [[NSMutableArray alloc] init];
+    CXMLDocument *document = [[CXMLDocument alloc] initWithData:[xmlString dataUsingEncoding:NSUTF8StringEncoding] encoding:NSUTF8StringEncoding options:0 error:nil];
+    CXMLElement *rootElement = document.rootElement;
+    NSArray *allChild        = rootElement.children;
+    for(CXMLElement *element in allChild)
+    {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        if([element isKindOfClass:[CXMLElement class]]&&[element.name isEqualToString:@"favouriteslist"])
+        {
+            for(CXMLElement *childElement in element.children)
+            {
+                if([childElement isKindOfClass:[CXMLElement class]])
+                {
+                    if([childElement.name isEqualToString:@"idobject"])
+                    {
+                        [dic setObject:childElement.stringValue forKey:@"favoriteID"];
+                        NSString *stringFormatter = [NSString stringWithFormat:@"cid=='%@'",childElement.stringValue];
+                        [dataProvider updateDataFromCoreData:@"LocDetailInfo" withContent:@"1" andKey:@"isfavored" whereIS:stringFormatter];
+                    }
+                    if([childElement.name isEqualToString:@"idobjtype"])
+                    {
+                        [dic setObject:childElement.stringValue forKey:@"favoriteType"];
+                    }
+                    if([childElement.name isEqualToString:@"strestnationalname"])
+                    {
+                        [dic setObject:childElement.stringValue forKey:@"favoriteName"];
+                    }
+                }
+            }
+            [allFavoList addObject:dic];
+        }
+    }
+    [dataProvider saveDataToCoreDataArr:allFavoList withDBNam:@"Favorite" isDelete:YES];
+    [progress hide:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)xmlFromString:(NSString *)xmlString
+{
+    CXMLDocument *document = [[CXMLDocument alloc] initWithData:[xmlString dataUsingEncoding:NSUTF8StringEncoding] encoding:NSUTF8StringEncoding options:0 error:nil];
+    CXMLElement *rootElement = document.rootElement;
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    for(CXMLElement *element in rootElement.children)
+    {
+        if([element isKindOfClass:[CXMLElement class]])
+        {
+            if([element.name isEqualToString:@"id"])
+            {
+                NSString *userID = element.stringValue;
+                [dic setObject:userID forKey:@"userID"];
+            }
+            else if ([element.name isEqualToString:@"mail"])
+            {
+                NSString *userEmail = element.stringValue;
+                [dic setObject:userEmail forKey:@"userEmail"];
+            }
+        }
+    }
+    [dataProvider saveDataToCoreData:dic withDBName:@"UserInfo" isDelete:YES];
 }
 
 - (BOOL)validateText

@@ -29,6 +29,8 @@ typedef enum
 #import "ZXYPlaceDetailViewController.h"
 #import "ZXYUserInfoTableViewCell.h"
 #import "ZXYUserLoginViewController.h"
+#import "ZXYUserInfoViewController.h"
+#import "ZXYPlaceLocalListViewController.h"
 @interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *allBtnS;   /** < 用来保存三个标签按钮 */
@@ -363,18 +365,55 @@ typedef enum
 {
    if(indexPath.row == 1)
    {
+       [self userInfo:nil];
        NSString *nibName ;
+       NSString *loginNibName;
        if(iPhone5)
        {
            nibName = @"ZXYUserLoginViewController_Iphone5";
+           loginNibName = @"ZXYUserInfoViewController";
        }
        else
        {
            nibName = @"ZXYUserLoginViewController";
+           loginNibName = @"ZXYUserInfoViewController_iphone4";
        }
-       ZXYUserLoginViewController *loginVC = [[ZXYUserLoginViewController alloc] initWithNibName:nibName bundle:nil];
-       [self.navigationController pushViewController:loginVC animated:YES];
+       if([ZXYTourOfJapanHelper isUserLogin])
+       {
+           ZXYUserInfoViewController *userInfo = [[ZXYUserInfoViewController alloc] initWithNibName:loginNibName bundle:nil];
+           [self.navigationController pushViewController:userInfo animated:YES];
+       }
+       else
+       {
+           ZXYUserLoginViewController *loginVC = [[ZXYUserLoginViewController alloc] initWithNibName:nibName bundle:nil];
+           [self.navigationController pushViewController:loginVC animated:YES];
+       }
    }
+    else if (indexPath.row == 0)
+    {
+        NSString *nibName ;
+        NSString *loginNibName;
+        if(iPhone5)
+        {
+            nibName = @"ZXYUserLoginViewController_Iphone5";
+            loginNibName = @"ZXYUserInfoViewController";
+        }
+        else
+        {
+            nibName = @"ZXYUserLoginViewController";
+            loginNibName = @"ZXYUserInfoViewController_iphone4";
+        }
+        if(![ZXYTourOfJapanHelper isUserLogin])
+        {
+            ZXYUserLoginViewController *loginVC = [[ZXYUserLoginViewController alloc] initWithNibName:nibName bundle:nil];
+            [self.navigationController pushViewController:loginVC animated:YES];
+            [self userInfo:nil];
+            return;
+        }
+        ZXYPlaceLocalListViewController *placeLocalList = [[ZXYPlaceLocalListViewController alloc] initWithFav];
+        [self.navigationController pushViewController:placeLocalList animated:YES];
+        [self userInfo:nil];
+    }
 }
 
 #pragma mark - 三个按钮

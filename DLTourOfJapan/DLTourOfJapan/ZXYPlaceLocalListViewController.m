@@ -22,6 +22,7 @@
     ZXYFileOperation *fileOperation;
     ZXYNETHelper     *netHelper;
     __weak IBOutlet UILabel *distanceLbl;
+    __weak IBOutlet UIButton *searchButton;
     
     __weak IBOutlet UILabel *businessLbl;
     
@@ -50,15 +51,50 @@
     return self;
 }
 
+- (id)initWithFav
+{
+    if(self = [super initWithNibName:@"ZXYPlaceLocalListViewController" bundle:nil])
+    {
+        currentLocType = @"10001";
+        dataProvider = [ZXYProvider sharedInstance];
+        arrForShow     = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:@"1" andKey:@"isfavored"] ];
+        fileOperation = [ZXYFileOperation sharedSelf];
+        //ZXYAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        netHelper = [[ZXYNETHelper alloc] init];
+        NSNotificationCenter *datatnc = [NSNotificationCenter defaultCenter];
+        [datatnc addObserver:self selector:@selector(reloadDataMethod) name:PlaceNotification object:nil];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     distanceLbl.text = NSLocalizedString(@"PlacePage_Distance", nil);
     businessLbl.text = NSLocalizedString(@"PlacePage_OpeningHour", nil);
-    [listTable setTableHeaderView:searchView];
     self.titleLbl.text = self.title;
+    if(![currentLocType isEqualToString:@"10001"])
+    {
+        [listTable setTableHeaderView:searchView];
+        
+    }
+    else
+    {
+        self.titleLbl.text = NSLocalizedString(@"PlacePage_favor", nil);
+        [searchButton setHidden:YES];
+    }
+    
     listTable.scrollsToTop = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if([currentLocType isEqualToString:@"10001"])
+    {
+        arrForShow     = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:@"1" andKey:@"isfavored"] ];
+        [listTable reloadData];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

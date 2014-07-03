@@ -20,6 +20,12 @@
 "NONSameOfTwoPass" = "两次输入的密码不一致";
 "NONEmailFormat"   = "请输入正确的邮箱地址";
 "RepeatEmail"      = "注册失败，该邮箱已经被注册过";
+"WrongPassword"    = "账号或密码错误";
+"NONOriginPass"    = "请填写原始密码";
+"NONNewPass"       = "请填写写密码";
+"LessThanSix"      = "密码个数不能少于六位";
+"ChangeFail"       = "密码修改失败";
+"ChangeSuccess"    = "密码修改成功";
 // !!!:HUD progress
 "HUD_Regist"      = "正在提交请等待...";
 "HUD_CheckUpdate" = "正在检查更新，请稍后...";
@@ -35,6 +41,7 @@
 // !!!:PlacePage
 "PlacePage_Distance"  = "距离"     ;
 "PlacePage_OpeningHour" = "营业时间";
+"PlacePage_favor"     = "我收藏的";
 // !!!:会员
 "vip_collect"         = "我的收藏";
 "vip_login"           = "会员登录";
@@ -45,7 +52,10 @@
 "vip_password"        = "密   码";
 "vip_email"           = "邮   箱";
 "vip_passConfirm"     = "确认密码";
-
-
+"vip_info"            = "会员信息";
+"vip_changePass"      = "修改密码";
+"vip_logOut"          = "退出登录";
+"vip_oriPass"         = "原始密码";
+"vip_newPass"         = "新 密 码";
 // !!!:公共
 "public_finish"       = "完成";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Ad_Info" representedClassName="Ad_Info" syncable="YES">
         <attribute name="adimgname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cid" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,15 +16,10 @@
         <attribute name="star" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Favorable" representedClassName="Favorable" syncable="YES">
-        <attribute name="idobjtype" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imagepath" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="locname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="locpy" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="locyh" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="strestnametaxi" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sttelephone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Favorite" representedClassName="Favorite" syncable="YES">
+        <attribute name="favoriteID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="favoriteName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="favoriteType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Locdetail" representedClassName="Locdetail" syncable="YES">
         <attribute name="isfavored" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -93,15 +88,20 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ver_date" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="UserInfo" representedClassName="UserInfo" syncable="YES">
+        <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Ad_Info" positionX="0" positionY="45" width="128" height="90"/>
         <element name="Advertise" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="Comment" positionX="-54" positionY="18" width="128" height="105"/>
-        <element name="Favorable" positionX="-36" positionY="27" width="128" height="165"/>
         <element name="Locdetail" positionX="-18" positionY="36" width="128" height="180"/>
         <element name="LocDetailInfo" positionX="18" positionY="63" width="128" height="615"/>
         <element name="Locinfo" positionX="-9" positionY="36" width="128" height="105"/>
         <element name="Loctype" positionX="-63" positionY="9" width="128" height="90"/>
         <element name="Navi_ver_info" positionX="36" positionY="81" width="128" height="90"/>
+        <element name="UserInfo" positionX="-9" positionY="135" width="128" height="73"/>
+        <element name="Favorite" positionX="0" positionY="144" width="128" height="88"/>
     </elements>
 </model>

@@ -10,4 +10,6 @@
 
 @interface ZXYTourOfJapanHelper : NSObject
 + (NSString *)toMyXML:(NSString *)fromString;
++ (BOOL)isUserLogin;
++ (void)loginOut;
 @end
