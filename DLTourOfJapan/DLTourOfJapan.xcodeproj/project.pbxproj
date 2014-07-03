@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B001D99196590DC00ED2424 /* sr_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B001D92196590DC00ED2424 /* sr_refresh.png */; };
+		8B001D9A196590DC00ED2424 /* sr_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B001D93196590DC00ED2424 /* sr_refresh@2x.png */; };
+		8B001D9B196590DC00ED2424 /* SRSlimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B001D95196590DC00ED2424 /* SRSlimeView.m */; };
+		8B001D9C196590DC00ED2424 /* SRRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B001D97196590DC00ED2424 /* SRRefreshView.m */; };
 		8B0B8BC4194E893200EC79DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC3194E893200EC79DC /* Foundation.framework */; };
 		8B0B8BC6194E893200EC79DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC5194E893200EC79DC /* CoreGraphics.framework */; };
 		8B0B8BC8194E893200EC79DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B8BC7194E893200EC79DC /* UIKit.framework */; };
@@ -405,6 +409,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B001D92196590DC00ED2424 /* sr_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sr_refresh.png; sourceTree = "<group>"; };
+		8B001D93196590DC00ED2424 /* sr_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sr_refresh@2x.png"; sourceTree = "<group>"; };
+		8B001D94196590DC00ED2424 /* SRSlimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSlimeView.h; sourceTree = "<group>"; };
+		8B001D95196590DC00ED2424 /* SRSlimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSlimeView.m; sourceTree = "<group>"; };
+		8B001D96196590DC00ED2424 /* SRRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRefreshView.h; sourceTree = "<group>"; };
+		8B001D97196590DC00ED2424 /* SRRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRefreshView.m; sourceTree = "<group>"; };
+		8B001D98196590DC00ED2424 /* SRDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDefine.h; sourceTree = "<group>"; };
 		8B0B8BC0194E893200EC79DC /* DLTourOfJapan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLTourOfJapan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0B8BC3194E893200EC79DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B0B8BC5194E893200EC79DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -896,6 +907,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B001D91196590C600ED2424 /* SimpleRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				8B001D92196590DC00ED2424 /* sr_refresh.png */,
+				8B001D93196590DC00ED2424 /* sr_refresh@2x.png */,
+				8B001D94196590DC00ED2424 /* SRSlimeView.h */,
+				8B001D95196590DC00ED2424 /* SRSlimeView.m */,
+				8B001D96196590DC00ED2424 /* SRRefreshView.h */,
+				8B001D97196590DC00ED2424 /* SRRefreshView.m */,
+				8B001D98196590DC00ED2424 /* SRDefine.h */,
+			);
+			name = SimpleRefresh;
+			sourceTree = "<group>";
+		};
 		8B0B8BB7194E893200EC79DC = {
 			isa = PBXGroup;
 			children = (
@@ -937,6 +962,7 @@
 		8B0B8BCB194E893200EC79DC /* DLTourOfJapan */ = {
 			isa = PBXGroup;
 			children = (
+				8B001D91196590C600ED2424 /* SimpleRefresh */,
 				8B6FA8C01963FB4E00E6723E /* TouchXML */,
 				8BAB6B151952DAF300C42EED /* ZXYEvaluate */,
 				8B8C8AA819512D250066EAAB /* ImageResize */,
@@ -1743,6 +1769,7 @@
 				8B8C8C5319518C3C0066EAAB /* dl05000000.jpg in Resources */,
 				8B8C8C7119518C3C0066EAAB /* dl07000008.jpg in Resources */,
 				8B8C8BCE19518C3C0066EAAB /* dl02000050.jpg in Resources */,
+				8B001D9A196590DC00ED2424 /* sr_refresh@2x.png in Resources */,
 				8B8C8C6B19518C3C0066EAAB /* dl07000002.jpg in Resources */,
 				8B8C8BE619518C3C0066EAAB /* dl01000005.jpg in Resources */,
 				8B8C8C5219518C3C0066EAAB /* dl04000045.jpg in Resources */,
@@ -1896,6 +1923,7 @@
 				8B8C8BDD19518C3C0066EAAB /* dl02000065.jpg in Resources */,
 				8B8C8C1319518C3C0066EAAB /* dl02000022.jpg in Resources */,
 				8B8C8C3B19518C3C0066EAAB /* dl04000022.jpg in Resources */,
+				8B001D99196590DC00ED2424 /* sr_refresh.png in Resources */,
 				8B8C8C3919518C3C0066EAAB /* dl04000020.jpg in Resources */,
 				8B4C8229195825E20032363A /* placePage_arrowU@2x.png in Resources */,
 				8B8C8C0619518C3C0066EAAB /* dl02000009.jpg in Resources */,
@@ -2047,9 +2075,11 @@
 				8B81B5161965320300C8C588 /* Favorite.m in Sources */,
 				8BB795AE195038280023986A /* ZXYFileOperation.m in Sources */,
 				8B0B8C5F194EB35900EC79DC /* ZXYMainViewController.m in Sources */,
+				8B001D9B196590DC00ED2424 /* SRSlimeView.m in Sources */,
 				8B0B8C3F194EA0CA00EC79DC /* AFSecurityPolicy.m in Sources */,
 				8B51D94E1955231A00F7CD1C /* ZXYPlaceDetailViewController.m in Sources */,
 				8B0B8BD9194E893200EC79DC /* DLTourOfJapan.xcdatamodeld in Sources */,
+				8B001D9C196590DC00ED2424 /* SRRefreshView.m in Sources */,
 				8B0B8C41194EA0CA00EC79DC /* AFURLRequestSerialization.m in Sources */,
 				8B6FA8E41963FB4E00E6723E /* CXMLElement_CreationExtensions.m in Sources */,
 				8B1C6C221952A6CD00871C6A /* LocDetailInfo.m in Sources */,
