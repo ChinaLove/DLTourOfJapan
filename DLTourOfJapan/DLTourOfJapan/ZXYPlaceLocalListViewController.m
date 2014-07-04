@@ -83,8 +83,6 @@
     else
     {
         self.titleLbl.text = NSLocalizedString(@"PlacePage_favor", nil);
-        [searchButton setHidden:YES];
-        [self.searchBar setHidden:YES];
     }
     NSLog(@"all subViews %d",self.searchBar.subviews.count);
     UIView *views = [self.searchBar.subviews objectAtIndex:0];
@@ -293,10 +291,19 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    NSLog(@"text change is %@",searchText);
-    NSString *likeString = [NSString stringWithFormat:@"locname LIKE[cd] '*%@*' and loctype=%@",searchText,currentLocType];
-    arrForShow = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withLike:likeString]];
-    [listTable reloadData];
+    if(![currentLocType isEqualToString:@"10001"])
+    {
+        NSLog(@"text change is %@",searchText);
+        NSString *likeString = [NSString stringWithFormat:@"locname LIKE[cd] '*%@*' and loctype=%@",searchText,currentLocType];
+        arrForShow = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withLike:likeString]];
+        [listTable reloadData];
+    }
+    else
+    {
+        NSString *likeString = [NSString stringWithFormat:@"locname LIKE[cd] '*%@*' and isfavored=1",searchText];
+        arrForShow = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withLike:likeString]];
+        [listTable reloadData];
+    }
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
