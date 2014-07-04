@@ -138,6 +138,8 @@
 		8B6FA8EC1963FB7500E6723E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6FA8EB1963FB7500E6723E /* libxml2.dylib */; };
 		8B6FA8EE1963FB8200E6723E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6FA8ED1963FB8200E6723E /* libxml2.2.dylib */; };
 		8B6FA8F1196400C700E6723E /* ZXYTourOfJapanHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FA8F0196400C700E6723E /* ZXYTourOfJapanHelper.m */; };
+		8B76C07C19664440000EDB1C /* Discount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C07B19664440000EDB1C /* Discount.m */; };
+		8B76C08519665B5F000EDB1C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C08419665B5F000EDB1C /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8B81B5101965283400C8C588 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B50F1965283400C8C588 /* UserInfo.m */; };
 		8B81B5161965320300C8C588 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B5151965320300C8C588 /* Favorite.m */; };
 		8B81B51A1965400100C8C588 /* ZXYUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B5181965400100C8C588 /* ZXYUserInfoViewController.m */; };
@@ -379,7 +381,6 @@
 		8BB795921950129E0023986A /* ZXYFavorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB795901950129E0023986A /* ZXYFavorViewController.xib */; };
 		8BB79595195012FA0023986A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB79594195012FA0023986A /* Reachability.m */; };
 		8BB79599195013330023986A /* ZXYNETHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB79598195013330023986A /* ZXYNETHelper.m */; };
-		8BB7959E19501F390023986A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB7959D19501F390023986A /* MBProgressHUD.m */; };
 		8BB795A1195028DC0023986A /* Advertise.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795A0195028DC0023986A /* Advertise.m */; };
 		8BB795A5195029120023986A /* ZXYProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795A4195029120023986A /* ZXYProvider.m */; };
 		8BB795AE195038280023986A /* ZXYFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB795AD195038280023986A /* ZXYFileOperation.m */; };
@@ -599,6 +600,10 @@
 		8B6FA8ED1963FB8200E6723E /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		8B6FA8EF196400C700E6723E /* ZXYTourOfJapanHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYTourOfJapanHelper.h; sourceTree = "<group>"; };
 		8B6FA8F0196400C700E6723E /* ZXYTourOfJapanHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYTourOfJapanHelper.m; sourceTree = "<group>"; };
+		8B76C07A19664440000EDB1C /* Discount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Discount.h; sourceTree = "<group>"; };
+		8B76C07B19664440000EDB1C /* Discount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Discount.m; sourceTree = "<group>"; };
+		8B76C08319665B5F000EDB1C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8B76C08419665B5F000EDB1C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8B81B50E1965283400C8C588 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		8B81B50F1965283400C8C588 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		8B81B5141965320300C8C588 /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Favorite.h; path = ../Favorite.h; sourceTree = "<group>"; };
@@ -862,8 +867,6 @@
 		8BB79597195013330023986A /* ZXYNETHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYNETHelper.h; sourceTree = "<group>"; };
 		8BB79598195013330023986A /* ZXYNETHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYNETHelper.m; sourceTree = "<group>"; };
 		8BB7959A19501D390023986A /* NetHelperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetHelperDelegate.h; sourceTree = "<group>"; };
-		8BB7959C19501F390023986A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		8BB7959D19501F390023986A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8BB7959F195028DC0023986A /* Advertise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Advertise.h; sourceTree = "<group>"; };
 		8BB795A0195028DC0023986A /* Advertise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Advertise.m; sourceTree = "<group>"; };
 		8BB795A3195029120023986A /* ZXYProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYProvider.h; sourceTree = "<group>"; };
@@ -1626,8 +1629,8 @@
 		8BB7959B19501F2A0023986A /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				8BB7959C19501F390023986A /* MBProgressHUD.h */,
-				8BB7959D19501F390023986A /* MBProgressHUD.m */,
+				8B76C08319665B5F000EDB1C /* MBProgressHUD.h */,
+				8B76C08419665B5F000EDB1C /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
 			sourceTree = "<group>";
@@ -1646,6 +1649,8 @@
 				8B1C6C211952A6CD00871C6A /* LocDetailInfo.m */,
 				8B81B5141965320300C8C588 /* Favorite.h */,
 				8B81B5151965320300C8C588 /* Favorite.m */,
+				8B76C07A19664440000EDB1C /* Discount.h */,
+				8B76C07B19664440000EDB1C /* Discount.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -2048,6 +2053,7 @@
 				8BB795A5195029120023986A /* ZXYProvider.m in Sources */,
 				8B6FA8E91963FB4E00E6723E /* CXMLNode_XPathExtensions.m in Sources */,
 				8B0B8C20194EA0C500EC79DC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				8B76C08519665B5F000EDB1C /* MBProgressHUD.m in Sources */,
 				8B6FA8EA1963FB4E00E6723E /* CTidy.m in Sources */,
 				8BB79599195013330023986A /* ZXYNETHelper.m in Sources */,
 				8B0B8BD6194E893200EC79DC /* ZXYAppDelegate.m in Sources */,
@@ -2085,7 +2091,6 @@
 				8B1C6C221952A6CD00871C6A /* LocDetailInfo.m in Sources */,
 				8B0B8C25194EA0C500EC79DC /* UIRefreshControl+AFNetworking.m in Sources */,
 				8B6FA8A819639EBC00E6723E /* ZXYUserLoginViewController.m in Sources */,
-				8BB7959E19501F390023986A /* MBProgressHUD.m in Sources */,
 				8B4DB9EC195A4D5700B077DD /* ZXYUserInfoTableViewCell.m in Sources */,
 				8B51D9581955379500F7CD1C /* ZXYPageDetailInfoCell.m in Sources */,
 				8B0B8C42194EA0CA00EC79DC /* AFURLResponseSerialization.m in Sources */,
@@ -2103,6 +2108,7 @@
 				8BAB6AFC1952D74600C42EED /* ZXYPlaceListCell.m in Sources */,
 				8B0B8C23194EA0C500EC79DC /* UIImageView+AFNetworking.m in Sources */,
 				8B4C82221958191F0032363A /* ShowBigImageViewController.m in Sources */,
+				8B76C07C19664440000EDB1C /* Discount.m in Sources */,
 				8B0B8C96194EDA7700EC79DC /* ZXYMainCollectionCell.m in Sources */,
 				8B8C8AE0195176520066EAAB /* FMDatabaseQueue.m in Sources */,
 				8B6FA8E61963FB4E00E6723E /* CXMLNamespaceNode.m in Sources */,
@@ -2254,6 +2260,7 @@
 					"${SDK_ROOT}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "DLTourOfJapan/DLTourOfJapan-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2272,6 +2279,7 @@
 					"${SDK_ROOT}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "DLTourOfJapan/DLTourOfJapan-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

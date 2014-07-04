@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class LocDetailInfo;
+@protocol SelectRowDelegate<NSObject>
+- (void)selectRow:(LocDetailInfo *)locDetail;
+@end
 @interface ZXYFavorViewController : UIViewController
-
+@property(nonatomic,strong)id<SelectRowDelegate>delegate;
 @end

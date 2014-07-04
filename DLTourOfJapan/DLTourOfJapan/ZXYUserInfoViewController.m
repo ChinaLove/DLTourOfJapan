@@ -87,4 +87,6 @@
     [ZXYTourOfJapanHelper loginOut];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 @end

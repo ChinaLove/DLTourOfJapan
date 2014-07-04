@@ -305,4 +305,6 @@
     
     return [emailRegex evaluateWithObject:string];
 }
+
+
 @end

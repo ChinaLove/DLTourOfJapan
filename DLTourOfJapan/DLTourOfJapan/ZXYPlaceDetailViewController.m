@@ -61,6 +61,8 @@
     [collectImage addGestureRecognizer:tapGe];
     [collectImage setUserInteractionEnabled:YES];
     progress = [[MBProgressHUD alloc] initWithView:self.view];
+    progress.dimBackground = YES;
+    progress.color = [UIColor colorWithRed:0.1 green:0.50 blue:0.82 alpha:0.90];
     [self.view addSubview:progress];
 }
 

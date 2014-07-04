@@ -16,6 +16,16 @@
         <attribute name="star" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Discount" representedClassName="Discount" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chinesename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="disH" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="disID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="disPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="disType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locpy" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Favorite" representedClassName="Favorite" syncable="YES">
         <attribute name="favoriteID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favoriteName" optional="YES" attributeType="String" syncable="YES"/>
@@ -96,12 +106,13 @@
         <element name="Ad_Info" positionX="0" positionY="45" width="128" height="90"/>
         <element name="Advertise" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="Comment" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="Favorite" positionX="0" positionY="144" width="128" height="88"/>
         <element name="Locdetail" positionX="-18" positionY="36" width="128" height="180"/>
         <element name="LocDetailInfo" positionX="18" positionY="63" width="128" height="615"/>
         <element name="Locinfo" positionX="-9" positionY="36" width="128" height="105"/>
         <element name="Loctype" positionX="-63" positionY="9" width="128" height="90"/>
         <element name="Navi_ver_info" positionX="36" positionY="81" width="128" height="90"/>
         <element name="UserInfo" positionX="-9" positionY="135" width="128" height="73"/>
-        <element name="Favorite" positionX="0" positionY="144" width="128" height="88"/>
+        <element name="Discount" positionX="-9" positionY="135" width="128" height="163"/>
     </elements>
 </model>

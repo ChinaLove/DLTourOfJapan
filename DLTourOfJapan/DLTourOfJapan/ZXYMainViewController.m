@@ -31,7 +31,8 @@ typedef enum
 #import "ZXYUserLoginViewController.h"
 #import "ZXYUserInfoViewController.h"
 #import "ZXYPlaceLocalListViewController.h"
-@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate,UITableViewDataSource,UITableViewDelegate>
+#import "ZXYPlaceDetailViewController.h"
+@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate,UITableViewDataSource,UITableViewDelegate,SelectRowDelegate>
 {
     NSArray *allBtnS;   /** < 用来保存三个标签按钮 */
     NSArray *allLabelS; /** < 用来保存三个标签 */
@@ -92,10 +93,6 @@ typedef enum
     self.homeBtn.selected = YES;
     self.homeBtn.userInteractionEnabled = NO;
     self.footImageView.image = [UIImage imageNamed:@"mainView_foot_up"];
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [HUD setLabelText:NSLocalizedString(@"HUD_CheckUpdate", nil)];
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     //设置大小
     contentView.frame = CGRectMake(0, contentView.frame.origin.y, Screen_width*3, Screen_height-contentView.frame.origin.y);
     NSLog(@"contentView width is %f",contentView.frame.size.width);
@@ -103,7 +100,6 @@ typedef enum
     // !!!:在此处取广告数据，首先判断是否需要更新，再取数据
     if([ZXYNETHelper isNETConnect])
     {
-        [HUD show:YES];
         [self startRequest];
     }
 }
@@ -129,6 +125,7 @@ typedef enum
     [contentView addSubview:self.placePage.view];
     self.favorPage = [[ZXYFavorViewController alloc] init];
     self.favorPage.view.frame = CGRectMake(Screen_width*2, 0, self.favorPage.view.frame.size.width, contentView.frame.size.height);
+    self.favorPage.delegate = self;
     [contentView addSubview:self.favorPage.view];
 }
 
@@ -137,6 +134,10 @@ typedef enum
  */
 - (void)startRequest
 {
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.dimBackground = YES;
+    [HUD setLabelText:NSLocalizedString(@"HUD_CheckUpdate", nil)];
+    HUD.delegate = self;
     NSDictionary *prama = [NSDictionary dictionaryWithObjectsAndKeys:@"ad",@"type", nil];
     AFHTTPRequestOperationManager *operation = [AFHTTPRequestOperationManager manager];
     operation.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -477,6 +478,7 @@ typedef enum
             self.favorPage = [[ZXYFavorViewController alloc] init];
             self.favorPage.view.frame = CGRectMake(Screen_width*2, 0, self.favorPage.view.frame.size.width, contentView.frame.size.height);
             [contentView addSubview:self.favorPage.view];
+            self.favorPage.delegate = self;
             contentView.frame = CGRectMake(-Screen_width*2, contentView.frame.origin.y, Screen_width*3, contentView.frame.size.height);
         }
         else
@@ -577,6 +579,12 @@ typedef enum
     {
         return;
     }
+}
+
+- (void)selectRow:(LocDetailInfo *)locDetail
+{
+    ZXYPlaceDetailViewController *detailVC = [[ZXYPlaceDetailViewController alloc] initWithLocDetail:locDetail];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

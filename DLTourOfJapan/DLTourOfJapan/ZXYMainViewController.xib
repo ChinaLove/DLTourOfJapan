@@ -27,7 +27,7 @@
                 <view contentMode="scaleToFill" id="cd0-ca-UqJ">
                     <rect key="frame" x="0.0" y="103" width="960" height="465"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainView_blue.png" id="gcH-dk-4qC">
                     <rect key="frame" x="-1" y="-2" width="321" height="108"/>

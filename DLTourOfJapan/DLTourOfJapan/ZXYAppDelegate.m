@@ -33,7 +33,7 @@
     // Override point for customization after application launch.
     ZXYMainViewController *mainView = [[ZXYMainViewController alloc] initWithNibName:@"ZXYMainViewController" bundle:nil];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:mainView];
-    
+    [navi.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
     mainView.navigationController.navigationBarHidden = YES;
     self.window.rootViewController = navi;
     self.window.backgroundColor = [UIColor whiteColor];
