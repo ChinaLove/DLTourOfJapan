@@ -12,4 +12,6 @@
 + (NSString *)toMyXML:(NSString *)fromString;
 + (BOOL)isUserLogin;
 + (void)loginOut;
++ (UIImage *)getBlurredImage:(UIImage *)imageToBlur ;
++ (UIImage *)getScreenImage:(UIView *)currentView;
 @end

@@ -140,6 +140,13 @@
 		8B6FA8F1196400C700E6723E /* ZXYTourOfJapanHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FA8F0196400C700E6723E /* ZXYTourOfJapanHelper.m */; };
 		8B76C07C19664440000EDB1C /* Discount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C07B19664440000EDB1C /* Discount.m */; };
 		8B76C08519665B5F000EDB1C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C08419665B5F000EDB1C /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B76C087196679BE000EDB1C /* mainView_searchGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B76C086196679BE000EDB1C /* mainView_searchGray@2x.png */; };
+		8B76C08B19667EDB000EDB1C /* ZXYTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C08919667EDB000EDB1C /* ZXYTableViewController.m */; };
+		8B76C09019667FF6000EDB1C /* ZXYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C08E19667FF6000EDB1C /* ZXYTableViewCell.m */; };
+		8B76C09119667FF6000EDB1C /* ZXYTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B76C08F19667FF6000EDB1C /* ZXYTableViewCell.xib */; };
+		8B76C098196692F2000EDB1C /* UIImage+BlurForImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C097196692F2000EDB1C /* UIImage+BlurForImage.m */; };
+		8B76C09A19669347000EDB1C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B76C09919669347000EDB1C /* Accelerate.framework */; };
+		8B76C09C1966955E000EDB1C /* ZXYTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B76C09B1966955E000EDB1C /* ZXYTableViewController.xib */; };
 		8B81B5101965283400C8C588 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B50F1965283400C8C588 /* UserInfo.m */; };
 		8B81B5161965320300C8C588 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B5151965320300C8C588 /* Favorite.m */; };
 		8B81B51A1965400100C8C588 /* ZXYUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B5181965400100C8C588 /* ZXYUserInfoViewController.m */; };
@@ -604,6 +611,16 @@
 		8B76C07B19664440000EDB1C /* Discount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Discount.m; sourceTree = "<group>"; };
 		8B76C08319665B5F000EDB1C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8B76C08419665B5F000EDB1C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		8B76C086196679BE000EDB1C /* mainView_searchGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainView_searchGray@2x.png"; sourceTree = "<group>"; };
+		8B76C08819667EDB000EDB1C /* ZXYTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYTableViewController.h; sourceTree = "<group>"; };
+		8B76C08919667EDB000EDB1C /* ZXYTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYTableViewController.m; sourceTree = "<group>"; };
+		8B76C08D19667FF6000EDB1C /* ZXYTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYTableViewCell.h; sourceTree = "<group>"; };
+		8B76C08E19667FF6000EDB1C /* ZXYTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYTableViewCell.m; sourceTree = "<group>"; };
+		8B76C08F19667FF6000EDB1C /* ZXYTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYTableViewCell.xib; sourceTree = "<group>"; };
+		8B76C096196692F2000EDB1C /* UIImage+BlurForImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BlurForImage.h"; sourceTree = "<group>"; };
+		8B76C097196692F2000EDB1C /* UIImage+BlurForImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BlurForImage.m"; sourceTree = "<group>"; };
+		8B76C09919669347000EDB1C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		8B76C09B1966955E000EDB1C /* ZXYTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYTableViewController.xib; sourceTree = "<group>"; };
 		8B81B50E1965283400C8C588 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		8B81B50F1965283400C8C588 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		8B81B5141965320300C8C588 /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Favorite.h; path = ../Favorite.h; sourceTree = "<group>"; };
@@ -882,6 +899,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B76C09A19669347000EDB1C /* Accelerate.framework in Frameworks */,
 				8B6FA8EE1963FB8200E6723E /* libxml2.2.dylib in Frameworks */,
 				8B6FA8EC1963FB7500E6723E /* libxml2.dylib in Frameworks */,
 				8B8C8AE8195181EA0066EAAB /* libsqlite3.0.dylib in Frameworks */,
@@ -946,6 +964,7 @@
 		8B0B8BC2194E893200EC79DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B76C09919669347000EDB1C /* Accelerate.framework */,
 				8B6FA8ED1963FB8200E6723E /* libxml2.2.dylib */,
 				8B6FA8EB1963FB7500E6723E /* libxml2.dylib */,
 				8B8C8AE7195181EA0066EAAB /* libsqlite3.0.dylib */,
@@ -982,6 +1001,12 @@
 				8B0B8C5C194EB35900EC79DC /* ZXYMainViewController.h */,
 				8B0B8C5D194EB35900EC79DC /* ZXYMainViewController.m */,
 				8B0B8C5E194EB35900EC79DC /* ZXYMainViewController.xib */,
+				8B76C08819667EDB000EDB1C /* ZXYTableViewController.h */,
+				8B76C08919667EDB000EDB1C /* ZXYTableViewController.m */,
+				8B76C09B1966955E000EDB1C /* ZXYTableViewController.xib */,
+				8B76C08D19667FF6000EDB1C /* ZXYTableViewCell.h */,
+				8B76C08E19667FF6000EDB1C /* ZXYTableViewCell.m */,
+				8B76C08F19667FF6000EDB1C /* ZXYTableViewCell.xib */,
 				8B4DB9E9195A4D5700B077DD /* ZXYUserInfoTableViewCell.h */,
 				8B4DB9EA195A4D5700B077DD /* ZXYUserInfoTableViewCell.m */,
 				8B4DB9EB195A4D5700B077DD /* ZXYUserInfoTableViewCell.xib */,
@@ -1004,6 +1029,8 @@
 				8B0B8BCC194E893200EC79DC /* Supporting Files */,
 				8B6FA8EF196400C700E6723E /* ZXYTourOfJapanHelper.h */,
 				8B6FA8F0196400C700E6723E /* ZXYTourOfJapanHelper.m */,
+				8B76C096196692F2000EDB1C /* UIImage+BlurForImage.h */,
+				8B76C097196692F2000EDB1C /* UIImage+BlurForImage.m */,
 			);
 			path = DLTourOfJapan;
 			sourceTree = "<group>";
@@ -1135,6 +1162,7 @@
 				8B0B8C75194EBB3000EC79DC /* mainView_place_up@2x.png */,
 				8B0B8C76194EBB3000EC79DC /* mainView_favou_down@2x.png */,
 				8B0B8C78194EBB3000EC79DC /* mainView_favou_up@2x.png */,
+				8B76C086196679BE000EDB1C /* mainView_searchGray@2x.png */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
@@ -1794,6 +1822,7 @@
 				8B8C8BDB19518C3C0066EAAB /* dl02000063.jpg in Resources */,
 				8B8C8C5519518C3C0066EAAB /* dl05000002.jpg in Resources */,
 				8B0B8C80194EBB3000EC79DC /* mainView_favou_down@2x.png in Resources */,
+				8B76C09119667FF6000EDB1C /* ZXYTableViewCell.xib in Resources */,
 				8B8C8BC419518C3C0066EAAB /* dl02000040.jpg in Resources */,
 				8B51D961195544D600F7CD1C /* ZXYPageDetailInfoBtnCell.xib in Resources */,
 				8B8C8C1119518C3C0066EAAB /* dl02000020.jpg in Resources */,
@@ -1956,6 +1985,7 @@
 				8B8C8C5119518C3C0066EAAB /* dl04000044.jpg in Resources */,
 				8B4C82231958191F0032363A /* ShowBigImageViewController.xib in Resources */,
 				8B0B8C60194EB35900EC79DC /* ZXYMainViewController.xib in Resources */,
+				8B76C087196679BE000EDB1C /* mainView_searchGray@2x.png in Resources */,
 				8B1FFB1C1953DBCF009ACD3A /* placePage_search@2x.png in Resources */,
 				8B0B8C7B194EBB3000EC79DC /* mainView_home_up@2x.png in Resources */,
 				8B8C8C0D19518C3C0066EAAB /* dl02000016.jpg in Resources */,
@@ -1994,6 +2024,7 @@
 				8B8C8C4419518C3C0066EAAB /* dl04000031.jpg in Resources */,
 				8B6FA8BB1963C63600E6723E /* ZXYUserRegisterViewController.xib in Resources */,
 				8B8C8C5B19518C3C0066EAAB /* dl05000008.jpg in Resources */,
+				8B76C09C1966955E000EDB1C /* ZXYTableViewController.xib in Resources */,
 				8B8C8BBB19518C3C0066EAAB /* dl02000031.jpg in Resources */,
 				8B81B522196546AE00C8C588 /* ZXYUserChangePass.xib in Resources */,
 				8B8C8AC019512D650066EAAB /* placePage_bath@2x.png in Resources */,
@@ -2067,6 +2098,7 @@
 				8BAB6B1B1952E6D300C42EED /* ZXYEvaluateView.m in Sources */,
 				8B0B8C40194EA0CA00EC79DC /* AFURLConnectionOperation.m in Sources */,
 				8B0B8C3C194EA0CA00EC79DC /* AFHTTPRequestOperationManager.m in Sources */,
+				8B76C098196692F2000EDB1C /* UIImage+BlurForImage.m in Sources */,
 				8B6FA8F1196400C700E6723E /* ZXYTourOfJapanHelper.m in Sources */,
 				8BB795881950094C0023986A /* ZXYUserDefault.m in Sources */,
 				8B0B8BD2194E893200EC79DC /* main.m in Sources */,
@@ -2092,6 +2124,7 @@
 				8B0B8C25194EA0C500EC79DC /* UIRefreshControl+AFNetworking.m in Sources */,
 				8B6FA8A819639EBC00E6723E /* ZXYUserLoginViewController.m in Sources */,
 				8B4DB9EC195A4D5700B077DD /* ZXYUserInfoTableViewCell.m in Sources */,
+				8B76C08B19667EDB000EDB1C /* ZXYTableViewController.m in Sources */,
 				8B51D9581955379500F7CD1C /* ZXYPageDetailInfoCell.m in Sources */,
 				8B0B8C42194EA0CA00EC79DC /* AFURLResponseSerialization.m in Sources */,
 				8B6FA8DF1963FB4E00E6723E /* CXMLNode_CreationExtensions.m in Sources */,
@@ -2110,6 +2143,7 @@
 				8B4C82221958191F0032363A /* ShowBigImageViewController.m in Sources */,
 				8B76C07C19664440000EDB1C /* Discount.m in Sources */,
 				8B0B8C96194EDA7700EC79DC /* ZXYMainCollectionCell.m in Sources */,
+				8B76C09019667FF6000EDB1C /* ZXYTableViewCell.m in Sources */,
 				8B8C8AE0195176520066EAAB /* FMDatabaseQueue.m in Sources */,
 				8B6FA8E61963FB4E00E6723E /* CXMLNamespaceNode.m in Sources */,
 				8B6FA8E51963FB4E00E6723E /* CXMLElement_ElementTreeExtensions.m in Sources */,

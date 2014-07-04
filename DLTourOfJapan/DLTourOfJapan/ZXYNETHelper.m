@@ -27,6 +27,7 @@ static NSOperationQueue *queue;
     if(self=[super init])
     {
         tempQueue = [[NSOperationQueue alloc] init];
+        
     }
     return self;
 }

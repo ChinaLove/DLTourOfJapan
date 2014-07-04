@@ -11,7 +11,7 @@
 #import "LocDetailInfo.h"
 #import "ZXYPlaceDetailViewController.h"
 #import "ZXYAppDelegate.h"
-@interface ZXYPlaceLocalListViewController ()
+@interface ZXYPlaceLocalListViewController ()<UISearchBarDelegate>
 {
     NSString *currentLocType;
     NSMutableArray *arrForShow;
@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *searchOpenTime;
 - (IBAction)searchDistance:(id)sender;
 - (IBAction)searchList:(id)sender;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation ZXYPlaceLocalListViewController
@@ -77,13 +78,35 @@
     {
         [listTable setTableHeaderView:searchView];
         
+        
     }
     else
     {
         self.titleLbl.text = NSLocalizedString(@"PlacePage_favor", nil);
         [searchButton setHidden:YES];
+        [self.searchBar setHidden:YES];
     }
-    
+    NSLog(@"all subViews %d",self.searchBar.subviews.count);
+    UIView *views = [self.searchBar.subviews objectAtIndex:0];
+    for(UIView *oneObject in views.subviews)
+    {
+        NSLog(@"class is %@",NSStringFromClass(oneObject.class));
+        if([oneObject isKindOfClass:[UITextField class]])
+        {
+            UITextField *textField = (UITextField *)oneObject;
+            [textField setTextColor:[UIColor whiteColor]];
+            textField.returnKeyType = UIReturnKeyDone;
+        }
+        else
+        {
+            [oneObject removeFromSuperview];
+        }
+        
+    }
+    [self.searchBar setBackgroundColor:[UIColor clearColor]];
+    self.searchBar.delegate = self;
+    NSDictionary *textAttribute = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSFontAttributeName, nil];
+    [self.searchBar setScopeBarButtonTitleTextAttributes:textAttribute forState:UIControlStateNormal];
     listTable.scrollsToTop = NO;
 }
 
@@ -266,6 +289,34 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    NSLog(@"text change is %@",searchText);
+    NSString *likeString = [NSString stringWithFormat:@"locname LIKE[cd] '*%@*' and loctype=%@",searchText,currentLocType];
+    arrForShow = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withLike:likeString]];
+    [listTable reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton:NO animated:NO];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 
 @end

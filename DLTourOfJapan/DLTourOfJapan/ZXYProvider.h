@@ -32,6 +32,7 @@
 -(NSArray *)readCoreDataFromDB:(NSString *)stringName orderByKey:(NSString *)stringKey isDes:(BOOL)isDes;
 -(NSArray *)readCoreDataFromDB:(NSString *)stringName isDes:(BOOL)isDes orderByKey:(id) stringKey,... ;
 -(NSArray *)readCoreDataFromDB:(NSString *)dbName formatString:(NSString *)format isDes:(BOOL)isDes orderByKey:(id) stringKey,...;
+- (NSArray *)readCoreDataFromDB:(NSString *)stringName withLike:(NSString *)likeString;
 // !!!:增加数据
 /**
  *  增加一条数据，要保持字段与数据库一致

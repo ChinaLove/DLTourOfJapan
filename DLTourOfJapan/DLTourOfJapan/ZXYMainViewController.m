@@ -32,7 +32,9 @@ typedef enum
 #import "ZXYUserInfoViewController.h"
 #import "ZXYPlaceLocalListViewController.h"
 #import "ZXYPlaceDetailViewController.h"
-@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate,UITableViewDataSource,UITableViewDelegate,SelectRowDelegate>
+#import "ZXYTableViewController.h"
+
+@interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate,UITableViewDataSource,UITableViewDelegate,SelectRowDelegate,UITextFieldDelegate,SelectTableRow>
 {
     NSArray *allBtnS;   /** < 用来保存三个标签按钮 */
     NSArray *allLabelS; /** < 用来保存三个标签 */
@@ -44,7 +46,15 @@ typedef enum
     __weak IBOutlet UIButton *settingBtn;
     BOOL isUserTableShow;
     UIView *backView;
+    IBOutlet UIView *searchBar;
+    __weak IBOutlet UITextField *searchText;
+    BOOL isSearchShow; // 判断是否有searchView;
+    ZXYTableViewController *tableViewC;
+    UIToolbar *topBar;
+    UIImage *blurBackImage;
+    mainView_TypeOfViewController currentType;
 }
+- (IBAction)searchAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIView *userInfoTable;
 @property (strong, nonatomic) ZXYHomePageViewController *homePage; //第一个页面
 @property (strong, nonatomic) ZXYPlaceViewController    *placePage;//第二个页面
@@ -76,6 +86,7 @@ typedef enum
         netHelp.netHelperDelegate = self;
         userDefault = [ZXYUserDefault sharedSelf];
         dataProvider = [ZXYProvider sharedInstance];
+        isSearchShow = NO;
     }
     return self;
 }
@@ -83,7 +94,20 @@ typedef enum
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    tableViewC = [[ZXYTableViewController alloc] initWithNibName:@"ZXYTableViewController" bundle:nil];
+    tableViewC.view.frame = CGRectMake(0, 0, 0, 0);
+    tableViewC.delegate = self;
+    [self.view addSubview:tableViewC.view];
+    topBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    rightBtn.frame = CGRectMake(0, 0, 40, 40);
+    [rightBtn setTitle:NSLocalizedString(@"public_finish", nil) forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(hideKeyBoard) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    NSArray *array = [NSArray arrayWithObjects:leftBtn,rightBtnItem, nil];
+    [topBar setItems:array];
+    [searchText setInputAccessoryView:topBar];
     self.homeLbl.text = NSLocalizedString(@"MainView_Home",nil);
     self.placeLbl.text = NSLocalizedString(@"MainView_Place", nil);
     self.favorLbl.text = NSLocalizedString(@"MainView_Favor", nil);
@@ -102,11 +126,22 @@ typedef enum
     {
         [self startRequest];
     }
+    CGRect searchFrame = CGRectMake(0, contentView.frame.origin.y, searchBar.frame.size.width, 0);
+    searchBar.frame = searchFrame;
+    searchText.delegate = self;
+    [self.view addSubview:searchBar];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    
+}
+
+- (void)hideKeyBoard
+{
+    [searchText resignFirstResponder];
 }
 
 /**
@@ -458,6 +493,7 @@ typedef enum
     //页面切换、改变图片
     if(type == ZXYPlacePage)
     {
+        currentType = ZXYPlacePage;
         self.placePage = [[ZXYPlaceViewController alloc] initWithNibName:@"ZXYPlaceViewController" bundle:nil];
         self.placePage.delegate = self;
         self.placePage.view.frame = CGRectMake(Screen_width, 0, self.placePage.view.frame.size.width, contentView.frame.size.height);
@@ -474,7 +510,7 @@ typedef enum
         self.footImageView.image = [UIImage imageNamed:@"mainView_foot_up"];
         if(type == ZXYFavorPage)
         {
-
+            currentType = ZXYFavorPage;
             self.favorPage = [[ZXYFavorViewController alloc] init];
             self.favorPage.view.frame = CGRectMake(Screen_width*2, 0, self.favorPage.view.frame.size.width, contentView.frame.size.height);
             [contentView addSubview:self.favorPage.view];
@@ -483,6 +519,7 @@ typedef enum
         }
         else
         {
+            currentType = ZXYHomePage;
             self.homePage = [[ZXYHomePageViewController alloc] initWithNibName:NSStringFromClass([ZXYHomePageViewController class]) bundle:nil];
             self.homePage.delegate = self;
             [contentView addSubview:self.homePage.view];
@@ -590,5 +627,70 @@ typedef enum
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+// !!!:查询方法
+- (IBAction)searchAction:(id)sender
+{
+    if(!isSearchShow)
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            switch (currentType) {
+                case ZXYHomePage:
+                    blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.homePage.view];
+                    break;
+                case ZXYFavorPage:
+                    blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.favorPage.view];
+                    break;
+                case ZXYPlacePage:
+                    blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.placePage.view];
+                    break;
+                default:
+                    break;
+            }
+            
+            contentView.frame = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y+40, contentView.frame.size.width, contentView.frame.size.height-39);
+            searchBar.frame = CGRectMake(0, contentView.frame.origin.y-39, searchBar.frame.size.width, 39);
+            tableViewC.view.frame = CGRectMake(0, searchBar.frame.origin.y+searchBar.frame.size.height, 320, 0);
+            isSearchShow = YES;
+            
+        }];
+        
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            contentView.frame = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y-40, contentView.frame.size.width, contentView.frame.size.height+39);
+            searchBar.frame = CGRectMake(0, contentView.frame.origin.y, searchBar.frame.size.width, 0);
+            tableViewC.view.frame = CGRectMake(0, searchBar.frame.origin.y+searchBar.frame.size.height, 320, 0);
+            isSearchShow = NO;
+        }];
+    }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        tableViewC.view.frame = CGRectMake(0, searchBar.frame.origin.y+searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-searchBar.frame.origin.y-searchBar.frame.size.height);
+        
+    }];
+    tableViewC.backImage.image = [ZXYTourOfJapanHelper getBlurredImage:blurBackImage];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [tableViewC setSearchString:textField.text];
+    return YES;
+}
+
+- (void)selectRowOfTableView:(LocDetailInfo *)locDetail
+{
+    ZXYPlaceDetailViewController *detailVC = [[ZXYPlaceDetailViewController alloc] initWithLocDetail:locDetail];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 @end

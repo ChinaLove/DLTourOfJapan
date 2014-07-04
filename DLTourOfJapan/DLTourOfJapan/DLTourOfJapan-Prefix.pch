@@ -23,5 +23,6 @@
     #import "FMDB.h"
     #import "ZXYUserDefault.h"
     #import "TouchXML.h"
+    #import<Accelerate/Accelerate.h>
     #import "ZXYTourOfJapanHelper.h"
 #endif

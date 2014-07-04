@@ -9,7 +9,7 @@
                 <outlet property="businessLbl" destination="sN5-C9-aaO" id="cuI-30-B2K"/>
                 <outlet property="distanceLbl" destination="kFd-u2-6bn" id="tdZ-wA-bkE"/>
                 <outlet property="listTable" destination="HCr-P5-eUt" id="Y5x-Lb-dYY"/>
-                <outlet property="searchButton" destination="Uwr-eg-KNT" id="AEX-Z4-07H"/>
+                <outlet property="searchBar" destination="c1R-FH-T7R" id="Auu-La-uUp"/>
                 <outlet property="searchView" destination="GaH-VV-tZD" id="w1d-Fw-qOq"/>
                 <outlet property="titleLbl" destination="ja6-7y-URC" id="SNg-0v-HUv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AllNavi.png" id="zra-tW-z4G">
-                    <rect key="frame" x="-1" y="0.0" width="321" height="88"/>
+                    <rect key="frame" x="-1" y="0.0" width="321" height="111"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cO9-gT-XUg">
@@ -34,16 +34,6 @@
                         <action selector="backView:" destination="-1" eventType="touchUpInside" id="ZUn-aF-GCq"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uwr-eg-KNT">
-                    <rect key="frame" x="269" y="26" width="31" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="placePage_search.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="searchList:" destination="-1" eventType="touchUpInside" id="E8r-z9-dEE"/>
-                    </connections>
-                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ja6-7y-URC">
                     <rect key="frame" x="76" y="31" width="169" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -52,7 +42,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HCr-P5-eUt">
-                    <rect key="frame" x="-1" y="88" width="321" height="480"/>
+                    <rect key="frame" x="-1" y="119" width="321" height="449"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -60,6 +50,13 @@
                         <outlet property="delegate" destination="-1" id="qoO-54-hqf"/>
                     </connections>
                 </tableView>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" id="c1R-FH-T7R">
+                    <rect key="frame" x="4" y="67" width="311" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
+                    <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -116,6 +113,5 @@
         <image name="placePage_arrowDown.png" width="22" height="22"/>
         <image name="placePage_arrowUP.png" width="22" height="22"/>
         <image name="placePage_back.png" width="12" height="22"/>
-        <image name="placePage_search.png" width="22" height="22"/>
     </resources>
 </document>

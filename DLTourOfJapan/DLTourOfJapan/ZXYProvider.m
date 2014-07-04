@@ -361,6 +361,35 @@ static ZXYProvider *instance = nil;
 
 }
 
+- (NSArray *)readCoreDataFromDB:(NSString *)stringName withLike:(NSString *)likeString
+{
+    ZXYAppDelegate *app = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *manageContext = app.managedObjectContext;
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:stringName inManagedObjectContext:manageContext];
+    if(likeString.length > 0)
+    {
+        NSString *fomat = [NSString stringWithFormat:@"%@",likeString];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:fomat];
+        [request setPredicate:predicate];
+    }
+    [request setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *arr = [manageContext executeFetchRequest:request error:&error];
+    if(error == nil)
+    {
+        //NSLog(@"%d count is ",arr.count);
+        return arr;
+    }
+    else
+    {
+        return nil;
+        NSLog(@"error readCoredata %@",error);
+    }
+
+}
+
 #pragma mark - save
 - (BOOL)saveDataToCoreData:(NSDictionary *)dic withDBName:(NSString *)dbName isDelete:(BOOL)isDelete
 {
