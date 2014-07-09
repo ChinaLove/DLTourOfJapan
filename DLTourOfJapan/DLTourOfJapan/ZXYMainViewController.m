@@ -663,6 +663,7 @@ typedef enum
             contentView.frame = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y-40, contentView.frame.size.width, contentView.frame.size.height+39);
             searchBar.frame = CGRectMake(0, contentView.frame.origin.y, searchBar.frame.size.width, 0);
             tableViewC.view.frame = CGRectMake(0, searchBar.frame.origin.y+searchBar.frame.size.height, 320, 0);
+            [searchText resignFirstResponder];
             isSearchShow = NO;
         }];
     }

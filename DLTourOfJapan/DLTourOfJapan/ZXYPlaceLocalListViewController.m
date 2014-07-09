@@ -11,7 +11,16 @@
 #import "LocDetailInfo.h"
 #import "ZXYPlaceDetailViewController.h"
 #import "ZXYAppDelegate.h"
-@interface ZXYPlaceLocalListViewController ()<UISearchBarDelegate>
+#import <CoreText/CoreText.h>
+#import "MBProgressHUD.h"
+#import <MapKit/MapKit.h>
+typedef enum
+{
+    pickerTypeNone = 0,
+    pickerTypeDis  =1,
+    pickerTypeTime =2,
+}pickerType;
+@interface ZXYPlaceLocalListViewController ()<CLLocationManagerDelegate,UISearchBarDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     NSString *currentLocType;
     NSMutableArray *arrForShow;
@@ -25,8 +34,16 @@
     __weak IBOutlet UIButton *searchButton;
     
     __weak IBOutlet UILabel *businessLbl;
-    
+    IBOutlet UIView *pickerControllerView;
+    __weak IBOutlet UIPickerView *pickerController;
+    __weak IBOutlet UIBarButtonItem *leftItem;
+    __weak IBOutlet UIBarButtonItem *rightItem;
+    MBProgressHUD *progress;
+    CLLocation *currentLocation;
+    CLLocationManager *localManager;
+    pickerType currentPickType;
 }
+- (IBAction)hidePicker:(id)sender;
 - (IBAction)backView:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *searchOpenTime;
 - (IBAction)searchDistance:(id)sender;
@@ -40,6 +57,7 @@
 {
     if(self = [super initWithNibName:@"ZXYPlaceLocalListViewController" bundle:nil])
     {
+        currentPickType = pickerTypeNone;
         currentLocType = locType;
         dataProvider = [ZXYProvider sharedInstance];
         arrForShow     = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:currentLocType andKey:@"loctype"] ];
@@ -56,6 +74,7 @@
 {
     if(self = [super initWithNibName:@"ZXYPlaceLocalListViewController" bundle:nil])
     {
+        currentPickType = pickerTypeNone;
         currentLocType = @"10001";
         dataProvider = [ZXYProvider sharedInstance];
         arrForShow     = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:@"1" andKey:@"isfavored"] ];
@@ -71,9 +90,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    currentLocation = [[CLLocation alloc] init];
+    localManager = [[CLLocationManager alloc] init];
+    localManager.distanceFilter = 5.0;
+    localManager.delegate = self;
+    [localManager startUpdatingLocation];
+    localManager.desiredAccuracy = kCLLocationAccuracyBest;
     distanceLbl.text = NSLocalizedString(@"PlacePage_Distance", nil);
     businessLbl.text = NSLocalizedString(@"PlacePage_OpeningHour", nil);
     self.titleLbl.text = self.title;
+    leftItem.title = NSLocalizedString(@"Cancel", nil);
+    pickerControllerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, pickerControllerView.frame.size.height);
+    [self.view addSubview:pickerControllerView];
+    progress = [[MBProgressHUD alloc] initWithView:self.view];
+    progress.dimBackground = YES;
+    progress.color = [UIColor colorWithRed:0.1 green:0.50 blue:0.82 alpha:0.90];
     if(![currentLocType isEqualToString:@"10001"])
     {
         [listTable setTableHeaderView:searchView];
@@ -83,6 +114,7 @@
     else
     {
         self.titleLbl.text = NSLocalizedString(@"PlacePage_favor", nil);
+        [self.searchBar setHidden:NO];
     }
     NSLog(@"all subViews %d",self.searchBar.subviews.count);
     UIView *views = [self.searchBar.subviews objectAtIndex:0];
@@ -264,12 +296,25 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-- (IBAction)searchDistance:(id)sender {
+- (IBAction)searchDistance:(id)sender
+{
+    currentPickType = pickerTypeDis;
+    [pickerController reloadAllComponents];
+    [UIView animateWithDuration:0.3 animations:^{
+        pickerControllerView.frame = CGRectMake(0, self.view.frame.size.height-pickerControllerView.frame.size.height, self.view.frame.size.width, pickerControllerView.frame.size.height);
+    }];
 }
 
 - (IBAction)searchList:(id)sender
 {
-    
+    currentPickType = pickerTypeTime;
+}
+
+- (IBAction)hidePicker:(id)sender
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        pickerControllerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, pickerControllerView.frame.size.height);
+    }];
 }
 
 - (IBAction)backView:(id)sender
@@ -281,7 +326,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:PlaceNotification object:nil];
-    
+    [localManager stopUpdatingLocation];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -291,19 +336,18 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if(![currentLocType isEqualToString:@"10001"])
+    NSLog(@"text change is %@",searchText);
+    NSString *likeString = [NSString stringWithFormat:@"locname LIKE[cd] '*%@*' and loctype=%@",searchText,currentLocType];
+    if([currentLocType isEqualToString:@"10001"])
     {
-        NSLog(@"text change is %@",searchText);
-        NSString *likeString = [NSString stringWithFormat:@"locname LIKE[cd] '*%@*' and loctype=%@",searchText,currentLocType];
+        likeString = [NSString stringWithFormat:@"locname LIKE[cd] '*%@*' and isfavored='1'",searchText];
         arrForShow = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withLike:likeString]];
-        [listTable reloadData];
     }
     else
     {
-        NSString *likeString = [NSString stringWithFormat:@"locname LIKE[cd] '*%@*' and isfavored=1",searchText];
         arrForShow = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withLike:likeString]];
-        [listTable reloadData];
     }
+    [listTable reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -325,5 +369,98 @@
 {
     [searchBar resignFirstResponder];
 }
+
+
+// !!!:pick delegate and datasource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if(currentPickType == 1)
+    {
+        return 7;
+    }
+    else
+    {
+        return 24;
+    }
+}
+
+-(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UIView *pickSub = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    UILabel *labes  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, pickSub.frame.size.height)];
+    [labes setFont:[UIFont boldSystemFontOfSize:24]];
+    [pickSub addSubview:labes];
+    labes.textAlignment = NSTextAlignmentCenter;
+    [labes setTextColor:[UIColor colorWithRed:0.2941 green:0.4549 blue:0.8314 alpha:1]];
+    if(currentPickType == pickerTypeDis)
+    {
+        if(row == 0)
+        {
+            labes.text = NSLocalizedString(@"PlacePage_AllPlace", nil);
+        }
+        else
+        {
+            labes.text = [NSString stringWithFormat:@"%d",row*500];
+        }
+    }
+    else
+    {
+        if(row == 0)
+        {
+            labes.text = NSLocalizedString(@"PlacePage_AllPlace", nil);
+        }
+        else if(row == 1)
+        {
+            labes.text = [NSString stringWithFormat:@"%d",row*500];
+        }
+ 
+    }
+    return pickSub;
+    
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if(row == 0)
+    {
+        arrForShow = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:currentLocType andKey:@"loctype"] ];
+        [listTable reloadData];
+        return;
+    }
+    float currentValue = row*500;
+    NSArray *allPlace = [NSMutableArray arrayWithArray:[dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:currentLocType andKey:@"loctype"] ];
+    
+    if(currentPickType == 1)
+    {
+        [arrForShow removeAllObjects];
+        for(int i = 0;i<allPlace.count;i++)
+        {
+            LocDetailInfo *loc = [allPlace objectAtIndex:i];
+            float xLong = loc.lon.floatValue;
+            float yLat  = loc.lat.floatValue;
+            CLLocation *dataLocation = [[CLLocation alloc] initWithLatitude:yLat longitude:xLong];
+            float distance = [dataLocation distanceFromLocation:currentLocation];
+            NSLog(@"%f",distance);
+            if(distance<currentValue)
+            {
+                [arrForShow addObject:loc];
+            }
+        }
+        [listTable reloadData];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    currentLocation = [locations lastObject];
+    NSLog(@" --- >%f,%f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
+}
+
 
 @end

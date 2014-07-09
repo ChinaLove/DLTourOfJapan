@@ -43,6 +43,9 @@
 "PlacePage_OpeningHour" = "营业时间";
 "PlacePage_favor"     = "我收藏的";
 "PlacePage_NonContent" = "暂时无内容";
+"PlacePage_AllPlace"   = "所有场所";
+"PlacePage_HourPlace"  = "时";
+"PlacePage_Hour"       = "小时";
 // !!!:会员
 "vip_collect"         = "我的收藏";
 "vip_login"           = "会员登录";

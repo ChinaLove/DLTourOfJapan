@@ -80,6 +80,8 @@
 		8B1FFB271953FE30009ACD3A /* placePage_visaN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1FFB221953FE30009ACD3A /* placePage_visaN@2x.png */; };
 		8B1FFB281953FE30009ACD3A /* placePage_wifiN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1FFB231953FE30009ACD3A /* placePage_wifiN@2x.png */; };
 		8B1FFB30195418D6009ACD3A /* ZXYDownCIDOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FFB2F195418D6009ACD3A /* ZXYDownCIDOperation.m */; };
+		8B202A1F196D455600D3C2B1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B202A1E196D455600D3C2B1 /* CoreText.framework */; };
+		8B202A21196D499400D3C2B1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B202A20196D499400D3C2B1 /* MapKit.framework */; };
 		8B4C821D1957D4D10032363A /* placePage_collectionNo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4C821B1957D4D10032363A /* placePage_collectionNo@2x.png */; };
 		8B4C821E1957D4D10032363A /* placePage_collectionYes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4C821C1957D4D10032363A /* placePage_collectionYes@2x.png */; };
 		8B4C82221958191F0032363A /* ShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C82201958191F0032363A /* ShowBigImageViewController.m */; };
@@ -526,6 +528,8 @@
 		8B1FFB231953FE30009ACD3A /* placePage_wifiN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_wifiN@2x.png"; sourceTree = "<group>"; };
 		8B1FFB2E195418D6009ACD3A /* ZXYDownCIDOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYDownCIDOperation.h; sourceTree = "<group>"; };
 		8B1FFB2F195418D6009ACD3A /* ZXYDownCIDOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYDownCIDOperation.m; sourceTree = "<group>"; };
+		8B202A1E196D455600D3C2B1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		8B202A20196D499400D3C2B1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8B4C821B1957D4D10032363A /* placePage_collectionNo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_collectionNo@2x.png"; sourceTree = "<group>"; };
 		8B4C821C1957D4D10032363A /* placePage_collectionYes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_collectionYes@2x.png"; sourceTree = "<group>"; };
 		8B4C821F1958191F0032363A /* ShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowBigImageViewController.h; sourceTree = "<group>"; };
@@ -899,13 +903,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B0B8C07194E9ED400EC79DC /* CoreLocation.framework in Frameworks */,
+				8B202A21196D499400D3C2B1 /* MapKit.framework in Frameworks */,
+				8B202A1F196D455600D3C2B1 /* CoreText.framework in Frameworks */,
 				8B76C09A19669347000EDB1C /* Accelerate.framework in Frameworks */,
 				8B6FA8EE1963FB8200E6723E /* libxml2.2.dylib in Frameworks */,
 				8B6FA8EC1963FB7500E6723E /* libxml2.dylib in Frameworks */,
 				8B8C8AE8195181EA0066EAAB /* libsqlite3.0.dylib in Frameworks */,
 				8B0B8C0B194E9F0300EC79DC /* Security.framework in Frameworks */,
 				8B0B8C09194E9EE500EC79DC /* SystemConfiguration.framework in Frameworks */,
-				8B0B8C07194E9ED400EC79DC /* CoreLocation.framework in Frameworks */,
 				8B0B8C05194E9ECB00EC79DC /* MobileCoreServices.framework in Frameworks */,
 				8B0B8BC6194E893200EC79DC /* CoreGraphics.framework in Frameworks */,
 				8B0B8BCA194E893200EC79DC /* CoreData.framework in Frameworks */,
@@ -964,6 +970,8 @@
 		8B0B8BC2194E893200EC79DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B202A20196D499400D3C2B1 /* MapKit.framework */,
+				8B202A1E196D455600D3C2B1 /* CoreText.framework */,
 				8B76C09919669347000EDB1C /* Accelerate.framework */,
 				8B6FA8ED1963FB8200E6723E /* libxml2.2.dylib */,
 				8B6FA8EB1963FB7500E6723E /* libxml2.dylib */,
@@ -1741,6 +1749,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = duostec;
 				TargetAttributes = {
+					8B0B8BBF194E893200EC79DC = {
+						DevelopmentTeam = ER62D3UHDE;
+					};
 					8B0B8BDF194E893200EC79DC = {
 						TestTargetID = 8B0B8BBF194E893200EC79DC;
 					};
@@ -2286,6 +2297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DLTourOfJapan/DLTourOfJapan-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2305,6 +2317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DLTourOfJapan/DLTourOfJapan-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
