@@ -11,6 +11,6 @@
 @interface ZXYPageDetailInfoBtnCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLbl;
 @property (weak, nonatomic) IBOutlet UILabel *valueLbl;
-@property (weak, nonatomic) IBOutlet UIButton *imageBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *imageBtn;
 
 @end

@@ -15,8 +15,9 @@
 #import "UserInfo.h"
 #import "MBProgressHUD.h"
 #import "ZXYUserLoginViewController.h"
+#import "ZXYDetailLocation.h"
 
-@interface ZXYPlaceDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface ZXYPlaceDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     __weak IBOutlet UITableView *listTable;
     LocDetailInfo *currentLocDetail;
@@ -26,6 +27,8 @@
     UIImageView *headOfThis;
     BOOL isLongText;
     MBProgressHUD *progress;
+    IBOutlet UIView *suchTextView;
+    __weak IBOutlet UITextView *textContentView;
 }
 @property (strong, nonatomic) IBOutlet UIView *showImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *showImageScroll;
@@ -306,15 +309,15 @@
 
             if(row == 5)
             {
-                [btnCell.imageBtn setImage:[UIImage imageNamed:@"placePage_phoneU"] forState:UIControlStateNormal];
-                [btnCell.imageBtn setImage:[UIImage imageNamed:@"placePage_phone"] forState:UIControlStateHighlighted];
+                btnCell.imageBtn.image = [UIImage imageNamed:@"placePage_phoneU"];
                 btnCell.titleLbl.text = NSLocalizedString(@"PlaceD_ConnectPhone", nil);
                 btnCell.valueLbl.text = currentLocDetail.phone;
             }
             else
             {
-                [btnCell.imageBtn setImage:[UIImage imageNamed:@"placePage_comentU"] forState:UIControlStateNormal];
-                [btnCell.imageBtn setImage:[UIImage imageNamed:@"placePage_coment"] forState:UIControlStateHighlighted];
+                btnCell.imageBtn.image = [UIImage imageNamed:@"placePage_comentU"];
+//                [btnCell.imageBtn setImage:[UIImage imageNamed:@"placePage_comentU"] ];
+//                [btnCell.imageBtn setImage:[UIImage imageNamed:@"placePage_coment"] ];
                 btnCell.titleLbl.text =NSLocalizedString(@"PlaceD_Comment", nil);
                 btnCell.valueLbl.text = @"";
                 
@@ -356,7 +359,7 @@
             else if(row == 6)
             {
                 detailCell.titleLbl.text = NSLocalizedString(@"PlaceD_DiscountInfo", nil);
-                detailCell.valueTable.text = @"";
+                detailCell.valueTable.text = NSLocalizedString(@"PlacePage_DiscountInfo", nil);
                 
             }
             cell = detailCell;
@@ -373,7 +376,7 @@
 {
     if(section == 0)
     {
-        return 8;
+        return 7;
     }
     else
     {
@@ -441,6 +444,32 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //"PlacePage_Phone_IS"   = "是否拨打电话";
+    //"PlacePage_PhoneY"     = "是的";
+    if(indexPath.row == 4)
+    {
+        if(![ZXYNETHelper isNETConnect])
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TitleOne", nil) message:NSLocalizedString(@"AppDelegate_NetConnect", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Certain", nil), nil];
+            [alert show];
+            return;
+        }
+        else
+        {
+            ZXYDetailLocation *detail = [[ZXYDetailLocation alloc] initWithLocDetial:currentLocDetail];
+            [self.navigationController pushViewController:detail animated:YES];
+        }
+       
+    }
+    if(indexPath.row == 5)
+    {
+        UIAlertView *phoneAlert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"PlacePage_Phone_IS", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"PlacePage_PhoneY", nil), nil];
+        [phoneAlert show];
+    }
+}
+
 - (IBAction)backView:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -448,15 +477,15 @@
 
 - (float)heightOfTextView:(NSString *)string WithConstrain:(float)width
 {
-    UITextView *detailTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 306, 0)];
+    UITextView *detailTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 308, 0)];
     detailTextView.font = [UIFont systemFontOfSize:14];
     detailTextView.text = string;
-    CGSize deSize = [detailTextView sizeThatFits:CGSizeMake(306,CGFLOAT_MAX)];
+    CGSize deSize = [detailTextView sizeThatFits:CGSizeMake(304,CGFLOAT_MAX+20)];
     if(deSize.height<78)
     {
         return 78;
     }
-    return deSize.height;
+    return deSize.height+20;
 }
 
 - (void)didClickHeadImage
@@ -496,4 +525,15 @@
 {
     return UIStatusBarStyleLightContent;
 }
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        NSString *phoneNum = [currentLocDetail phone];
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",phoneNum];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
+}
+
 @end

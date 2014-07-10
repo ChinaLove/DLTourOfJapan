@@ -38,7 +38,6 @@ typedef enum
     __weak IBOutlet UIPickerView *pickerController;
     __weak IBOutlet UIBarButtonItem *leftItem;
     __weak IBOutlet UIBarButtonItem *rightItem;
-    MBProgressHUD *progress;
     CLLocation *currentLocation;
     CLLocationManager *localManager;
     pickerType currentPickType;
@@ -102,9 +101,6 @@ typedef enum
     leftItem.title = NSLocalizedString(@"Cancel", nil);
     pickerControllerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, pickerControllerView.frame.size.height);
     [self.view addSubview:pickerControllerView];
-    progress = [[MBProgressHUD alloc] initWithView:self.view];
-    progress.dimBackground = YES;
-    progress.color = [UIColor colorWithRed:0.1 green:0.50 blue:0.82 alpha:0.90];
     if(![currentLocType isEqualToString:@"10001"])
     {
         [listTable setTableHeaderView:searchView];
@@ -308,6 +304,10 @@ typedef enum
 - (IBAction)searchList:(id)sender
 {
     currentPickType = pickerTypeTime;
+    [pickerController reloadAllComponents];
+    [UIView animateWithDuration:0.3 animations:^{
+        pickerControllerView.frame = CGRectMake(0, self.view.frame.size.height-pickerControllerView.frame.size.height, self.view.frame.size.width, pickerControllerView.frame.size.height);
+    }];
 }
 
 - (IBAction)hidePicker:(id)sender
@@ -386,7 +386,7 @@ typedef enum
     }
     else
     {
-        return 24;
+        return 7;
     }
 }
 
@@ -417,7 +417,27 @@ typedef enum
         }
         else if(row == 1)
         {
-            labes.text = [NSString stringWithFormat:@"%d",row*500];
+            labes.text = [NSString stringWithFormat:@"24%@",NSLocalizedString(@"PlacePage_Hour", nil)];
+        }
+        else if(row == 2)
+        {
+            labes.text = [NSString stringWithFormat:@"16%@",NSLocalizedString(@"PlacePage_HourPlace", nil)];
+        }
+        else if (row == 3)
+        {
+            labes.text = [NSString stringWithFormat:@"18%@",NSLocalizedString(@"PlacePage_HourPlace", nil)];
+        }
+        else if (row == 4)
+        {
+            labes.text = [NSString stringWithFormat:@"20%@",NSLocalizedString(@"PlacePage_HourPlace", nil)];
+        }
+        else if (row == 5)
+        {
+            labes.text = [NSString stringWithFormat:@"22%@",NSLocalizedString(@"PlacePage_HourPlace", nil)];
+        }
+        else
+        {
+            labes.text = [NSString stringWithFormat:@"0%@",NSLocalizedString(@"PlacePage_HourPlace", nil)];
         }
  
     }
@@ -453,6 +473,19 @@ typedef enum
             }
         }
         [listTable reloadData];
+    }
+    else
+    {
+        [arrForShow removeAllObjects];
+        for(int i = 0;i<allPlace.count;i++)
+        {
+            LocDetailInfo *loc = [allPlace objectAtIndex:i];
+            NSString *time = loc.time;
+            //if(time)
+            NSArray *timeArr = [time componentsSeparatedByString:@"~"];
+        }
+        [listTable reloadData];
+
     }
 }
 

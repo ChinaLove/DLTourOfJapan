@@ -48,6 +48,9 @@
 "PlacePage_AllPlace"   = "所有场所";
 "PlacePage_HourPlace"  = "时";
 "PlacePage_Hour"       = "小时";
+"PlacePage_Phone_IS"   = "是否拨打电话";
+"PlacePage_PhoneY"     = "是的";
+"PlacePage_DiscountInfo" = "点击查看店内折扣基本信息";
 // !!!:会员
 "vip_collect"         = "我的收藏";
 "vip_login"           = "会员登录";
