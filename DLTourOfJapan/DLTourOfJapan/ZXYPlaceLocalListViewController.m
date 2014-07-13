@@ -14,6 +14,11 @@
 #import <CoreText/CoreText.h>
 #import "MBProgressHUD.h"
 #import <MapKit/MapKit.h>
+#import "UserInfo.h"
+#import "CXMLDocument.h"
+#import "ZXYTourOfJapanHelper.h"
+#import "MBProgressHUD.h"
+
 typedef enum
 {
     pickerTypeNone = 0,
@@ -41,6 +46,7 @@ typedef enum
     CLLocation *currentLocation;
     CLLocationManager *localManager;
     pickerType currentPickType;
+    MBProgressHUD *progress;
 }
 - (IBAction)hidePicker:(id)sender;
 - (IBAction)backView:(id)sender;
@@ -134,6 +140,10 @@ typedef enum
     NSDictionary *textAttribute = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSFontAttributeName, nil];
     [self.searchBar setScopeBarButtonTitleTextAttributes:textAttribute forState:UIControlStateNormal];
     listTable.scrollsToTop = NO;
+    progress = [[MBProgressHUD alloc] initWithView:self.view];
+    progress.dimBackground = YES;
+    progress.color = [UIColor colorWithRed:0.1 green:0.50 blue:0.82 alpha:0.90];
+    [self.view addSubview:progress];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -477,13 +487,75 @@ typedef enum
     else
     {
         [arrForShow removeAllObjects];
-        for(int i = 0;i<allPlace.count;i++)
+        NSString *hourString;
+        if(row == 1)
         {
-            LocDetailInfo *loc = [allPlace objectAtIndex:i];
-            NSString *time = loc.time;
-            //if(time)
-            NSArray *timeArr = [time componentsSeparatedByString:@"~"];
+            hourString = @"24";
         }
+        else if(row == 2)
+        {
+            hourString = @"16";
+        }
+        else if (row == 3)
+        {
+            hourString = @"18";
+        }
+        else if (row == 4)
+        {
+            hourString = @"20";
+        }
+        else if (row == 5)
+        {
+            hourString = @"22";
+        }
+        else
+        {
+            hourString = @"0";
+        }
+        if(![ZXYNETHelper isNETConnect])
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:NSLocalizedString(@"AppDelegate_NetConnect", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Certain", nil) otherButtonTitles:nil, nil];
+            [alert show];
+            return;
+        }
+        NSString *stringURL = [NSString stringWithFormat:@"http://115.29.46.22:81/dalian100/index.php/InterFace/dealWithEvent?service=StoreList&method=viewStoreList&idsource=a&idlangid=3&idcity=2&stcondition=0&pagesize=10&pageno=1&lat=38.858315&lng=121.530475&distance=&businesstime=%@&idobjtype=%@&iduser=",hourString,currentLocType];
+        [progress show:YES];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:stringURL]];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [progress hide:YES];
+            NSLog(@"%@",operation.responseString);
+            NSString *xmlString = [ZXYTourOfJapanHelper toMyXML:operation.responseString];
+            CXMLDocument *document = [[CXMLDocument alloc] initWithData:[xmlString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+            CXMLElement *rootElement = [document rootElement];
+            if([rootElement.name isEqualToString:@"storelistlist"]&&[rootElement isKindOfClass:[CXMLElement class]])
+            {
+                for(CXMLElement *element in rootElement.children)
+                {
+                    if([element.name isEqualToString:@"storelist"]&&[element isKindOfClass:[CXMLElement class]])
+                    {
+                        for(CXMLElement *childElement in element.children)
+                        {
+                            if([childElement.name isEqualToString:@"idobject"])
+                            {
+                                NSArray *locS = [dataProvider readCoreDataFromDB:@"LocDetailInfo" withContent:childElement.stringValue andKey:@"cid"] ;
+                                if(locS.count > 0)
+                                {
+                                    LocDetailInfo *loc = [locS objectAtIndex:0];
+                                    [arrForShow addObject:loc];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            [listTable reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+            [progress hide:YES];
+        }];
+        [operation start];
         [listTable reloadData];
 
     }

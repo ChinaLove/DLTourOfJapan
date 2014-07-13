@@ -16,7 +16,6 @@
 #import "MBProgressHUD.h"
 #import "ZXYUserLoginViewController.h"
 #import "ZXYDetailLocation.h"
-
 @interface ZXYPlaceDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     __weak IBOutlet UITableView *listTable;
@@ -29,6 +28,7 @@
     MBProgressHUD *progress;
     IBOutlet UIView *suchTextView;
     __weak IBOutlet UITextView *textContentView;
+    BOOL isDisShow;
 }
 @property (strong, nonatomic) IBOutlet UIView *showImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *showImageScroll;
@@ -41,6 +41,14 @@
 
 @implementation ZXYPlaceDetailViewController
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        suchTextView.alpha = 0;
+        isDisShow=NO;
+    }];
+}
+
 - (id)initWithLocDetail:(LocDetailInfo *)locDetail
 {
     if(self = [super initWithNibName:@"ZXYPlaceDetailViewController" bundle:nil])
@@ -48,6 +56,7 @@
         currentLocDetail = locDetail;
         fileOperation = [[ZXYFileOperation alloc] init];
         isLongText = NO;
+        isDisShow = NO;
     }
     return self;
 }
@@ -66,7 +75,26 @@
     progress = [[MBProgressHUD alloc] initWithView:self.view];
     progress.dimBackground = YES;
     progress.color = [UIColor colorWithRed:0.1 green:0.50 blue:0.82 alpha:0.90];
+    textContentView.layer.borderWidth = 1;
+    textContentView.layer.borderColor =  vip_loginBtnColor.CGColor;
+    textContentView.layer.cornerRadius = 3;
     [self.view addSubview:progress];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    
+    suchTextView.alpha = 0;
+    NSArray *allDiscount = [currentLocDetail.serve componentsSeparatedByString:@"#"];
+    NSMutableString *disString = [[NSMutableString alloc] init];
+    for(NSString *temp in allDiscount)
+    {
+        [disString appendFormat:@"%@\n",temp];
+    }
+    textContentView.textColor = vip_loginBtnColor;
+    textContentView.text = disString;
+    suchTextView.frame = CGRectMake(listTable.frame.origin.x, listTable.frame.origin.y, listTable.frame.size.width, listTable.frame.size.height);
+    [self.view addSubview:suchTextView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,7 +108,10 @@
     {
         collectImage.image = [UIImage imageNamed:@"placePage_collectionYes"];
     }
-
+    if(iPhone5)
+    {
+        isLongText = YES;
+    }
 }
 
 - (void)userSelectOrNot
@@ -418,6 +449,7 @@
                 {
                     return [self heightOfTextView:locD WithConstrain:0];
                 }
+
             }
             return 78;
         }
@@ -434,7 +466,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row<=3 || indexPath.row == 6)
+    if(indexPath.row<=3 )
     {
         return NO;
     }
@@ -467,6 +499,25 @@
     {
         UIAlertView *phoneAlert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"PlacePage_Phone_IS", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"PlacePage_PhoneY", nil), nil];
         [phoneAlert show];
+    }
+    if(indexPath.row == 6)
+    {
+        if(isDisShow)
+        {
+            return;
+        }
+        [UIView animateWithDuration:0.3 animations:^{
+            suchTextView.alpha = 1;
+            NSArray *allDiscount = [currentLocDetail.serve componentsSeparatedByString:@"#"];
+            NSMutableString *disString = [[NSMutableString alloc] init];
+            for(NSString *temp in allDiscount)
+            {
+                [disString appendFormat:@"%@\n",temp];
+            }
+            textContentView.textColor = vip_loginBtnColor;
+            textContentView.text = disString;
+            isDisShow=YES;
+        }];
     }
 }
 

@@ -66,3 +66,23 @@
 "vip_newPass"         = "新 密 码";
 // !!!:公共
 "public_finish"       = "完成";
+// !!!:设置
+"set_Title"           = "设置";
+"set_LSName"          = "日本领事馆";
+"set_LSphone"           = "电话";
+"set_LSFax"             = "Fax";
+"set_LSMail"            = "邮箱";
+"set_LSAdd"             = "大连市西岗区中山路147号森茂大厦3F";
+"set_add"               = "地址";
+"set_lsPhone"           = "(0411) 8370-4077";
+"set_lsFax"             = "(0411) 8370-4077";
+"set_lsEmail"           = "dalian@ya.mofa.go.jp";
+
+"set_CC"                = "Call Center";
+"set_CCContent"         = "咨询、急救、生病、及其他问题。";
+"set_CC24Hour"          = "24小时热线";
+"set_Comment"           = "意见";
+"set_PhoneExist"        = "电话号码已经存在";
+"set_PhoneSuccess"      = "电话号码保存成功";
+"set_SubSuccess"        = "提交成功";
+"set_SubFail"           = "提交失败";

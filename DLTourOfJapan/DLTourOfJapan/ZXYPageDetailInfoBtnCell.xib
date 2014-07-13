@@ -44,6 +44,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageBtn" destination="qAO-Zu-035" id="mzC-5F-aj8"/>
                 <outlet property="titleLbl" destination="4EC-cm-M1M" id="bPv-KS-DzJ"/>
                 <outlet property="valueLbl" destination="7zE-0l-aP8" id="jdC-xu-CED"/>
             </connections>

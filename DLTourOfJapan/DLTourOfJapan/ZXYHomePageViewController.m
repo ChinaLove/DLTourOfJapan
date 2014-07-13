@@ -10,6 +10,7 @@
 #import "WaterfallLayout.h"
 #import "ZXYMainCollectionCell.h"
 #import "Advertise.h"
+#import "UIImage+LCYResize.h"
 @interface ZXYHomePageViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,WaterfallLayoutDelegate>
 {
     NSMutableArray *allAdvertise;
@@ -93,7 +94,8 @@
     NSString *filePath = [fileOperation advertiseImagePath:advertise.pic_url];
     if([[ZXYFileOperation defaultManager] fileExistsAtPath:filePath])
     {
-        cell.imageViews.image = [UIImage imageWithContentsOfFile:filePath];
+        UIImage *cellImage = [[UIImage imageWithContentsOfFile:filePath] imageByScalingAndCroppingForSize:CGSizeMake(150, 150)];
+        cell.imageViews.image = cellImage;
         cell.imageViews.backgroundColor = [UIColor clearColor];
     }
     else
@@ -114,10 +116,7 @@
     NSString *pathImage = [fileOperation advertiseImagePath:ad.pic_url];
     if([[ZXYFileOperation defaultManager] fileExistsAtPath:pathImage])
     {
-        UIImage *currentImage = [UIImage imageWithContentsOfFile:pathImage];
-        float width = 150   ;
-        float height = (currentImage.size.height/currentImage.size.width)*150;
-        return  CGSizeMake(width, height);
+        return  CGSizeMake(150, 150);
     }
     else
     {

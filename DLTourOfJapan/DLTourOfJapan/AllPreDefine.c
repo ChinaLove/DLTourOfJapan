@@ -32,7 +32,8 @@
  * 以下是关于用户的全局常量
  *
  */
-
+#define LSPhoneNum @"041183704077"
+#define CCPhoneNum @"18641144682";
 #define USERUPDATETIME_AD @"allPreDefine_stringForUserUpdateTimeAD"//key-->update
 #define USERUPDATETIME_DATA @"allPreDefine_stringForUserUpdateTimeDATA"
 #define USERDEFAULTTIME @"19700101"//defaultTime

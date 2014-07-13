@@ -90,6 +90,18 @@
 		8B30921A196E3461009A637B /* ZXYDetailLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B309218196E3461009A637B /* ZXYDetailLocation.m */; };
 		8B30921B196E3461009A637B /* ZXYDetailLocation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B309219196E3461009A637B /* ZXYDetailLocation.xib */; };
 		8B30921D196E4339009A637B /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B30921C196E4339009A637B /* home.png */; };
+		8B309429197209AA007521A5 /* ZCAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B309427197209AA007521A5 /* ZCAddressBook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B30942C197209BC007521A5 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B30942B197209BC007521A5 /* pinyin.c */; };
+		8B30942F19722E73007521A5 /* ZXYTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30942E19722E73007521A5 /* ZXYTableView.m */; };
+		8B3F3DC6196FDA8400BFCF6F /* ZXYSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3DC4196FDA8400BFCF6F /* ZXYSettingViewController.m */; };
+		8B3F3DC7196FDA8400BFCF6F /* ZXYSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F3DC5196FDA8400BFCF6F /* ZXYSettingViewController.xib */; };
+		8B3F3DCF196FE11000BFCF6F /* set_addPerson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F3DC9196FE11000BFCF6F /* set_addPerson@2x.png */; };
+		8B3F3DD0196FE11000BFCF6F /* set_phoneCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F3DCA196FE11000BFCF6F /* set_phoneCall@2x.png */; };
+		8B3F3DD1196FE11000BFCF6F /* set_submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F3DCB196FE11000BFCF6F /* set_submit@2x.png */; };
+		8B3F3DD2196FE11000BFCF6F /* set_addPersonU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F3DCC196FE11000BFCF6F /* set_addPersonU@2x.png */; };
+		8B3F3DD3196FE11000BFCF6F /* set_phoneCallU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F3DCD196FE11000BFCF6F /* set_phoneCallU@2x.png */; };
+		8B3F3DD4196FE11000BFCF6F /* set_submitU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F3DCE196FE11000BFCF6F /* set_submitU@2x.png */; };
+		8B3F3DFB196FF0D100BFCF6F /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3F3DFA196FF0D100BFCF6F /* AddressBookUI.framework */; };
 		8B4C821D1957D4D10032363A /* placePage_collectionNo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4C821B1957D4D10032363A /* placePage_collectionNo@2x.png */; };
 		8B4C821E1957D4D10032363A /* placePage_collectionYes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4C821C1957D4D10032363A /* placePage_collectionYes@2x.png */; };
 		8B4C82221958191F0032363A /* ShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C82201958191F0032363A /* ShowBigImageViewController.m */; };
@@ -551,6 +563,22 @@
 		8B309218196E3461009A637B /* ZXYDetailLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYDetailLocation.m; sourceTree = "<group>"; };
 		8B309219196E3461009A637B /* ZXYDetailLocation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYDetailLocation.xib; sourceTree = "<group>"; };
 		8B30921C196E4339009A637B /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		8B309427197209AA007521A5 /* ZCAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAddressBook.m; sourceTree = "<group>"; };
+		8B309428197209AA007521A5 /* ZCAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAddressBook.h; sourceTree = "<group>"; };
+		8B30942A197209BC007521A5 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		8B30942B197209BC007521A5 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		8B30942D19722E73007521A5 /* ZXYTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYTableView.h; sourceTree = "<group>"; };
+		8B30942E19722E73007521A5 /* ZXYTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYTableView.m; sourceTree = "<group>"; };
+		8B3F3DC3196FDA8400BFCF6F /* ZXYSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYSettingViewController.h; sourceTree = "<group>"; };
+		8B3F3DC4196FDA8400BFCF6F /* ZXYSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYSettingViewController.m; sourceTree = "<group>"; };
+		8B3F3DC5196FDA8400BFCF6F /* ZXYSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXYSettingViewController.xib; sourceTree = "<group>"; };
+		8B3F3DC9196FE11000BFCF6F /* set_addPerson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_addPerson@2x.png"; sourceTree = "<group>"; };
+		8B3F3DCA196FE11000BFCF6F /* set_phoneCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_phoneCall@2x.png"; sourceTree = "<group>"; };
+		8B3F3DCB196FE11000BFCF6F /* set_submit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_submit@2x.png"; sourceTree = "<group>"; };
+		8B3F3DCC196FE11000BFCF6F /* set_addPersonU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_addPersonU@2x.png"; sourceTree = "<group>"; };
+		8B3F3DCD196FE11000BFCF6F /* set_phoneCallU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_phoneCallU@2x.png"; sourceTree = "<group>"; };
+		8B3F3DCE196FE11000BFCF6F /* set_submitU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_submitU@2x.png"; sourceTree = "<group>"; };
+		8B3F3DFA196FF0D100BFCF6F /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		8B4C821B1957D4D10032363A /* placePage_collectionNo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_collectionNo@2x.png"; sourceTree = "<group>"; };
 		8B4C821C1957D4D10032363A /* placePage_collectionYes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placePage_collectionYes@2x.png"; sourceTree = "<group>"; };
 		8B4C821F1958191F0032363A /* ShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowBigImageViewController.h; sourceTree = "<group>"; };
@@ -924,6 +952,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3F3DFB196FF0D100BFCF6F /* AddressBookUI.framework in Frameworks */,
 				8B0B8C07194E9ED400EC79DC /* CoreLocation.framework in Frameworks */,
 				8B202A21196D499400D3C2B1 /* MapKit.framework in Frameworks */,
 				8B202A1F196D455600D3C2B1 /* CoreText.framework in Frameworks */,
@@ -991,6 +1020,7 @@
 		8B0B8BC2194E893200EC79DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B3F3DFA196FF0D100BFCF6F /* AddressBookUI.framework */,
 				8B202A20196D499400D3C2B1 /* MapKit.framework */,
 				8B202A1E196D455600D3C2B1 /* CoreText.framework */,
 				8B76C09919669347000EDB1C /* Accelerate.framework */,
@@ -1014,6 +1044,10 @@
 			isa = PBXGroup;
 			children = (
 				8B30921C196E4339009A637B /* home.png */,
+				8B30942A197209BC007521A5 /* pinyin.h */,
+				8B30942B197209BC007521A5 /* pinyin.c */,
+				8B309427197209AA007521A5 /* ZCAddressBook.m */,
+				8B309428197209AA007521A5 /* ZCAddressBook.h */,
 				8B309208196E304F009A637B /* MapView */,
 				8B001D91196590C600ED2424 /* SimpleRefresh */,
 				8B6FA8C01963FB4E00E6723E /* TouchXML */,
@@ -1050,6 +1084,9 @@
 				8BB79589195012700023986A /* ZXYPlaceViewController.h */,
 				8BB7958A195012700023986A /* ZXYPlaceViewController.m */,
 				8BB7958B195012700023986A /* ZXYPlaceViewController.xib */,
+				8B3F3DC3196FDA8400BFCF6F /* ZXYSettingViewController.h */,
+				8B3F3DC4196FDA8400BFCF6F /* ZXYSettingViewController.m */,
+				8B3F3DC5196FDA8400BFCF6F /* ZXYSettingViewController.xib */,
 				8B4DB9EE195A5F8900B077DD /* UserInfo */,
 				8B1C6C231952CB1B00871C6A /* PlacePage */,
 				8BB7958E1950129E0023986A /* ZXYFavorViewController.h */,
@@ -1169,6 +1206,7 @@
 		8B0B8C65194EB78B00EC79DC /* AllUI */ = {
 			isa = PBXGroup;
 			children = (
+				8B3F3DC8196FE10A00BFCF6F /* Setting */,
 				8B6FA8AA1963A53600E6723E /* UserInfo */,
 				8B1FFB1D1953E177009ACD3A /* AllNavi@2x.png */,
 				8B8C8AA719512CB40066EAAB /* PlacePage */,
@@ -1231,6 +1269,19 @@
 			name = MapView;
 			sourceTree = "<group>";
 		};
+		8B3F3DC8196FE10A00BFCF6F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8B3F3DC9196FE11000BFCF6F /* set_addPerson@2x.png */,
+				8B3F3DCA196FE11000BFCF6F /* set_phoneCall@2x.png */,
+				8B3F3DCB196FE11000BFCF6F /* set_submit@2x.png */,
+				8B3F3DCC196FE11000BFCF6F /* set_addPersonU@2x.png */,
+				8B3F3DCD196FE11000BFCF6F /* set_phoneCallU@2x.png */,
+				8B3F3DCE196FE11000BFCF6F /* set_submitU@2x.png */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		8B4DB9D8195A4C0B00B077DD /* MemeberShip */ = {
 			isa = PBXGroup;
 			children = (
@@ -1287,6 +1338,8 @@
 				8B4C821F1958191F0032363A /* ShowBigImageViewController.h */,
 				8B4C82201958191F0032363A /* ShowBigImageViewController.m */,
 				8B4C82211958191F0032363A /* ShowBigImageViewController.xib */,
+				8B30942D19722E73007521A5 /* ZXYTableView.h */,
+				8B30942E19722E73007521A5 /* ZXYTableView.m */,
 			);
 			name = placePageDetail;
 			sourceTree = "<group>";
@@ -1847,6 +1900,7 @@
 				8B8C8C2A19518C3C0066EAAB /* dl04000005.jpg in Resources */,
 				8B30921B196E3461009A637B /* ZXYDetailLocation.xib in Resources */,
 				8B8C8C1C19518C3C0066EAAB /* dl03000008.jpg in Resources */,
+				8B3F3DD2196FE11000BFCF6F /* set_addPersonU@2x.png in Resources */,
 				8B1C6C1C1952A2FA00871C6A /* ZLOCDETAILINFO.json in Resources */,
 				8B8C8C3219518C3C0066EAAB /* dl04000013.jpg in Resources */,
 				8B8C8BDF19518C3C0066EAAB /* dl02000067.jpg in Resources */,
@@ -1872,6 +1926,7 @@
 				8B8C8BB919518C3C0066EAAB /* dl02000029.jpg in Resources */,
 				8B51D9541955315100F7CD1C /* ZXYPageDetailCellTableViewCell.xib in Resources */,
 				8B8C8C5F19518C3C0066EAAB /* dl05000012.jpg in Resources */,
+				8B3F3DD4196FE11000BFCF6F /* set_submitU@2x.png in Resources */,
 				8B8C8C0B19518C3C0066EAAB /* dl02000014.jpg in Resources */,
 				8B8C8BDB19518C3C0066EAAB /* dl02000063.jpg in Resources */,
 				8B8C8C5519518C3C0066EAAB /* dl05000002.jpg in Resources */,
@@ -1957,6 +2012,7 @@
 				8B8C8C1719518C3C0066EAAB /* dl03000003.jpg in Resources */,
 				8B8C8BBF19518C3C0066EAAB /* dl02000035.jpg in Resources */,
 				8B8C8BC019518C3C0066EAAB /* dl02000036.jpg in Resources */,
+				8B3F3DD1196FE11000BFCF6F /* set_submit@2x.png in Resources */,
 				8B6FA8A919639EBC00E6723E /* ZXYUserLoginViewController.xib in Resources */,
 				8B8C8BD619518C3C0066EAAB /* dl02000058.jpg in Resources */,
 				8B8C8C1819518C3C0066EAAB /* dl03000004.jpg in Resources */,
@@ -1995,6 +2051,7 @@
 				8BAB6B141952D98E00C42EED /* placePage_wifi@2x.png in Resources */,
 				8B8C8C1E19518C3C0066EAAB /* dl03000010.jpg in Resources */,
 				8B8C8C3719518C3C0066EAAB /* dl04000018.jpg in Resources */,
+				8B3F3DD3196FE11000BFCF6F /* set_phoneCallU@2x.png in Resources */,
 				8B8C8ABF19512D650066EAAB /* placePage_tour@2x.png in Resources */,
 				8B8C8C2819518C3C0066EAAB /* dl04000003.jpg in Resources */,
 				8B81B51D1965403D00C8C588 /* ZXYUserInfoViewController_iphone4.xib in Resources */,
@@ -2005,6 +2062,7 @@
 				8B0B8C79194EBB3000EC79DC /* mainView_home_down@2x.png in Resources */,
 				8B8C8C0319518C3C0066EAAB /* dl02000006.jpg in Resources */,
 				8B8C8C2F19518C3C0066EAAB /* dl04000010.jpg in Resources */,
+				8B3F3DC7196FDA8400BFCF6F /* ZXYSettingViewController.xib in Resources */,
 				8B8C8C2D19518C3C0066EAAB /* dl04000008.jpg in Resources */,
 				8BAB6B0F1952D98E00C42EED /* placePage_arrowUP@2x.png in Resources */,
 				8B8C8BFB19518C3C0066EAAB /* dl01000026.jpg in Resources */,
@@ -2061,6 +2119,7 @@
 				8BB79584194FEB950023986A /* ZXYHomePageViewController.xib in Resources */,
 				8B0B8C85194EC78800EC79DC /* Localizable.strings in Resources */,
 				8B8C8C5A19518C3C0066EAAB /* dl05000007.jpg in Resources */,
+				8B3F3DD0196FE11000BFCF6F /* set_phoneCall@2x.png in Resources */,
 				8B8C8C4919518C3C0066EAAB /* dl04000036.jpg in Resources */,
 				8B8C8BF919518C3C0066EAAB /* dl01000024.jpg in Resources */,
 				8B8C8C4119518C3C0066EAAB /* dl04000028.jpg in Resources */,
@@ -2076,6 +2135,7 @@
 				8B8C8BBD19518C3C0066EAAB /* dl02000033.jpg in Resources */,
 				8B8C8BD219518C3C0066EAAB /* dl02000054.jpg in Resources */,
 				8B8C8C3819518C3C0066EAAB /* dl04000019.jpg in Resources */,
+				8B3F3DCF196FE11000BFCF6F /* set_addPerson@2x.png in Resources */,
 				8B8C8BD919518C3C0066EAAB /* dl02000061.jpg in Resources */,
 				8B8C8C4419518C3C0066EAAB /* dl04000031.jpg in Resources */,
 				8B6FA8BB1963C63600E6723E /* ZXYUserRegisterViewController.xib in Resources */,
@@ -2142,7 +2202,9 @@
 				8B6FA8E91963FB4E00E6723E /* CXMLNode_XPathExtensions.m in Sources */,
 				8B0B8C20194EA0C500EC79DC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				8B76C08519665B5F000EDB1C /* MBProgressHUD.m in Sources */,
+				8B30942C197209BC007521A5 /* pinyin.c in Sources */,
 				8B309213196E3058009A637B /* ZXYCalloutAnnotation.m in Sources */,
+				8B309429197209AA007521A5 /* ZCAddressBook.m in Sources */,
 				8B6FA8EA1963FB4E00E6723E /* CTidy.m in Sources */,
 				8BB79599195013330023986A /* ZXYNETHelper.m in Sources */,
 				8B0B8BD6194E893200EC79DC /* ZXYAppDelegate.m in Sources */,
@@ -2166,6 +2228,7 @@
 				8B0B8C3E194EA0CA00EC79DC /* AFNetworkReachabilityManager.m in Sources */,
 				8B0B8C24194EA0C500EC79DC /* UIProgressView+AFNetworking.m in Sources */,
 				8B0B8BFD194E8E4900EC79DC /* AllPreDefine.c in Sources */,
+				8B3F3DC6196FDA8400BFCF6F /* ZXYSettingViewController.m in Sources */,
 				8B81B521196546AE00C8C588 /* ZXYUserChangePass.m in Sources */,
 				8B309215196E3058009A637B /* ZXYMKViewCell.m in Sources */,
 				8B1C6C271952CB7700871C6A /* ZXYPlaceLocalListViewController.m in Sources */,
@@ -2201,6 +2264,7 @@
 				8B0B8C3D194EA0CA00EC79DC /* AFHTTPSessionManager.m in Sources */,
 				8BAB6AFC1952D74600C42EED /* ZXYPlaceListCell.m in Sources */,
 				8B0B8C23194EA0C500EC79DC /* UIImageView+AFNetworking.m in Sources */,
+				8B30942F19722E73007521A5 /* ZXYTableView.m in Sources */,
 				8B4C82221958191F0032363A /* ShowBigImageViewController.m in Sources */,
 				8B76C07C19664440000EDB1C /* Discount.m in Sources */,
 				8B0B8C96194EDA7700EC79DC /* ZXYMainCollectionCell.m in Sources */,

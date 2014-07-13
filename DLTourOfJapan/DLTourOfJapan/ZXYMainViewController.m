@@ -33,6 +33,8 @@ typedef enum
 #import "ZXYPlaceLocalListViewController.h"
 #import "ZXYPlaceDetailViewController.h"
 #import "ZXYTableViewController.h"
+#import "ZXYSettingViewController.h"
+
 
 @interface ZXYMainViewController ()<NetHelperDelegate,MBProgressHUDDelegate,PlacePageBtnClickDelegate,SelectHomePageItemDelegate,UITableViewDataSource,UITableViewDelegate,SelectRowDelegate,UITextFieldDelegate,SelectTableRow>
 {
@@ -449,6 +451,12 @@ typedef enum
         ZXYPlaceLocalListViewController *placeLocalList = [[ZXYPlaceLocalListViewController alloc] initWithFav];
         [self.navigationController pushViewController:placeLocalList animated:YES];
         [self userInfo:nil];
+    }
+    else
+    {
+        [self userInfo:nil];
+        ZXYSettingViewController *setView = [[ZXYSettingViewController alloc] initWithNibName:@"ZXYSettingViewController" bundle:nil];
+        [self.navigationController pushViewController:setView animated:YES];
     }
 }
 
