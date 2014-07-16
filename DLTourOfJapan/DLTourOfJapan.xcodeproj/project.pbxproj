@@ -82,6 +82,7 @@
 		8B1FFB30195418D6009ACD3A /* ZXYDownCIDOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FFB2F195418D6009ACD3A /* ZXYDownCIDOperation.m */; };
 		8B202A1F196D455600D3C2B1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B202A1E196D455600D3C2B1 /* CoreText.framework */; };
 		8B202A21196D499400D3C2B1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B202A20196D499400D3C2B1 /* MapKit.framework */; };
+		8B27206519760CB700F89EB9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B27206419760CB700F89EB9 /* MBProgressHUD.m */; };
 		8B309212196E3058009A637B /* MKBasicAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30920A196E3058009A637B /* MKBasicAnnotation.m */; };
 		8B309213196E3058009A637B /* ZXYCalloutAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30920C196E3058009A637B /* ZXYCalloutAnnotation.m */; };
 		8B309214196E3058009A637B /* ZXYAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30920E196E3058009A637B /* ZXYAnnotationView.m */; };
@@ -161,7 +162,6 @@
 		8B6FA8EE1963FB8200E6723E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6FA8ED1963FB8200E6723E /* libxml2.2.dylib */; };
 		8B6FA8F1196400C700E6723E /* ZXYTourOfJapanHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FA8F0196400C700E6723E /* ZXYTourOfJapanHelper.m */; };
 		8B76C07C19664440000EDB1C /* Discount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C07B19664440000EDB1C /* Discount.m */; };
-		8B76C08519665B5F000EDB1C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C08419665B5F000EDB1C /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8B76C087196679BE000EDB1C /* mainView_searchGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B76C086196679BE000EDB1C /* mainView_searchGray@2x.png */; };
 		8B76C08B19667EDB000EDB1C /* ZXYTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C08919667EDB000EDB1C /* ZXYTableViewController.m */; };
 		8B76C09019667FF6000EDB1C /* ZXYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B76C08E19667FF6000EDB1C /* ZXYTableViewCell.m */; };
@@ -550,6 +550,8 @@
 		8B1FFB2F195418D6009ACD3A /* ZXYDownCIDOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYDownCIDOperation.m; sourceTree = "<group>"; };
 		8B202A1E196D455600D3C2B1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		8B202A20196D499400D3C2B1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8B27206319760CB700F89EB9 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8B27206419760CB700F89EB9 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8B309209196E3058009A637B /* MKBasicAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBasicAnnotation.h; sourceTree = "<group>"; };
 		8B30920A196E3058009A637B /* MKBasicAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBasicAnnotation.m; sourceTree = "<group>"; };
 		8B30920B196E3058009A637B /* ZXYCalloutAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYCalloutAnnotation.h; sourceTree = "<group>"; };
@@ -662,8 +664,6 @@
 		8B6FA8F0196400C700E6723E /* ZXYTourOfJapanHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYTourOfJapanHelper.m; sourceTree = "<group>"; };
 		8B76C07A19664440000EDB1C /* Discount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Discount.h; sourceTree = "<group>"; };
 		8B76C07B19664440000EDB1C /* Discount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Discount.m; sourceTree = "<group>"; };
-		8B76C08319665B5F000EDB1C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		8B76C08419665B5F000EDB1C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8B76C086196679BE000EDB1C /* mainView_searchGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainView_searchGray@2x.png"; sourceTree = "<group>"; };
 		8B76C08819667EDB000EDB1C /* ZXYTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXYTableViewController.h; sourceTree = "<group>"; };
 		8B76C08919667EDB000EDB1C /* ZXYTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXYTableViewController.m; sourceTree = "<group>"; };
@@ -1760,8 +1760,8 @@
 		8BB7959B19501F2A0023986A /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				8B76C08319665B5F000EDB1C /* MBProgressHUD.h */,
-				8B76C08419665B5F000EDB1C /* MBProgressHUD.m */,
+				8B27206319760CB700F89EB9 /* MBProgressHUD.h */,
+				8B27206419760CB700F89EB9 /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
 			sourceTree = "<group>";
@@ -2201,7 +2201,6 @@
 				8BB795A5195029120023986A /* ZXYProvider.m in Sources */,
 				8B6FA8E91963FB4E00E6723E /* CXMLNode_XPathExtensions.m in Sources */,
 				8B0B8C20194EA0C500EC79DC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				8B76C08519665B5F000EDB1C /* MBProgressHUD.m in Sources */,
 				8B30942C197209BC007521A5 /* pinyin.c in Sources */,
 				8B309213196E3058009A637B /* ZXYCalloutAnnotation.m in Sources */,
 				8B309429197209AA007521A5 /* ZCAddressBook.m in Sources */,
@@ -2209,6 +2208,7 @@
 				8BB79599195013330023986A /* ZXYNETHelper.m in Sources */,
 				8B0B8BD6194E893200EC79DC /* ZXYAppDelegate.m in Sources */,
 				8BB7958C195012700023986A /* ZXYPlaceViewController.m in Sources */,
+				8B27206519760CB700F89EB9 /* MBProgressHUD.m in Sources */,
 				8B81B51A1965400100C8C588 /* ZXYUserInfoViewController.m in Sources */,
 				8B8C8ADE195176520066EAAB /* FMDatabaseAdditions.m in Sources */,
 				8B0B8C43194EA0CA00EC79DC /* AFURLSessionManager.m in Sources */,

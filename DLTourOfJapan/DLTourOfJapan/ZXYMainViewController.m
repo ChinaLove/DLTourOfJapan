@@ -643,19 +643,6 @@ typedef enum
     if(!isSearchShow)
     {
         [UIView animateWithDuration:0.3 animations:^{
-            switch (currentType) {
-                case ZXYHomePage:
-                    blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.homePage.view];
-                    break;
-                case ZXYFavorPage:
-                    blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.favorPage.view];
-                    break;
-                case ZXYPlacePage:
-                    blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.placePage.view];
-                    break;
-                default:
-                    break;
-            }
             
             contentView.frame = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y+40, contentView.frame.size.width, contentView.frame.size.height-39);
             searchBar.frame = CGRectMake(0, contentView.frame.origin.y-39, searchBar.frame.size.width, 39);
@@ -680,10 +667,25 @@ typedef enum
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [UIView animateWithDuration:0.3 animations:^{
+        switch (currentType) {
+            case ZXYHomePage:
+                blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.homePage.view fromRect:self.homePage.view.frame];
+                break;
+            case ZXYFavorPage:
+                blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.favorPage.view fromRect:self.favorPage.view.frame];
+                break;
+            case ZXYPlacePage:
+                blurBackImage = [ZXYTourOfJapanHelper getScreenImage:self.placePage.view fromRect:self.placePage.view.frame];
+                break;
+            default:
+                break;
+        }
+        
+        tableViewC.backImage.image = [ZXYTourOfJapanHelper getBlurredImage:blurBackImage];
         tableViewC.view.frame = CGRectMake(0, searchBar.frame.origin.y+searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-searchBar.frame.origin.y-searchBar.frame.size.height);
         
     }];
-    tableViewC.backImage.image = [ZXYTourOfJapanHelper getBlurredImage:blurBackImage];
+    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField

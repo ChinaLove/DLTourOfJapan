@@ -38,13 +38,15 @@
     [provider updateDataFormCoreData:@"LocDetailInfo" withContent:@"0" andKey:@"isfavored"];
 }
 
-+ (UIImage *)getScreenImage:(UIView *)currentView {
++ (UIImage *)getScreenImage:(UIView *)currentView fromRect:(CGRect)frameRect{
     // frame without status bar
     CGRect frame;
     if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+       // frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        frame = frameRect;
     } else {
-        frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+        //frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+        frame = frameRect;
     }
     // begin image context
     UIGraphicsBeginImageContext(frame.size);

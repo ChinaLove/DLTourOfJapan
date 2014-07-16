@@ -47,7 +47,11 @@ typedef enum
     CLLocationManager *localManager;
     pickerType currentPickType;
     MBProgressHUD *progress;
+    IBOutlet UIView *searchViews;
+    BOOL isSearchShow;
 }
+- (IBAction)searchAction:(id)sender;
+
 - (IBAction)hidePicker:(id)sender;
 - (IBAction)backView:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *searchOpenTime;
@@ -95,6 +99,7 @@ typedef enum
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isSearchShow = NO;
     currentLocation = [[CLLocation alloc] init];
     localManager = [[CLLocationManager alloc] init];
     localManager.distanceFilter = 5.0;
@@ -143,6 +148,9 @@ typedef enum
     progress = [[MBProgressHUD alloc] initWithView:self.view];
     progress.dimBackground = YES;
     progress.color = [UIColor colorWithRed:0.1 green:0.50 blue:0.82 alpha:0.90];
+    searchViews.backgroundColor = vip_loginBtnColor;
+    searchViews.frame = CGRectMake(0, listTable.frame.origin.y, searchViews.frame.size.width, 0);
+    [self.view addSubview:searchViews];
     [self.view addSubview:progress];
 }
 
@@ -176,6 +184,11 @@ typedef enum
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillLayoutSubviews
+{
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -318,6 +331,28 @@ typedef enum
     [UIView animateWithDuration:0.3 animations:^{
         pickerControllerView.frame = CGRectMake(0, self.view.frame.size.height-pickerControllerView.frame.size.height, self.view.frame.size.width, pickerControllerView.frame.size.height);
     }];
+}
+
+- (IBAction)searchAction:(id)sender
+{
+    if(isSearchShow)
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+           searchViews.frame = CGRectMake(0, searchViews.frame.origin.y, searchViews.frame.size.width, 0);
+           listTable.frame   = CGRectMake(0, searchViews.frame.origin.y, listTable.frame.size.width, listTable.frame.size.height+39);
+            [self.searchBar resignFirstResponder];
+            isSearchShow = NO;
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            searchViews.frame = CGRectMake(0, listTable.frame.origin.y, searchViews.frame.size.width, 39);
+            listTable.frame   = CGRectMake(0, searchViews.frame.size.height+searchViews.frame.origin.y, listTable.frame.size.width, listTable.frame.size.height-39);
+            isSearchShow = YES;
+        }];
+
+    }
 }
 
 - (IBAction)hidePicker:(id)sender

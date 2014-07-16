@@ -13,5 +13,5 @@
 + (BOOL)isUserLogin;
 + (void)loginOut;
 + (UIImage *)getBlurredImage:(UIImage *)imageToBlur ;
-+ (UIImage *)getScreenImage:(UIView *)currentView;
++ (UIImage *)getScreenImage:(UIView *)currentView fromRect:(CGRect)frameRect;
 @end
