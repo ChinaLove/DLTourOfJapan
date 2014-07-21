@@ -43,7 +43,7 @@
 - (void)startDownAdvertiseImage;
 
 /**
- *下载场所图片啊
+ * 增加场所图片的url
  *
  *
  */

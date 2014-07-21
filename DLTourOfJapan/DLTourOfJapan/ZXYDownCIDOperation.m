@@ -36,6 +36,24 @@
 - (void)addURLTONeedToDown:(NSString *)needToDownURL
 {
     //[needToDown insertObject:needToDownURL atIndex:0];
+    if([needToDown containsObject:needToDownURL]||[firstArrToDown containsObject:needToDownURL])
+    {
+        if([currentURL isEqualToString:needToDownURL])
+        {
+            return;
+        }
+        else
+        {
+            if([needToDown containsObject:needToDownURL])
+            {
+                [needToDown removeObject:needToDownURL];
+            }
+            else if([firstArrToDown containsObject:needToDownURL])
+            {
+                [firstArrToDown removeObject:needToDownURL];
+            }
+        }
+    }
     [needToDown addObject:needToDownURL];
 }
 

@@ -122,15 +122,33 @@ static NSOperationQueue *queue;
     }
 }
 
+//增加广告图片的url
 - (void)advertiseURLADD:(NSURL *)url 
 {
     if(allURL.count == 0)
     {
         allURL = [[NSMutableArray alloc] init];
     }
-    [allURL addObject:url];
+    if(advertiseOperation == nil)
+    {
+        [allURL addObject:url];
+    }
+    else
+    {
+        if([advertiseOperation isFinished])
+        {
+            [allURL addObject:url];
+            advertiseOperation = nil;
+            [self startDownAdvertiseImage];
+        }
+        else if ([advertiseOperation isExecuting])
+        {
+            [allURL addObject:url];
+        }
+    }
 }
 
+//开始下载广告图片的url，在以后可能会出现问题
 - (void)startDownAdvertiseImage
 {
     if(allURL.count == 0)
@@ -155,11 +173,19 @@ static NSOperationQueue *queue;
 
     if(cidOperation == nil)
     {
+        if([placeURLARR containsObject:url])
+        {
+            [placeURLARR removeObject:url];
+        }
         [placeURLARR insertObject:url atIndex:0];
     }
     else {
         if(!cidOperation.isExecuting)
         {
+            if([placeURLARR containsObject:url])
+            {
+                [placeURLARR removeObject:url];
+            }
             [placeURLARR insertObject:url atIndex:0];
             [self startDownPlaceImage];
         }

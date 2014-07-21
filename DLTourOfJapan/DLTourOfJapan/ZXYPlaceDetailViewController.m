@@ -79,6 +79,7 @@
     textContentView.layer.borderColor =  vip_loginBtnColor.CGColor;
     textContentView.layer.cornerRadius = 3;
     [self.view addSubview:progress];
+    self.view.backgroundColor=[UIColor colorWithRed:0.9490 green:0.9490 blue:0.9490 alpha:1];
 }
 
 - (void)viewWillLayoutSubviews
@@ -432,6 +433,10 @@
     if(section == 0)
     {
         NSInteger row = indexPath.row;
+        if(row == 5)
+        {
+            return 33;
+        }
         if(row == 0 || row == 1)
         {
             

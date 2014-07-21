@@ -26,6 +26,10 @@
 -(BOOL)createFileAtPath:(NSString *)filePath isDirectory:(BOOL)isDirectory withData:(NSData *)fileData;
 -(BOOL)createDirectoryAtPath:(NSString *)direcPath withBool:(BOOL)withB;
 
+/**
+ *  返回图片存储的路径
+ *
+ */
 - (NSString *)advertiseImagePath:(NSString *)urlString;
 - (NSString *)cidImagePath:(NSString *)urlString;
 @end
