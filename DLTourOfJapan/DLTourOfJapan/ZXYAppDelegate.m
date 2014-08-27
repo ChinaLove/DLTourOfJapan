@@ -26,7 +26,7 @@
     }
     else
     {
-        NSLog(@"hello worldone");
+        NSLog(@"hello worldonetwo");
     }
     [ZXYDBHelper putDataToCoreData];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
